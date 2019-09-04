@@ -1,0 +1,57 @@
+body, html {
+    height: 100%;
+   
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .bg-img {
+    
+    background-image: url("../../../assets/homepage.jpg");
+    min-height: 706px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+
+  .container {
+    position: center;
+    right: 50;
+    margin-left: 60px;
+    max-width: 300px;
+    padding-top: 65px;
+    background-color:transparent;
+  }
+  
+  
+    input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: slategrey;
+  }
+  
+  
+  .btn {
+    background-color:orangered;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .btn:hover {
+    opacity: 0.8;
+  }

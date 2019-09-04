@@ -1,1 +1,11 @@
-<p>results-page works!</p>
+<h1 class="display-3">&nbsp;Venues</h1>
+<div class="cards" *ngFor="let venue of venues">
+    <div class="card" class="shadow p-3 mb-5 bg-white rounded" style="width: 65rem;">
+        <div class="card-body">
+            <h5 class="card-title">VenueName: {{venue.venueName}}</h5>
+            <p class="card-text">City: {{venue.city}}</p>
+            <p class="card-text">Description: {{venue.description}}</p>
+            <p class="card-text">Price: {{venue.price}}</p>
+        </div>
+    </div>
+</div>

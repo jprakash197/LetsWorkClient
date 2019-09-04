@@ -1,1 +1,47 @@
-<p>home-page-search-box works!</p>
+<ngx-spinner bdColor="rgba(256,256,256,0.8)" size="medium" color="#000" type="square-jelly-box">
+    <p style="font-size: 50px; color: black">Let's Work</p>
+</ngx-spinner>
+<body>
+<div class="bg-img" >
+    <form class="container">
+        <div class="form-group">
+            <p>
+                <label><b>Capacity</b></label>
+                <input [(ngModel)]="capacity" class="form-control" name="Capacity" required>
+            </p>
+        </div>
+        <div class="form-group">
+            <p>
+                <label><b>City</b></label>
+                <select name="City" [(ngModel)]="city" class="form-control" required>
+                    <option *ngFor="let cityOption of cities" [value]="cityOption">{{cityOption}}</option>
+                </select>
+            </p>
+        </div>
+        <div class="form-group">
+            <p>
+                <label><b>Date</b></label>
+                <input name="date" type="date" [(ngModel)]="date" min="{{formattedDate}}" class="form-control" required>
+            </p>
+        </div>
+        <br>
+        <div class="form-group">
+            <p>
+                <label><b>Venue Type</b></label>
+                &nbsp;
+                <select name="VenueType" [(ngModel)]="venueType">
+                    <option value="Meeting">Meeting</option>
+                    <option value="Conference">Conference</option>
+                    <option value="Training">Training</option>
+                    <option value="Workshop">Workshop</option>
+                </select>
+            </p>
+        </div>
+        <br>
+        <button type="submit" (click)="submit()" class="btn">Search</button>
+        <a href="#" style="color: orangered"></a>
+    </form>
+</div>
+</body>
+
+<router-outlet></router-outlet>
