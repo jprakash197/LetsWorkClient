@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 import { VenueRequest } from '../../shared/VenueRequest';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
+import { NgxSpinnerService } from '../../../../node_modules/ngx-spinner';
+
 
 @Component({
   selector: 'app-results-page',
@@ -11,6 +13,13 @@ import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 export class ResultsPageComponent implements OnInit {
 
   venues: any[] = [];
+  filtervenues: any[] = [];
+ isChecked: boolean = false;
+  check: boolean = false;
+  status1: boolean = true;
+  status2: boolean = true;
+
+
 
   venueRequest: VenueRequest = {
     capacity: 0,
@@ -21,17 +30,76 @@ export class ResultsPageComponent implements OnInit {
 
   stmt: String;
 
-  constructor(private route: ActivatedRoute,private venueService: LetsWorkServiceService) {
+  constructor(private route: ActivatedRoute,private venueService: LetsWorkServiceService,private spinner: NgxSpinnerService) {
     this.route.queryParams.subscribe(params => {
       this.venueRequest = JSON.parse(params["venueRequest"]);
+      this.spinner.show();
       this.venueService.getVenues(this.venueRequest).subscribe(data => {
-        this.venues = data
+        this.venues = data;
+        console.log(this.venues)
+        this.venueService.getSearchedVenues(this.venues);
+        this.filtervenues=this.venues;
+        this.spinner.hide();
       });
+      
     });
-
+  
   }
 
+  
+
   ngOnInit() {
+  
+  }
+
+
+  onChkChange() {
+    this.isChecked = !this.isChecked;
+    if (this.isChecked == true && this.check == true) {
+      this.filtervenues = this.venueService.allFilter();
+      
+    } else if (this.isChecked == true && this.check == false) {
+      this.filtervenues = this.venueService .filterPrice();
+     
+    } else if (this.isChecked == false && this.check == true) {
+      this.filtervenues = this.venueService.filterRating();   
+    }
+    else {
+      this.filtervenues = this.venues;
+    }
+  }
+
+  onChkChangerating(value) {
+    this.check = !value;
+    if (this.isChecked == true && this.check == true) {
+      this.filtervenues = this.venueService.allFilter();
+   
+    } else if (this.isChecked == true && this.check == false) {
+      this.filtervenues = this.venueService.filterPrice();
+    
+    } else if (this.isChecked == false && this.check == true) {
+      this.filtervenues = this.venueService.filterRating();
+    
+    }
+    else {
+      this.filtervenues = this.venues;
+    }
+  }
+
+  changeit() {
+
+    this.status1 = !this.status1;
+    if (this.status1 == false) {
+      this.venues.sort((a,b)=>{
+        return a.price - b.price
+       })
+    }
+    else {
+      this.venues.sort((a,b)=>{
+        return b.price - a.price
+       })
+    }
+    console.log(this.status1);
   }
 
 }

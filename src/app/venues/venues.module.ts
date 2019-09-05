@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatCheckboxModule } from '@angular/material';
+import { NgxSpinnerModule } from '../../../node_modules/ngx-spinner';
 
 import { VenuesRoutingModule } from './venues-routing.module';
 import { ResultsPageComponent } from './results-page/results-page.component';
@@ -16,7 +19,13 @@ import { MapComponent } from '../venues/details-page/map/map.component';
   declarations: [ResultsPageComponent, DetailsPageComponent, BookNowComponent, ReadDetailsComponent, FilterVenuesComponent, SortVenuesComponent, GetMoreDetailsComponent, MapComponent],
   imports: [
     CommonModule,
+    MatSidenavModule,
+    NgxSpinnerModule,
+    MatCheckboxModule,
     VenuesRoutingModule
+  ],
+  providers:[
+    ResultsPageComponent
   ]
 })
 export class VenuesModule { }
