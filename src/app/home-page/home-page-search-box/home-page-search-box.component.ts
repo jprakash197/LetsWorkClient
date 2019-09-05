@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '../../../../node_modules/@angular/common';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router, ChildActivationStart } from '../../../../node_modules/@angular/router';
 import { NgxSpinnerService } from '../../../../node_modules/ngx-spinner';
 import { VenueRequest } from '../../shared/VenueRequest';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page-search-box',
@@ -13,14 +14,13 @@ import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 export class HomePageSearchBoxComponent implements OnInit {
 
   currentDate: Date = new Date();
+  maxDate:Date=new Date();
+  formattedCurrentDate: string;
+  formattedMaxDate:string;
 
-  capacity: number = null;
-  date: Date = null;
-  city: String = null;
-  venueType: String = null;
+  submitted:boolean=false;
 
   cities: String[] = [];
-  formattedDate: string;
 
   venues: any[] = [];
 
@@ -31,33 +31,49 @@ export class HomePageSearchBoxComponent implements OnInit {
     date: this.currentDate
   };
 
+  registerForm = new FormGroup({
+    formCapacity:new FormControl('', [Validators.required,Validators.min(1)]),
+    // ,
+    formCity: new FormControl('', [Validators.required]),
+    formVenueType: new FormControl('', Validators.required),
+    formDate: new FormControl('', [Validators.required]),
+   });
 
-  constructor(private venueService: LetsWorkServiceService, public datepipe: DatePipe, private spinner: NgxSpinnerService, private router: Router) {
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 3000);
-
+  constructor(private venueService: LetsWorkServiceService, public datepipe: DatePipe, private spinner: NgxSpinnerService, private router: Router,private formBuilder: FormBuilder) {
+    this.maxDate.setDate(this.maxDate.getDate()+365)
+    
   }
 
 
   ngOnInit() {
-    this.formattedDate = this.datepipe.transform(this.currentDate, 'yyyy-MM-dd');
+    this.formattedCurrentDate = this.datepipe.transform(this.currentDate, 'yyyy-MM-dd');
+    this.formattedMaxDate = this.datepipe.transform(this.maxDate, 'yyyy-MM-dd');
+    this.spinner.show();
     this.loadCities();
+
   }
+
+  get f() { return this.registerForm.controls; }
 
   loadCities() {
     this.venueService.getCities().subscribe(data => {
       this.cities = data;
+      this.spinner.hide();
     });
   }
 
 
   submit() {
-    this.venueRequest.capacity = this.capacity;
-    this.venueRequest.city = this.city;
-    this.venueRequest.venueType = this.venueType;
-    this.venueRequest.date = this.date;
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+        return;
+        
+    }
+
+    this.venueRequest.capacity = this.registerForm.value.formCapacity;
+    this.venueRequest.city = this.registerForm.value.formCity;
+    this.venueRequest.venueType = this.registerForm.value.formVenueType;
+    this.venueRequest.date = this.registerForm.value.formDate;
     let navigationExtras: any = {
       queryParams: {
         "venueRequest": JSON.stringify(this.venueRequest)

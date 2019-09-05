@@ -14,11 +14,11 @@ export class ResultsPageComponent implements OnInit {
 
   venues: any[] = [];
   filtervenues: any[] = [];
- isChecked: boolean = false;
+  isChecked: boolean = false;
   check: boolean = false;
   status1: boolean = true;
   status2: boolean = true;
-
+  // flag:boolean=true;
 
 
   venueRequest: VenueRequest = {
@@ -32,16 +32,17 @@ export class ResultsPageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,private venueService: LetsWorkServiceService,private spinner: NgxSpinnerService) {
     this.route.queryParams.subscribe(params => {
+      
       this.venueRequest = JSON.parse(params["venueRequest"]);
       this.spinner.show();
       this.venueService.getVenues(this.venueRequest).subscribe(data => {
+        console.log(data)
         this.venues = data;
         console.log(this.venues)
         this.venueService.getSearchedVenues(this.venues);
         this.filtervenues=this.venues;
         this.spinner.hide();
       });
-      
     });
   
   }

@@ -24,7 +24,7 @@ export class LetsWorkServiceService {
   }
   getVenues(venueRequest: VenueRequest): Observable<any> {
     console.log(venueRequest.capacity+"/"+venueRequest.city+"service")
-    this.http.post<VenueRequest>(this.configUrl, venueRequest).subscribe(data => console.log(data))
+    // this.http.post<VenueRequest>(this.configUrl, venueRequest).subscribe(data => console.log(data))
     return this.http.post<any>(this.configUrl, venueRequest);
   }
 
