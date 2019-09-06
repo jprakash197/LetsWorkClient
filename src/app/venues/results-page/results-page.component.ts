@@ -19,7 +19,7 @@ export class ResultsPageComponent implements OnInit {
   status1: boolean = true;
   status2: boolean = true;
   // flag:boolean=true;
-
+  num:number=10; 
 
   venueRequest: VenueRequest = {
     capacity: 0,
@@ -68,6 +68,7 @@ export class ResultsPageComponent implements OnInit {
     else {
       this.filtervenues = this.venues;
     }
+
   }
 
   onChkChangerating(value) {
