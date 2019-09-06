@@ -32,8 +32,7 @@ export class HomePageSearchBoxComponent implements OnInit {
   };
 
   registerForm = new FormGroup({
-    formCapacity:new FormControl('', [Validators.required,Validators.min(1), Validators.pattern("^[0-9]*$")]),
-    // ,
+    formCapacity:new FormControl('', [Validators.required,Validators.min(1), Validators.pattern("^[0-9]*$"),Validators.max(5000)]),
     formCity: new FormControl('', [Validators.required]),
     formVenueType: new FormControl('', Validators.required),
     formDate: new FormControl('', [Validators.required]),

@@ -1,3 +1,6 @@
+<ngx-spinner bdColor="#333" size="medium" color="#fff" type="ball-circus">
+    <p style="font-size: 20px; color:black;">Loading..</p>
+</ngx-spinner>
 <div *ngIf=flag>
 
     <mat-card>
@@ -27,8 +30,13 @@
         <div class=book>
             <mat-card class="card">
                 <mat-card-content>
-
-                    <button type="submit" class="btn">Book now</button>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="button"></label>
+                        <div class="col-md-8">
+                            <button id="singlebutton" name="singlebutton" class="btn btn-primary" (click)="onSubmit()">Book now!</button>
+                        </div>
+                    </div>
+                    <!-- <button type="submit" class="btn" (>Book now</button> -->
 
 
                 </mat-card-content>

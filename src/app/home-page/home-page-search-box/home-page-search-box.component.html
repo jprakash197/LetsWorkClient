@@ -16,8 +16,11 @@
                     <div *ngIf="registerForm.controls['formCapacity'].errors.required">
                         Capacity is required.
                     </div>
-                    <div *ngIf="registerForm.controls['formCapacity'].errors.minlength">
+                    <div *ngIf="registerForm.controls['formCapacity'].errors.min">
                         Min capacity is 1.
+                    </div>
+                    <div *ngIf="registerForm.controls['formCapacity'].errors.max">
+                        Max capacity is 5000.
                     </div>
                     <div *ngIf="registerForm.controls['formCapacity'].errors.pattern">
                         Please enter valid capacity.

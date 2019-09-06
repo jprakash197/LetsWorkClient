@@ -1,6 +1,6 @@
 const fs = require("fs-extra");
 
-const webConfigPath = "./dist/LETS-WORK-CLIENT/web.config";
+const webConfigPath = "./dist/letsWork/web.config";
 
 if (fs.existsSync(webConfigPath)) {
   fs.unlinkSync(webConfigPath);

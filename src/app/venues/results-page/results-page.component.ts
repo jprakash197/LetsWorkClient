@@ -106,7 +106,7 @@ export class ResultsPageComponent implements OnInit {
 
   changedit() {
     this.status2 = !this.status2;
-    if (this.status2 == true) {
+    if (this.status2 == false) {
       this.venues.sort((a,b)=>{
         return a.rating - b.rating
        })
