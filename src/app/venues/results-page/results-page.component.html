@@ -36,10 +36,12 @@
                             <div class="card-body">
                                 <h5 class="card-title">VenueName: {{venue.venueName}}</h5>
                                 <p class="card-text">City: {{venue.city}}</p>
-                                <p class="card-text">Description: {{venue.description}}</p>
                                 <p class="card-text">Price: {{venue.price}}</p>
                                 <p class="card-text">Rating: {{venue.rating}}</p>
                             </div>
+                        </div>
+                        <div>
+                                <button mat-button routerLink="detail/{{venue.venueId}}">see details</button>
                         </div>
                     </div>
                 </div>

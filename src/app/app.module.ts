@@ -9,6 +9,8 @@ import { DatePipe } from '../../node_modules/@angular/common';
 import { HeaderComponent } from './core/shell/header/header.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { MatCheckboxModule } from '@angular/material';
     MatSidenavModule,
     MatCheckboxModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    MatCardModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
