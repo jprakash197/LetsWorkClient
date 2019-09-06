@@ -103,4 +103,19 @@ export class ResultsPageComponent implements OnInit {
     console.log(this.status1);
   }
 
+  changedit() {
+    this.status2 = !this.status2;
+    if (this.status2 == true) {
+      this.venues.sort((a,b)=>{
+        return a.rating - b.rating
+       })
+    }
+    else {
+      this.venues.sort((a,b)=>{
+        return b.rating - a.rating
+       })
+    }
+    console.log(this.status2);
+  }
+
 }

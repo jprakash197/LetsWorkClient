@@ -1,7 +1,7 @@
 <ngx-spinner bdColor="#333" size="medium" color="#fff" type="ball-circus">
     <p style="font-size: 20px; color:black;">Loading..</p>
 </ngx-spinner>
-<div *ngIf="filtervenues">
+<!-- <div *ngIf="filtervenues"> -->
     <mat-drawer-container class="example-container">
 
         <mat-drawer mode="side" opened class="sidebar">
@@ -9,11 +9,9 @@
             <br>
             <br>
             <h2>Price</h2>
-            <br>
             <mat-checkbox (change)="onChkChange()">price > 5000</mat-checkbox>
             <hr>
             <h3>Rating</h3>
-            <br>
             <mat-checkbox value="check" (change)="onChkChangerating(check)">rating > 5</mat-checkbox>
             <br>
             <br>
@@ -24,6 +22,8 @@
             <h3>&nbsp;Venues</h3>
             <br>
             <button (click)="changeit()"  class="btn btn-secondary">sort on price</button>&nbsp;&nbsp;&nbsp;
+            
+            <button (click)="changedit()" class="btn btn-secondary">sort on rating </button>&nbsp;&nbsp;&nbsp;
             <br>
             <br>
             <div *ngIf="filtervenues">
@@ -44,9 +44,14 @@
                     </div>
                 </div>
             </div>
+
+            <div *ngIf="!filtervenues">
+                    <p>No Venues available</p>
+                    </div> 
+
         </mat-drawer-content>
     </mat-drawer-container>
-</div>
+<!-- </div> -->
 <!-- <div *ngIf="!flag">
     <h2>No venues available, Suggestions coming soon..</h2>
 </div> -->
