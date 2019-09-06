@@ -17,6 +17,7 @@ export class LetsWorkServiceService {
   
   configUrl = this.url+'/venues';
   citiesUrl = this.url+'/cities';
+  detailUrl = this.url+'/getDetails/';
   
   constructor(private http: HttpClient) {
     console.log(this.citiesUrl)
@@ -73,6 +74,8 @@ export class LetsWorkServiceService {
     return this.filteredVenues;
   }
 
-  
+ getDetails(venueId):Observable<any>{
+    return this.http.get<any>(this.detailUrl+venueId);
+  }
 
 }

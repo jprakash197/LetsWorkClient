@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material';
 import { NgxSpinnerModule } from '../../../node_modules/ngx-spinner';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatCardModule} from '@angular/material/card';
+
 
 import { VenuesRoutingModule } from './venues-routing.module';
 import { ResultsPageComponent } from './results-page/results-page.component';
@@ -22,7 +25,10 @@ import { MapComponent } from '../venues/details-page/map/map.component';
     MatSidenavModule,
     NgxSpinnerModule,
     MatCheckboxModule,
-    VenuesRoutingModule
+    VenuesRoutingModule,
+    NgbModule,
+    MatCardModule
+
   ],
   providers:[
     ResultsPageComponent
