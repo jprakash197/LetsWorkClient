@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { } from 'googlemaps';
+import { MapService } from '../../../shared/map.service';
 
 @Component({
   selector: 'app-map',
@@ -10,7 +11,7 @@ import { } from 'googlemaps';
 export class MapComponent implements OnInit {
   userMap: google.maps.Map;
 
-  constructor() { }
+  constructor(private mapService: MapService) { }
 
   ngOnInit() {
     this.createGoogleMap();
@@ -18,33 +19,33 @@ export class MapComponent implements OnInit {
 
   // Initialize and add the map
   createGoogleMap() {
-    const bhubaneshwar = { lat: 20.30, lng: 85.86 };
-    const mumbai = { lat: 19.07, lng: 72.88 };
-    const bengaluru = { lat: 12.97, lng: 77.60 };
+
+    const venueLocation = this.mapService.getLocation();
+
     // The map, centered at Bengaluru
     this.userMap = new google.maps.Map(
-      document.getElementById('map'), { zoom: 4, center: bengaluru });
+      document.getElementById('map'), { zoom: 4, center: venueLocation });
 
     const infoWindow = new google.maps.InfoWindow;
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        let pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition(position => {
+    //     let pos = {
+    //       lat: position.coords.latitude,
+    //       lng: position.coords.longitude
+    //     };
 
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Location found.');
-        infoWindow.open(this.userMap);
-        this.userMap.setCenter(pos);
-        const marker = new google.maps.Marker({ position: pos, map: this.userMap });
-      }, () => {
-        this.handleLocationError(true, infoWindow, this.userMap.getCenter());
-      });
-    } else {
-      this.handleLocationError(false, infoWindow, bengaluru);
-    }
+    //     infoWindow.setPosition(pos);
+    //     infoWindow.setContent('Location found.');
+    infoWindow.open(this.userMap);
+    this.userMap.setCenter(venueLocation);
+    const marker = new google.maps.Marker({ position: venueLocation, map: this.userMap });
+    //   }, () => {
+    //     this.handleLocationError(true, infoWindow, this.userMap.getCenter());
+    //   });
+    // } else {
+    //   this.handleLocationError(false, infoWindow, venueLocation);
+    // }
   }
 
   handleLocationError(browserHasGeolocaiton, infoWindow, pos) {

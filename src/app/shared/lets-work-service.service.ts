@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '../../../node_modules/@angular/common/http';
 import { VenueRequest } from './VenueRequest';
-import { Observable } from '../../../node_modules/rxjs';
+import { Observable, BehaviorSubject } from '../../../node_modules/rxjs';
 import { environment } from '../../environments/environment';
 
 import { Image } from './image';
 import { Feature } from './feature';
 import { Booking } from './booking';
+import { MapService } from './map.service';
 
 export interface Venue {
   id: number;
@@ -39,13 +40,18 @@ export class LetsWorkServiceService {
   citiesUrl = this.url + '/cities';
   detailUrl = this.url + '/getDetails/';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private mapService: MapService) {
     console.log(this.citiesUrl)
-
   }
+
   getVenues(venueRequest: VenueRequest): Observable<any> {
     console.log(venueRequest.capacity + "/" + venueRequest.city + "service")
     // this.http.post<VenueRequest>(this.configUrl, venueRequest).subscribe(data => console.log(data))
+    // set the city location
+
+    // Intercept the venueRequest city location with the map service
+    this.mapService.setLocation(venueRequest.city.toLowerCase());
+
     return this.http.post<any>(this.configUrl, venueRequest);
   }
 
