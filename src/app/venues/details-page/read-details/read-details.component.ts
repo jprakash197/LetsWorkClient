@@ -14,6 +14,7 @@ export class ReadDetailsComponent implements OnInit {
   venue: any;
   venueImg: any[] = [];
   flag = false;
+ 
 
   constructor(private route: ActivatedRoute, private venueService: LetsWorkServiceService, private spinner: NgxSpinnerService, private router: Router) {
     this.id = +this.route.snapshot.params['venueId'];
