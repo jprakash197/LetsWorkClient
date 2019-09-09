@@ -16,6 +16,8 @@ import { FilterVenuesComponent } from '../venues/results-page/filter-venues/filt
 import { SortVenuesComponent } from '../venues/results-page/sort-venues/sort-venues.component';
 import { GetMoreDetailsComponent } from '../venues/results-page/get-more-details/get-more-details.component';
 import { MapComponent } from '../venues/details-page/map/map.component';
+import {MatButtonModule} from '@angular/material/button';
+
 
 
 @NgModule({
@@ -27,8 +29,8 @@ import { MapComponent } from '../venues/details-page/map/map.component';
     MatCheckboxModule,
     VenuesRoutingModule,
     NgbModule,
-    MatCardModule
-
+    MatCardModule,
+    MatButtonModule
   ],
   providers:[
     ResultsPageComponent
