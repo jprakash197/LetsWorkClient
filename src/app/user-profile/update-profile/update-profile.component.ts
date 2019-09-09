@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../shared/user';
+import { UserServiceService } from '../user-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-profile',
@@ -7,9 +10,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateProfileComponent implements OnInit {
 
-  constructor() { }
+  currentUser: User;
+
+  constructor(private userService: UserServiceService) {
+
+  }
+
+  changeEmail() {
+    console.log("here");
+    Swal.fire({
+      title: 'Enter New Email',
+      input: 'text',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Submit',
+      showLoaderOnConfirm: true,
+      preConfirm: (login) => {
+        console.log(login);
+        // return fetch(`//api.github.com/users/${login}`)
+        //   .then(response => {
+        //     if (!response.ok) {
+        //       throw new Error(response.statusText)
+        //     }
+        //     return response.json()
+        //   })
+        //   .catch(error => {
+        //     Swal.showValidationMessage(
+        //       `Request failed: ${error}`
+        //     )
+        //   })
+        this.userService.editUser(login).subscribe();
+      },
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire({
+          title: `Success`,
+          //imageUrl: result.value.avatar_url
+        })
+        window.location.reload();
+      }
+    })
+  }
 
   ngOnInit() {
+    this.userService.findUser().subscribe(data => {
+      this.currentUser = data;
+    })
   }
 
 }
