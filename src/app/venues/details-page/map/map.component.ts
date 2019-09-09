@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewChild } from '@angular/core';
 
 import { } from 'googlemaps';
-import { DeclareFunctionStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-map',
@@ -10,20 +8,21 @@ import { DeclareFunctionStmt } from '@angular/compiler';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  map: google.maps.Map;
+  userMap: google.maps.Map;
 
   constructor() { }
 
   ngOnInit() {
-    this.initMap();
+    this.createGoogleMap();
   }
 
   // Initialize and add the map
-  initMap() {
-    // The location of Bengaluru
-    var bengaluru = { lat: 12.9, lng: 77.3 };
+  createGoogleMap() {
+    const bhubaneshwar = { lat: 20.30, lng: 85.86 };
+    const mumbai = { lat: 19.07, lng: 72.88 };
+    const bengaluru = { lat: 12.97, lng: 77.60 };
     // The map, centered at Bengaluru
-    this.map = new google.maps.Map(
+    this.userMap = new google.maps.Map(
       document.getElementById('map'), { zoom: 4, center: bengaluru });
 
     const infoWindow = new google.maps.InfoWindow;
@@ -37,11 +36,11 @@ export class MapComponent implements OnInit {
 
         infoWindow.setPosition(pos);
         infoWindow.setContent('Location found.');
-        infoWindow.open(this.map);
-        this.map.setCenter(pos);
-        const marker = new google.maps.Marker({ position: bengaluru, map: this.map });
+        infoWindow.open(this.userMap);
+        this.userMap.setCenter(pos);
+        const marker = new google.maps.Marker({ position: pos, map: this.userMap });
       }, () => {
-        this.handleLocationError(true, infoWindow, this.map.getCenter());
+        this.handleLocationError(true, infoWindow, this.userMap.getCenter());
       });
     } else {
       this.handleLocationError(false, infoWindow, bengaluru);
@@ -53,7 +52,7 @@ export class MapComponent implements OnInit {
     infoWindow.setContent(browserHasGeolocaiton
       ? 'Error: Geolocation service failed'
       : 'Error: Browser does not support geolocation');
-    infoWindow.open(this.map)
+    infoWindow.open(this.userMap)
   }
 
 }

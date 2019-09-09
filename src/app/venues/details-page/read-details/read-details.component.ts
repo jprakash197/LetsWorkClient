@@ -15,7 +15,10 @@ export class ReadDetailsComponent implements OnInit {
   venueImg: any[] = [];
   flag = false;
 
-  constructor(private route: ActivatedRoute, private venueService: LetsWorkServiceService, private spinner: NgxSpinnerService, private router: Router) {
+  constructor(private route: ActivatedRoute,
+    private venueService: LetsWorkServiceService,
+    private spinner: NgxSpinnerService,
+    private router: Router) {
     this.id = +this.route.snapshot.params['venueId'];
     console.log(this.id);
   }
@@ -24,7 +27,7 @@ export class ReadDetailsComponent implements OnInit {
     this.spinner.show();
     this.venueService.getDetails(this.id).subscribe(venue => {
       this.venue = venue;
-      this.flag=true;
+      this.flag = true;
       console.log(this.venue)
       this.spinner.hide();
     });

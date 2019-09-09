@@ -1,47 +1,51 @@
 <ngx-spinner bdColor="#333" size="medium" color="#fff" type="ball-circus">
-    <p style="font-size: 20px; color:black;">Loading..</p>
+  <p style="font-size: 20px; color:black;">Loading..</p>
 </ngx-spinner>
 <div *ngIf=flag>
 
-    <mat-card>
-        <ngb-carousel>
-            <ng-template ngbSlide *ngFor="let img of venue.image">
-                <div class="picsum-img-wrapper">
-                    <img mat-card-image src="{{img}}" alt="{{venue.venueName}}" style="max-height:300px; margin:0 auto;">
-                </div>
-            </ng-template>
-        </ngb-carousel>
-
-    </mat-card>
-
-
-    <div class="column1">
-        <mat-card class="card">
-            <mat-card-content>
-                <h5 class="card-title">VenueName: {{venue.venueName}}</h5>
-                <p class="card-text">City: {{venue.city}}</p>
-                <p class="card-text">Description: {{venue.description}}</p>
-                <p class="card-text">Price: {{venue.price}}</p>
-                <p class="card-text">Rating: {{venue.rating}}</p>
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <div class="column2">
-        <div class=book>
-            <mat-card class="card">
-                <mat-card-content>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="button"></label>
-                        <div class="col-md-8">
-                            <button id="singlebutton" name="singlebutton" class="btn btn-primary" (click)="onSubmit()">Book now!</button>
-                        </div>
-                    </div>
-                    <!-- <button type="submit" class="btn" (>Book now</button> -->
-
-
-                </mat-card-content>
-
-            </mat-card>
+  <mat-card>
+    <ngb-carousel>
+      <ng-template ngbSlide *ngFor="let img of venue.image">
+        <div class="picsum-img-wrapper">
+          <img mat-card-image src="{{img}}" alt="{{venue.venueName}}" style="max-height:300px; margin:0 auto;">
         </div>
+      </ng-template>
+    </ngb-carousel>
+
+  </mat-card>
+
+
+  <div class="column1">
+    <mat-card class="card">
+      <mat-card-content>
+        <h5 class="card-title">VenueName: {{venue.venueName}}</h5>
+        <p class="card-text">City: {{venue.city}}</p>
+        <p class="card-text">Description: {{venue.description}}</p>
+        <p class="card-text">Price: {{venue.price}}</p>
+        <p class="card-text">Rating: {{venue.rating}}</p>
+      </mat-card-content>
+      <div class="container">
+        <app-map></app-map>
+      </div>
+    </mat-card>
+  </div>
+  <div class="column2">
+    <div class=book>
+      <mat-card class="card">
+        <mat-card-content>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="button"></label>
+            <div class="col-md-8">
+              <button id="singlebutton" name="singlebutton" class="btn btn-primary" (click)="onSubmit()">Book
+                now!</button>
+            </div>
+          </div>
+          <!-- <button type="submit" class="btn" (>Book now</button> -->
+
+
+        </mat-card-content>
+
+      </mat-card>
     </div>
+  </div>
 </div>
