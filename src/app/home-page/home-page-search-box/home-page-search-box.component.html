@@ -4,68 +4,81 @@
 
 <body>
     <div class="bg-img">
-        <form [formGroup]="registerForm" class="container" (ngSubmit)="submit()" >
-            <div class="form-group">
-                <p>
-                    <label>
+        <mat-card>
+            <form [formGroup]="registerForm"  (ngSubmit)="submit()">
+                <mat-form-field>
+                    <mat-label>
                         <b>Capacity</b>
-                    </label>
-                </p>
-                <input id="Capacity" formControlName="formCapacity" class="form-control">
+                    </mat-label>
+                    <input matInput id="Capacity" formControlName="formCapacity">
+                </mat-form-field>
+                <mat-error *ngIf="registerForm.controls['formCapacity'].invalid && (registerForm.controls['formCapacity'].dirty || registerForm.controls['formCapacity'].touched)">
+                    <div *ngIf="registerForm.controls['formCapacity'].errors.required">
+                        Capacity is required.
+                    </div>
+                    <div *ngIf="registerForm.controls['formCapacity'].errors.min">
+                        Min capacity is 1.
+                    </div>
+                    <div *ngIf="registerForm.controls['formCapacity'].errors.max">
+                        Max capacity is 5000.
+                    </div>
+                    <div *ngIf="registerForm.controls['formCapacity'].errors.pattern">
+                        Please enter valid capacity.
+                    </div>
+                </mat-error>
+                <br>
 
-                <div *ngIf="submitted && registerForm.controls['formCapacity'].invalid" class="alert alert-danger">
-                    Capacity is required.
-                </div>
-
-            </div>
-            <div class="form-group">
-                <p>
-                    <label>
+                <mat-form-field>
+                    <mat-label>
                         <b>City</b>
-                    </label>
-                    <select name="City" formControlName="formCity" class="form-control">
-                        <option *ngFor="let cityOption of cities" [value]="cityOption">{{cityOption}}</option>
-                    </select>
-                </p>
-                <div *ngIf="submitted && registerForm.controls['formCity'].invalid" class="alert alert-danger">
-                    City is required.
-                </div>
+                    </mat-label>
+                    <mat-select id="City" formControlName="formCity">
+                        <mat-option *ngFor="let cityOption of cities" [value]="cityOption">{{cityOption}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-            </div>
-            <div class="form-group">
-                <p>
-                    <label>
+                <mat-error *ngIf="registerForm.controls['formCity'].invalid && (registerForm.controls['formCity'].dirty || registerForm.controls['formCity'].touched)">
+                    <div *ngIf="registerForm.controls['formCity'].errors.required">
+                        City is required.
+                    </div>
+                </mat-error>
+
+                <br>
+
+                <mat-form-field>
+                    <mat-label>
                         <b>Date</b>
-                    </label>
-                    <input name="date" type="date" formControlName="formDate" min="{{formattedCurrentDate}}" max="{{formattedMaxDate}}" class="form-control">
-                </p>
-                <div *ngIf="submitted && registerForm.controls['formDate'].invalid" class="alert alert-danger">
-                    Date is required.
-                </div>
-            </div>
-            <br>
-            <div class="form-group">
-                <p>
-                    <label>
-                        <b>Venue Type</b>
-                    </label>
-                    &nbsp;
-                    <select name="VenueType" formControlName="formVenueType" class="form-control">
-                        <option value="Meeting">Meeting</option>
-                        <option value="Conference">Conference</option>
-                        <option value="Training">Training</option>
-                        <option value="Workshop">Workshop</option>
-                    </select>
-                </p>
-                <div *ngIf="submitted && registerForm.controls['formVenueType'].invalid" class="alert alert-danger">
-                    Venue Type is required.
-                </div>
-            </div>
-            <br>
-            <button type="submit" class="btn">Search</button>
-            <a href="#" style="color: orangered"></a>
-        </form>
+                    </mat-label>
+                    <input mat-input id="date" matInput type="date" formControlName="formDate" min="{{formattedCurrentDate}}" max="{{formattedMaxDate}}">
 
+                </mat-form-field>
+                <mat-error *ngIf="registerForm.controls['formDate'].invalid && (registerForm.controls['formDate'].dirty || registerForm.controls['formDate'].touched)">
+                    <div *ngIf="registerForm.controls['formDate'].errors.required">
+                        Date is required.
+                    </div>
+                </mat-error>
+                <br>
+                <mat-form-field>
+                    <mat-label>
+                        <b>Venue Type</b>
+                    </mat-label>
+
+                    <mat-select mat-input id="VenueType" formControlName="formVenueType">
+                        <mat-option value="Meeting">Meeting</mat-option>
+                        <mat-option value="Conference">Conference</mat-option>
+                        <mat-option value="Training">Training</mat-option>
+                        <mat-option value="Workshop">Workshop</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-error *ngIf="registerForm.controls['formVenueType'].invalid && (registerForm.controls['formVenueType'].dirty || registerForm.controls['formVenueType'].touched)">
+                    <div *ngIf="registerForm.controls['formVenueType'].errors.required">
+                        Venue Type is required.
+                    </div>
+                </mat-error>
+                <button mat-button type="submit" class="btn">Search</button>
+                <a href="#" style="color: orangered"></a>
+            </form>
+        </mat-card>
     </div>
 </body>
 

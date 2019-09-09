@@ -1,84 +1,47 @@
+<ngx-spinner bdColor="#333" size="medium" color="#fff" type="ball-circus">
+    <p style="font-size: 20px; color:black;">Loading..</p>
+</ngx-spinner>
 <div *ngIf=flag>
 
-    <mat-card >
+    <mat-card>
         <ngb-carousel>
             <ng-template ngbSlide *ngFor="let img of venue.image">
                 <div class="picsum-img-wrapper">
                     <img mat-card-image src="{{img}}" alt="{{venue.venueName}}" style="max-height:300px; margin:0 auto;">
                 </div>
             </ng-template>
-        </ngb-carousel> 
+        </ngb-carousel>
 
     </mat-card>
-   
+
 
     <div class="column1">
+        <mat-card class="card">
+            <mat-card-content>
+                <h5 class="card-title">VenueName: {{venue.venueName}}</h5>
+                <p class="card-text">City: {{venue.city}}</p>
+                <p class="card-text">Description: {{venue.description}}</p>
+                <p class="card-text">Price: {{venue.price}}</p>
+                <p class="card-text">Rating: {{venue.rating}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="column2">
+        <div class=book>
             <mat-card class="card">
                 <mat-card-content>
-                        <h5 class="card-title">VenueName: {{venue.venueName}}</h5>
-                        <p class="card-text">City: {{venue.city}}</p>
-                        <p class="card-text">Description: {{venue.description}}</p>
-                        <p class="card-text">Price: {{venue.price}}</p>
-                        <p class="card-text">Rating: {{venue.rating}}</p>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="button"></label>
+                        <div class="col-md-8">
+                            <button id="singlebutton" name="singlebutton" class="btn btn-primary" (click)="onSubmit()">Book now!</button>
+                        </div>
+                    </div>
+                    <!-- <button type="submit" class="btn" (>Book now</button> -->
+
+
                 </mat-card-content>
+
             </mat-card>
         </div>
-        <div class="column2">
-            <div class=book>
-                <mat-card class="card">
-                  <mat-card-content>
-                        <form class="container" (ngSubmit)="submit()" >
-                                
-                                <div class="form-group">
-                                    <p>
-                                        <label>
-                                            <b>City</b>
-                                        </label>
-                                        <select name="City" formControlName="formCity" class="form-control">
-                                            <option *ngFor="let cityOption of cities" [value]="cityOption">{{cityOption}}</option>
-                                        </select>
-                                    </p>
-                                    <div *ngIf="submitted && registerForm.controls['formCity'].invalid" class="alert alert-danger">
-                                        City is required.
-                                    </div>
-                    
-                                </div>
-                                <div class="form-group">
-                                    <p>
-                                        <label>
-                                            <b>Date</b>
-                                        </label>
-                                        <input name="date" type="date" formControlName="formDate" min="{{formattedCurrentDate}}" max="{{formattedMaxDate}}" class="form-control">
-                                    </p>
-                                    <div *ngIf="submitted && registerForm.controls['formDate'].invalid" class="alert alert-danger">
-                                        Date is required.
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="form-group">
-                                    <p>
-                                        <label>
-                                            <b>Venue Type</b>
-                                        </label>
-                                        &nbsp;
-                                        <select name="VenueType" formControlName="formVenueType" class="form-control">
-                                            <option value="Meeting">Meeting</option>
-                                            <option value="Conference">Conference</option>
-                                            <option value="Training">Training</option>
-                                            <option value="Workshop">Workshop</option>
-                                        </select>
-                                    </p>
-                                    <div *ngIf="submitted && registerForm.controls['formVenueType'].invalid" class="alert alert-danger">
-                                        Venue Type is required.
-                                    </div>
-                                </div>
-                                <br>
-                                <button type="submit" class="btn">Book now</button>
-                                <a href="#" style="color: orangered"></a>
-                            </form>
-                  </mat-card-content>  
-    
-                </mat-card>
-            </div>
-        </div>
+    </div>
 </div>

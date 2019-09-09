@@ -19,7 +19,7 @@ export class ResultsPageComponent implements OnInit {
   status1: boolean = true;
   status2: boolean = true;
   // flag:boolean=true;
-
+  num:number=10; 
 
   venueRequest: VenueRequest = {
     capacity: 0,
@@ -68,6 +68,7 @@ export class ResultsPageComponent implements OnInit {
     else {
       this.filtervenues = this.venues;
     }
+
   }
 
   onChkChangerating(value) {
@@ -105,7 +106,7 @@ export class ResultsPageComponent implements OnInit {
 
   changedit() {
     this.status2 = !this.status2;
-    if (this.status2 == true) {
+    if (this.status2 == false) {
       this.venues.sort((a,b)=>{
         return a.rating - b.rating
        })
