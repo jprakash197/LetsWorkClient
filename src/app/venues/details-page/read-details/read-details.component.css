@@ -1,24 +1,33 @@
 .card {
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-    padding: 16px;
+   
+    padding: 10px;
     text-align: center;
-    background-color: #f5f5f1;
+  
    
   }
   
-  .column1 {
-    float: left;
-    width: 75%;
+
+  .details {
+    width: 60%;
+  float:right;
+  }
+.slider{
+  float:left;
+  width:40%;
+  padding: 10px;
+}
+.noImage{
+  float:left;
+  width: 40%;
+  margin-top: 20px;
+}
+  .left{
+    float:left;
+     
+    
+  }
+  .right{
+    float:right;
    
   }
-
-  .column2 {
-    float: right;
-    width: 25%;
-    height: 25px;
-    bottom: 0;
-    right: 0;
-  
-  }
-
   

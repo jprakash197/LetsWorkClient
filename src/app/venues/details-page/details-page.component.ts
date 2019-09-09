@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 
 @Component({
   selector: 'app-details-page',
@@ -8,6 +6,7 @@ import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
   styleUrls: ['./details-page.component.css']
 })
 export class DetailsPageComponent implements OnInit {
+
 
   constructor() {
 
