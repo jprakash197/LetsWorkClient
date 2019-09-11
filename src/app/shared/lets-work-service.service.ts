@@ -1,69 +1,50 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '../../../node_modules/@angular/common/http';
-import { VenueRequest } from './VenueRequest';
-import { Observable, BehaviorSubject } from '../../../node_modules/rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-import { Image } from './image';
-import { Feature } from './feature';
-import { Booking } from './booking';
+import { Venue, VenueRequest } from './venue';
 import { MapService } from './map.service';
-
-export interface Venue {
-  id: number;
-  name: string;
-  city: string;
-  address: string;
-  size: number;
-  capacity: number;
-  price: number;
-  description: string;
-  type: string;
-  rating: number;
-  images: Image[];
-  feature: Feature[];
-  bookings: Booking[];
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class LetsWorkServiceService {
 
-  filteredVenues: any[] = [];
-  searchedVenues: any[] = [];
-  myvenue: any[] = [];
-  cities: String[] = [];
-  url: String = environment.url;
+  venues: BehaviorSubject<Venue[]>;
+
+  filteredVenues: Venue[] = [];
+  searchedVenues: Venue[] = [];
+  myvenue: Venue[] = [];
+  cities: string[] = [];
+  url: string = environment.url;
 
   configUrl = this.url + '/venues';
   citiesUrl = this.url + '/cities';
   detailUrl = this.url + '/getDetails/';
 
   constructor(private http: HttpClient, private mapService: MapService) {
-    console.log(this.citiesUrl)
+    this.venues = new BehaviorSubject<Venue[]>(null);
   }
 
   getVenues(venueRequest: VenueRequest): Observable<any> {
     console.log(venueRequest.capacity + "/" + venueRequest.city + "service")
-    // this.http.post<VenueRequest>(this.configUrl, venueRequest).subscribe(data => console.log(data))
-    // set the city location
 
     // Intercept the venueRequest city location with the map service
     this.mapService.setLocation(venueRequest.city.toLowerCase());
 
-    return this.http.post<any>(this.configUrl, venueRequest);
+    return this.http.post<Venue>(this.configUrl, venueRequest);
   }
 
-  getCities(): Observable<String[]> {
-    return this.http.get<String[]>(this.citiesUrl);
+  getCities(): Observable<string[]> {
+    return this.http.get<string[]>(this.citiesUrl);
   }
 
-  getSearchedVenues(venues: any[]) {
+  getSearchedVenues(venues: Venue[]) {
     this.searchedVenues = venues;
   }
 
-  public filterPrice(): any[] {
+  public filterPrice(): Venue[] {
     while (this.filteredVenues.length > 0) {
       this.filteredVenues.pop();
     }
@@ -76,7 +57,7 @@ export class LetsWorkServiceService {
     return this.filteredVenues;
   }
 
-  public filterRating(): any[] {
+  public filterRating(): Venue[] {
     while (this.filteredVenues.length > 0) {
       this.filteredVenues.pop();
     }
@@ -88,7 +69,7 @@ export class LetsWorkServiceService {
     return this.filteredVenues;
   }
 
-  public allFilter(): any[] {
+  public allFilter(): Venue[] {
     while (this.filteredVenues.length > 0) {
       this.filteredVenues.pop();
     }
@@ -100,8 +81,8 @@ export class LetsWorkServiceService {
     return this.filteredVenues;
   }
 
-  getDetails(venueId): Observable<any> {
-    return this.http.get<any>(this.detailUrl + venueId);
+  getDetails(venueId): Observable<Venue> {
+    return this.http.get<Venue>(this.detailUrl + venueId);
   }
 
 }

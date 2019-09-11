@@ -6,7 +6,7 @@ import { NgxSpinnerService } from '../../../../../node_modules/ngx-spinner';
 import Swal from 'sweetalert2';
 import { MapService } from '../../../shared/map.service';
 
-import { Venue } from '../../../shared/VenueRequest';
+import { Venue } from '../../../shared/venue';
 
 @Component({
   selector: 'app-read-details',
@@ -15,7 +15,7 @@ import { Venue } from '../../../shared/VenueRequest';
 })
 export class ReadDetailsComponent implements OnInit {
   id: any;
-  venue: any;
+  venue: Venue;
   flag = false;
 
 
@@ -32,7 +32,6 @@ export class ReadDetailsComponent implements OnInit {
     this.spinner.show();
     this.venueService.getDetails(this.id).subscribe(venue => {
       this.venue = venue;
-      this.venue.image
       this.flag = true;
       console.log(this.venue);
       this.mapService.setLocation(this.venue.city.toLowerCase());
