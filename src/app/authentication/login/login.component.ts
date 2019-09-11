@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../shared/user';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
   onSelect() {
     this.service.OnLogin(this.username, this.password).subscribe(
       user => {
+
         if (user) {
           const u: User = user;
           const token: string = '' + u.token.toString();
@@ -36,7 +38,17 @@ export class LoginComponent implements OnInit {
             this.routeconfig.navigate(['/admin/', this.username]);
           }
         }
-      });
+      },
+      (error) => {
+        if (error instanceof HttpErrorResponse) {
+          if (error.status === 404) {
+            alert('Username could not be found');
+          } else {
+            alert('Incorrect Password');
+          }
+        }
+      }
+    );
   }
 
 }

@@ -5,7 +5,7 @@ import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot, Router } from
 @Injectable({
   providedIn: 'root'
 })
-export class GuardRoleService implements CanActivate {
+export class GuardService implements CanActivate {
   constructor(private service: LetsWorkServiceService, private route: Router) { }
 
   canActivate(activeRouterSnap: ActivatedRouteSnapshot, routeState: RouterStateSnapshot): boolean {
