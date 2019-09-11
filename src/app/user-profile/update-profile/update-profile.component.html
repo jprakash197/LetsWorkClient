@@ -1,86 +1,86 @@
 <div class="container">
-    <div style="height: 50px"></div>
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="card" style="width: 18rem;">
-                <img src="assets/Jyoti.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title" *ngIf="currentUser">{{ currentUser.realName }}</h5>
-                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+  <div style="height: 50px"></div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card" style="width: 18rem;">
+        <img src="assets/Jyoti.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title" *ngIf="currentUser">{{ currentUser.realName }}</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                     card's
                     content.</p> -->
-                    <ul class="list-group list-group-flush" *ngIf="currentUser">
-                        <li class="list-group-item">{{ currentUser.userName }}</li>
-                        <li class="list-group-item">{{ currentUser.email }}
-                            <button type="button" class="btn btn-primary" (click)="changeEmail()">
-                                Change Email
-                            </button>
-                        </li>
-                        <li class="list-group-item">{{ currentUser.referralCode }}</li>
-                    </ul>
-                </div>
-            </div>
+          <ul class="list-group list-group-flush" *ngIf="currentUser">
+            <li class="list-group-item">{{ currentUser.username }}</li>
+            <li class="list-group-item">{{ currentUser.email }}
+              <button type="button" class="btn btn-primary" (click)="changeEmail()">
+                Change Email
+              </button>
+            </li>
+            <li class="list-group-item">{{ currentUser.referralCode }}</li>
+          </ul>
         </div>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-8">
-            <div class="row">
-                <h2>Current Bookings</h2>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Booking ID</th>
-                            <th>Venue Name</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Booking ID</td>
-                            <td>Venue</td>
-                            <td>09/17/2019</td>
-                        </tr>
-                        <tr>
-                            <td>Booking ID</td>
-                            <td>Venue</td>
-                            <td>09/17/2019</td>
-                        </tr>
-                        <tr>
-                            <td>Booking ID</td>
-                            <td>Venue</td>
-                            <td>09/17/2019</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="row">
-                <h2>Past Bookings</h2>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Booking ID</th>
-                            <th>Venue Name</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Booking ID</td>
-                            <td>Venue</td>
-                            <td>09/17/2019</td>
-                        </tr>
-                        <tr>
-                            <td>Booking ID</td>
-                            <td>Venue</td>
-                            <td>09/17/2019</td>
-                        </tr>
-                        <tr>
-                            <td>Booking ID</td>
-                            <td>Venue</td>
-                            <td>09/17/2019</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-8">
+      <div class="row">
+        <h2>Current Bookings</h2>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Booking ID</th>
+              <th>Venue Name</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Booking ID</td>
+              <td>Venue</td>
+              <td>09/17/2019</td>
+            </tr>
+            <tr>
+              <td>Booking ID</td>
+              <td>Venue</td>
+              <td>09/17/2019</td>
+            </tr>
+            <tr>
+              <td>Booking ID</td>
+              <td>Venue</td>
+              <td>09/17/2019</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <h2>Past Bookings</h2>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Booking ID</th>
+              <th>Venue Name</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Booking ID</td>
+              <td>Venue</td>
+              <td>09/17/2019</td>
+            </tr>
+            <tr>
+              <td>Booking ID</td>
+              <td>Venue</td>
+              <td>09/17/2019</td>
+            </tr>
+            <tr>
+              <td>Booking ID</td>
+              <td>Venue</td>
+              <td>09/17/2019</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

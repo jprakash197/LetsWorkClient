@@ -6,12 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown/ngx-bootstrap-dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip/ngx-bootstrap-tooltip';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
+    FormsModule,
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
