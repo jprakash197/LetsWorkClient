@@ -17,7 +17,7 @@ import { SortVenuesComponent } from '../venues/results-page/sort-venues/sort-ven
 import { GetMoreDetailsComponent } from '../venues/results-page/get-more-details/get-more-details.component';
 import { MapComponent } from '../venues/details-page/map/map.component';
 import {MatButtonModule} from '@angular/material/button';
-
+import { RatingModule } from 'ng-starrating';
 
 
 @NgModule({
@@ -30,8 +30,9 @@ import {MatButtonModule} from '@angular/material/button';
     VenuesRoutingModule,
     NgbModule,
     MatCardModule,
-    MatButtonModule
-  ],
+    MatButtonModule,
+    RatingModule
+    ],
   providers:[
     ResultsPageComponent
   ]

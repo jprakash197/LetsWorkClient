@@ -5,6 +5,7 @@ import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 import { NgxSpinnerService } from '../../../../node_modules/ngx-spinner';
 
 
+
 @Component({
   selector: 'app-results-page',
   templateUrl: './results-page.component.html',
@@ -35,19 +36,34 @@ export class ResultsPageComponent implements OnInit {
 
       this.venueRequest = JSON.parse(params["venueRequest"]);
       this.spinner.show();
-      this.venueService.getVenues(this.venueRequest).subscribe(data => {
-        console.log(data)
-        this.venues = data;
-        if(this.venues.length==0)
-        this.flag=false;
-        console.log(this.venues)
-        this.venueService.getSearchedVenues(this.venues);
-        this.filtervenues = this.venues;
-        this.spinner.hide();
-      });
+      this.venueService.getVenues(this.venueRequest).subscribe(
+        //data => {
+        // console.log(data)
+        // this.venues = data;
+        // if(this.venues.length==0)
+        // this.flag=false;
+        // console.log(this.venues)
+        // this.venueService.getSearchedVenues(this.venues);
+        // this.filtervenues = this.venues;
+        // this.spinner.hide();
+        
+        (data) => {
+          console.log(data)
+          this.venues = data;
+          console.log(this.venues)
+          this.venueService.getSearchedVenues(this.venues);
+          this.filtervenues = this.venues;
+          this.spinner.hide();
+        },
+        (error) => {
+          this.flag = false;
+          this.filtervenues = this.venues;
+          this.spinner.hide();
+        },
+      );
     });
 
-    
+
   }
 
 
@@ -71,9 +87,11 @@ export class ResultsPageComponent implements OnInit {
     else {
       this.filtervenues = this.venues;
     }
-    if(this.filtervenues.length==0)
-      this.flag=false;
-    
+    if (this.filtervenues.length == 0)
+      this.flag = false;
+    else
+     this.flag=true;
+
   }
 
   onChkChangerating(value) {
@@ -91,8 +109,10 @@ export class ResultsPageComponent implements OnInit {
     else {
       this.filtervenues = this.venues;
     }
-    if(this.filtervenues.length==0)
-      this.flag=false;
+    if (this.filtervenues.length == 0)
+      this.flag = false;
+    else
+      this.flag=true;
   }
 
   changeit() {
