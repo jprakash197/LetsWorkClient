@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '../../../../node_modules/@angular/router';
-import { VenueRequest } from '../../shared/VenueRequest';
+import { VenueRequest } from '../../shared/venue';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 import { NgxSpinnerService } from '../../../../node_modules/ngx-spinner';
 
@@ -31,22 +31,16 @@ export class ResultsPageComponent implements OnInit {
 
   stmt: String;
 
-  constructor(private route: ActivatedRoute, private venueService: LetsWorkServiceService, private spinner: NgxSpinnerService) {
+  constructor(private route: ActivatedRoute,
+    private venueService: LetsWorkServiceService,
+    private spinner: NgxSpinnerService) {
+
     this.route.queryParams.subscribe(params => {
 
       this.venueRequest = JSON.parse(params["venueRequest"]);
       this.spinner.show();
       this.venueService.getVenues(this.venueRequest).subscribe(
-        //data => {
-        // console.log(data)
-        // this.venues = data;
-        // if(this.venues.length==0)
-        // this.flag=false;
-        // console.log(this.venues)
-        // this.venueService.getSearchedVenues(this.venues);
-        // this.filtervenues = this.venues;
-        // this.spinner.hide();
-        
+
         (data) => {
           console.log(data)
           this.venues = data;
@@ -90,7 +84,7 @@ export class ResultsPageComponent implements OnInit {
     if (this.filtervenues.length == 0)
       this.flag = false;
     else
-     this.flag=true;
+      this.flag = true;
 
   }
 
@@ -112,7 +106,7 @@ export class ResultsPageComponent implements OnInit {
     if (this.filtervenues.length == 0)
       this.flag = false;
     else
-      this.flag=true;
+      this.flag = true;
   }
 
   changeit() {
