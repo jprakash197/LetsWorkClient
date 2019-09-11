@@ -1,64 +1,68 @@
 <ngx-spinner bdColor="#333" size="medium" color="#fff" type="ball-circus">
-    <p style="font-size: 20px; color:black;">Loading..</p>
+  <p style="font-size: 20px; color:black;">Loading..</p>
 </ngx-spinner>
 <div *ngIf=flag>
-    <div *ngIf="venue.image?.length">
-        <mat-card class="slider">
-            <ngb-carousel>
-                <ng-template ngbSlide *ngFor="let img of venue.image">
-                    <div class="picsum-img-wrapper">
-                        <img mat-card-image src="{{img}}" alt="{{venue.venueName}}" style="max-height:300px; margin:0 auto;">
-                    </div>
-                </ng-template>
-            </ngb-carousel>
-        </mat-card>
-    </div>
-    <div *ngIf="!venue.image?.length">
+  <div *ngIf="venue.image?.length">
+    <mat-card class="slider">
+      <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let img of venue.image">
+          <div class="picsum-img-wrapper">
+            <img mat-card-image src="{{img}}" alt="{{venue.venueName}}" style="max-height:300px; margin:0 auto;">
+          </div>
+        </ng-template>
+      </ngb-carousel>
+      <div class="container">
+        <app-map></app-map>
+      </div>
+    </mat-card>
+  </div>
+  <div *ngIf="!venue.image?.length">
 
-        <p>{{venue.venueName}} image not found </p>
+    <p>{{venue.venueName}} image not found </p>
 
-    </div>
+  </div>
 
-    <div class="details ">
-        <div class="row no-gutters">
+  <div class="details ">
+    <div class="row no-gutters">
 
-            <div class="card-body">
-                <h3 class="card-title"> {{venue.venueName}}</h3>
-                <h5>{{venue.address}}</h5>
+      <div class="card-body">
+        <h3 class="card-title"> {{venue.venueName}}</h3>
+        <h5>{{venue.address}}</h5>
 
-                <p class="card-text">{{venue.description}}</p>
+        <p class="card-text">{{venue.description}}</p>
 
-                <p class="card-text">Rating: {{venue.rating}}</p>
-                <br>
-                <p>
-                    <font size="5">Features</font>
-                </p>
-                <div *ngIf="venue.feature?.length">
-                    <div *ngFor="let feature of venue.feature">
-                        {{feature}}
-                    </div>
-                </div>
-
-                <div *ngIf="!venue.feature?.length">
-                    features unknown
-                    </div>
-
-                <br>
-                <p>
-                    <font size="4">Total</font>
-                    <br>
-                    <font size="6">INR {{venue.price}}.00</font>
-                </p>
-                <div class="booknow">
-
-                    <label class="col-md-4 control-label" for="button"></label>
-                    <div class="col-md-8">
-                        <button id="singlebutton" name="singlebutton" class="btn btn-primary" (click)="onSubmit()">Book now!</button>
-                    </div>
-
-                </div>
-            </div>
+        <p class="card-text">Rating: {{venue.rating}}</p>
+        <br>
+        <p>
+          <font size="5">Features</font>
+        </p>
+        <div *ngIf="venue.feature?.length">
+          <div *ngFor="let feature of venue.feature">
+            {{feature}}
+          </div>
         </div>
 
+        <div *ngIf="!venue.feature?.length">
+          features unknown
+        </div>
+
+        <br>
+        <p>
+          <font size="4">Total</font>
+          <br>
+          <font size="6">INR {{venue.price}}.00</font>
+        </p>
+        <div class="booknow">
+
+          <label class="col-md-4 control-label" for="button"></label>
+          <div class="col-md-8">
+            <button id="singlebutton" name="singlebutton" class="btn btn-primary" (click)="onSubmit()">Book
+              now!</button>
+          </div>
+
+        </div>
+      </div>
     </div>
+
+  </div>
 </div>
