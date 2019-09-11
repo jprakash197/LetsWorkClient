@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal/ngx-bootstrap-modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal/';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../shared/user';
