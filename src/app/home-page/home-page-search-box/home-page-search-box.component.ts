@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '../../../../node_modules/@angular/common';
-import { Router, ChildActivationStart } from '../../../../node_modules/@angular/router';
-import { NgxSpinnerService } from '../../../../node_modules/ngx-spinner';
+import { DatePipe } from '@angular/common';
+import { Router, ChildActivationStart } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { VenueRequest } from '../../shared/venue';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';

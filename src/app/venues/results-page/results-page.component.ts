@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { VenueRequest } from '../../shared/venue';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 import { NgxSpinnerService } from 'ngx-spinner';

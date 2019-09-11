@@ -9,11 +9,12 @@ export class User {
     role: string;
     token: string;
 
-  constructor(name, pass, email, ref) {
+  constructor(name, pass, email, ref, realname) {
     this.username = name;
     this.password = pass;
     this.email = email;
     this.refferedCode = ref;
+    this.realName = realname;
   }
 
   getToken(): string {

@@ -11,6 +11,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatCardModule} from '@angular/material/card';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MatCardModule} from '@angular/material/card';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    MatCardModule
+    MatCardModule,
+    AuthenticationModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
