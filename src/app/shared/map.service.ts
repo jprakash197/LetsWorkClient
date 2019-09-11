@@ -18,7 +18,7 @@ export class MapService {
 
   constructor() { }
 
-  setLocation(location: String) {
+  setLocation(location: string) {
     console.log(`location: ${location}`);
     if (location === 'mumbai') {
       this.locationSubject.next(this.mumbai);

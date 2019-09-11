@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LetsWorkServiceService } from '../../../shared/lets-work-service.service';
-import { NgxSpinnerService } from '../../../../../node_modules/ngx-spinner';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import Swal from 'sweetalert2';
 import { MapService } from '../../../shared/map.service';
@@ -19,12 +19,13 @@ export class ReadDetailsComponent implements OnInit {
   flag = false;
 
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private venueService: LetsWorkServiceService,
     private spinner: NgxSpinnerService,
     private router: Router,
     private mapService: MapService) {
-    this.id = +this.route.snapshot.params['venueId'];
+    this.id = +this.route.snapshot.params[' venueId '];
     console.log(this.id);
   }
 
@@ -47,7 +48,7 @@ export class ReadDetailsComponent implements OnInit {
     ).then((result) => {
 
       this.router.navigate(['']);
-    })
+    });
 
 
   }

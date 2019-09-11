@@ -26,8 +26,8 @@ export class HomePageSearchBoxComponent implements OnInit {
 
   venueRequest: VenueRequest = {
     capacity: 0,
-    city: "",
-    venueType: "",
+    city: '',
+    venueType: '',
     date: this.currentDate
   };
 
@@ -38,8 +38,13 @@ export class HomePageSearchBoxComponent implements OnInit {
     formDate: new FormControl('', [Validators.required]),
   });
 
-  constructor(private venueService: LetsWorkServiceService, public datepipe: DatePipe, private spinner: NgxSpinnerService, private router: Router, private formBuilder: FormBuilder) {
-    this.maxDate.setDate(this.maxDate.getDate() + 365)
+  constructor(
+    private venueService: LetsWorkServiceService,
+    public datepipe: DatePipe,
+    private spinner: NgxSpinnerService,
+    private router: Router,
+    private formBuilder: FormBuilder) {
+    this.maxDate.setDate(this.maxDate.getDate() + 365);
 
   }
 
@@ -74,17 +79,17 @@ export class HomePageSearchBoxComponent implements OnInit {
     this.venueRequest.date = this.registerForm.value.formDate;
     let navigationExtras: any = {
       queryParams: {
-        "venueRequest": JSON.stringify(this.venueRequest)
+        ' venueRequest ': JSON.stringify(this.venueRequest)
       },
       relativeTo: this.router
 
     };
-    this.routeToPage(navigationExtras)
+    this.routeToPage(navigationExtras);
 
   }
 
   routeToPage(navigationExtras: any) {
-    this.router.navigate(['/search'], navigationExtras)
+    this.router.navigate(['/search'], navigationExtras);
   }
 
 }

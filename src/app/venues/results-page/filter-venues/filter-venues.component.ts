@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LetsWorkServiceService } from 'src/app/shared/lets-work-service.service';
+import { LetsWorkServiceService } from '../../../shared/lets-work-service.service';
 import { Router } from  '@angular/router';
 import { ResultsPageComponent } from '../results-page.component';
 
@@ -9,11 +9,11 @@ import { ResultsPageComponent } from '../results-page.component';
   styleUrls: ['./filter-venues.component.css']
 })
 export class FilterVenuesComponent implements OnInit {
- 
+
   constructor(private venueService: LetsWorkServiceService,private router: Router, private resultComponent:ResultsPageComponent) {  }
 venues:any;
   ngOnInit() {
-   
+
   }
 
 

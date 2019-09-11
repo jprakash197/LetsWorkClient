@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { User } from './user';
 
 import { Venue, VenueRequest } from './venue';
 import { MapService } from './map.service';
@@ -28,7 +29,7 @@ export class LetsWorkServiceService {
   }
 
   getVenues(venueRequest: VenueRequest): Observable<any> {
-    console.log(venueRequest.capacity + "/" + venueRequest.city + "service")
+    console.log(venueRequest.capacity + '/' + venueRequest.city + 'service');
 
     // Intercept the venueRequest city location with the map service
     this.mapService.setLocation(venueRequest.city.toLowerCase());
@@ -53,7 +54,7 @@ export class LetsWorkServiceService {
         this.filteredVenues.push(k);
       }
 
-    })
+    });
     return this.filteredVenues;
   }
 
@@ -65,7 +66,7 @@ export class LetsWorkServiceService {
       if (element.rating > 5) {
         this.filteredVenues.push(element);
       }
-    })
+    });
     return this.filteredVenues;
   }
 
@@ -77,12 +78,21 @@ export class LetsWorkServiceService {
       if (element.price > 5000 && element.rating > 5) {
         this.filteredVenues.push(element);
       }
-    })
+    });
     return this.filteredVenues;
   }
 
   getDetails(venueId): Observable<Venue> {
     return this.http.get<Venue>(this.detailUrl + venueId);
+  }
+
+  onSignUp(user): Observable<User> {
+    return this.http.post<User>(this.url + '/signup', user);
+  }
+
+  OnLogin(username: string, password: string): Observable<User> {
+    console.log('Server');
+    return this.http.get<User>(this.url + '/login/' + username + '&' + password);
   }
 
 }
