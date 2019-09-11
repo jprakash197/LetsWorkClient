@@ -9,7 +9,10 @@ const routes: Routes = [
     path: 'getUser/:id',
     loadChildren: () => import('./user-profile/user-profile.module').then(mod => mod.UserProfileModule)
   },
-  { path: 'login', component: LoginComponent },
+  {
+    path: 'login',
+    loadChildren: () => import('./authentication/authentication.module').then(mod => mod.AuthenticationModule)
+  }
 ];
 
 @NgModule({
