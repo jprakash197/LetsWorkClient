@@ -19,9 +19,9 @@ export class Venue {
     description: string;
     venueType: string;
     rating: number;
-    images: Image[];
-    features: Feature[];
-    bookings: Booking[];
+    image: Image[];
+    feature: Feature[];
+    booking: Booking[];
 }
 
 export class Image {
