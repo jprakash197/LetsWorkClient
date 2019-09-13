@@ -91,6 +91,9 @@ export class LetsWorkServiceService {
   }
 
   getAllVenues(): Observable<Venue[]> {
+    let tempVenues: Venue[] = [];
+    this.http.get<Venue[]>(this.configUrl).subscribe(venues => tempVenues = venues);
+    this.venues.next(tempVenues);
     return this.venues.asObservable();
   }
 
