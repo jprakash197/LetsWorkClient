@@ -32,7 +32,7 @@ export class LetsWorkServiceService {
   }
 
   getVenues(venueRequest: VenueRequest): Observable<any> {
-    console.log(venueRequest.capacity + '/' + venueRequest.city + 'service');
+    console.log(`venue capacity: ${venueRequest.capacity}\n venue city: ${venueRequest.city}`);
 
     // Intercept the venueRequest city location with the map service
     this.mapService.setLocation(venueRequest.city.toLowerCase());
@@ -86,7 +86,12 @@ export class LetsWorkServiceService {
   }
 
   getDetails(venueId): Observable<Venue> {
+    console.log(`venueId type: ${typeof venueId}\nvenueId: ${venueId}`);
     return this.http.get<Venue>(this.detailUrl + venueId);
+  }
+
+  getAllVenues(): Observable<Venue[]> {
+    return this.venues.asObservable();
   }
 
   onSignUp(user): Observable<User> {

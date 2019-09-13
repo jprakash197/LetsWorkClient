@@ -30,7 +30,7 @@ export class ReadDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show();
-    this.id = 13; +this.route.snapshot.params[' venueId '];
+    this.id = +this.route.snapshot.params['venueId'];
     console.log(`venueId: ${this.id}`);
     this.venueService.getDetails(this.id).subscribe(venue => {
       this.venue = venue;

@@ -9,15 +9,15 @@ export class VenueRequest {
 
 export class Venue {
 
-    id: number;
-    name: string;
+    venueId: number;
+    venueName: string;
     city: string;
     address: string;
     size: number;
     capacity: number;
     price: number;
     description: string;
-    type: string;
+    venueType: string;
     rating: number;
     images: Image[];
     features: Feature[];

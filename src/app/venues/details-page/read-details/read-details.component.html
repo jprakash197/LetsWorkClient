@@ -7,7 +7,7 @@
       <ngb-carousel>
         <ng-template ngbSlide *ngFor="let img of venue.images">
           <div class="picsum-img-wrapper">
-            <img mat-card-image src="{{img}}" alt="{{venue.name}}" style="max-height:300px; margin:0 auto;">
+            <img mat-card-image src="{{img}}" alt="{{venue.venueName}}" style="max-height:300px; margin:0 auto;">
           </div>
         </ng-template>
       </ngb-carousel>
@@ -18,7 +18,7 @@
   </div>
   <div *ngIf="!venue.images?.length">
 
-    <p>{{venue.name}} image not found </p>
+    <p>{{venue.venueName}} image not found </p>
 
   </div>
 
@@ -26,7 +26,7 @@
     <div class="row no-gutters">
 
       <div class="card-body">
-        <h3 class="card-title"> {{venue.name}}</h3>
+        <h3 class="card-title"> {{venue.venueName}}</h3>
         <h5>{{venue.address}}</h5>
 
         <p class="card-text">{{venue.description}}</p>
@@ -36,13 +36,13 @@
         <p>
           <font size="5">Features</font>
         </p>
-        <div *ngIf="venue.features?.length">
-          <div *ngFor="let feature of venue.features">
+        <div *ngIf="venue.feature?.length">
+          <div *ngFor="let feature of venue.feature">
             {{feature}}
           </div>
         </div>
 
-        <div *ngIf="!venue.features?.length">
+        <div *ngIf="!venue.feature?.length">
           features unknown
         </div>
 

@@ -23,10 +23,10 @@ export class ResultsPageComponent implements OnInit {
   num: number = 10;
 
   venueRequest: VenueRequest = {
+    date: null,
     capacity: 0,
     city: '',
-    venueType: '',
-    date: null
+    venueType: ''
   };
 
   stmt: String;
@@ -37,13 +37,11 @@ export class ResultsPageComponent implements OnInit {
     private spinner: NgxSpinnerService) {
 
     this.route.queryParams.subscribe(params => {
-
-      this.venueRequest = JSON.parse(params[' venueRequest ']);
+      this.venueRequest = JSON.parse(params['venueRequest']);
       this.spinner.show();
       this.venueService.getVenues(this.venueRequest).subscribe(
 
         (data) => {
-          console.log(data);
           this.venues = data;
           console.log(this.venues);
           this.venueService.getSearchedVenues(this.venues);
