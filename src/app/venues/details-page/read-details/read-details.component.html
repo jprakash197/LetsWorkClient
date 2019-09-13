@@ -1,7 +1,7 @@
 <ngx-spinner bdColor="#333" size="medium" color="#fff" type="ball-circus">
     <p style="font-size: 20px; color:black;">Loading..</p>
 </ngx-spinner>
-<div *ngIf=flag>
+<div class="detailPage" *ngIf=flag style="padding-top: 20px">
     <div *ngIf="venue.image?.length">
         <mat-card class="slider">
             <ngb-carousel>
@@ -11,7 +11,7 @@
                     </div>
                 </ng-template>
             </ngb-carousel>
-        </mat-card>
+        </mat-card> 
     </div>
     <div *ngIf="!venue.image?.length">
 
