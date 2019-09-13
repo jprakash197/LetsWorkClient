@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LetsWorkServiceService } from '../shared/lets-work-service.service';
+import { LetsWorkServiceService } from './lets-work-service.service';
 import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 @Injectable({

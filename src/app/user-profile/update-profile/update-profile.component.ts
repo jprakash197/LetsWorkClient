@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../shared/user';
-import { UserServiceService } from '../user-service.service';
+import { UserServiceService } from '../../shared/user-service.service';
 import Swal from 'sweetalert2';
 
 @Component({

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { User } from './user';
 
@@ -13,6 +14,7 @@ import { MapService } from './map.service';
 export class LetsWorkServiceService {
 
   venues: BehaviorSubject<Venue[]>;
+  currentUser: BehaviorSubject<User>;
 
   filteredVenues: Venue[] = [];
   searchedVenues: Venue[] = [];
@@ -26,6 +28,7 @@ export class LetsWorkServiceService {
 
   constructor(private http: HttpClient, private mapService: MapService) {
     this.venues = new BehaviorSubject<Venue[]>(null);
+    this.currentUser = new BehaviorSubject<User>(null);
   }
 
   getVenues(venueRequest: VenueRequest): Observable<any> {
@@ -91,8 +94,12 @@ export class LetsWorkServiceService {
   }
 
   OnLogin(username: string, password: string): Observable<User> {
-    console.log('Server');
+    console.log(`Logging in: ${username}, password: ${password}`);
     return this.http.get<User>(this.url + '/login/' + username + '&' + password);
+  }
+
+  setUser(user: User) {
+    this.currentUser.next(user);
   }
 
 }

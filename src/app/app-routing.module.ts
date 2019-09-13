@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './authentication/login/login.component';
-import { GuardService } from './authentication/guard.service';
-import { AppComponent } from './app.component';
-import { HomePageModule } from './home-page/home-page.module';
-
+import { GuardService } from './shared/guard.service';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./home-page/home-page.module').then(mod => mod.HomePageModule) },

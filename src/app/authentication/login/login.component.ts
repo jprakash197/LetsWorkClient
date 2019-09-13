@@ -32,10 +32,13 @@ export class LoginComponent implements OnInit {
           const role: string = '' + u.role.toString();
           localStorage.setItem('token', token);
           localStorage.setItem('role', role);
+
+          this.service.setUser(u);
+
           if (role === 'USER') {
             this.routeconfig.navigate(['/getUser/', this.username]);
           } else {
-            this.routeconfig.navigate(['/admin/', this.username]);
+            this.routeconfig.navigate(['/login/admin/', this.username]);
           }
         }
       },
