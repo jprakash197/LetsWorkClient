@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout(event: any) {
-    this.isLoggedIn = false;
     localStorage.setItem('token', null);
     localStorage.setItem('role', null);
   }
