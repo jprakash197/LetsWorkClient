@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { User } from './user';
 
@@ -12,7 +13,9 @@ import { MapService } from './map.service';
 })
 export class LetsWorkServiceService {
 
-  venues: BehaviorSubject<Venue[]>;
+  venues: BehaviorSubject<Venue[]> = new BehaviorSubject<Venue[]>(null);
+  currentUser: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+  logSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   filteredVenues: Venue[] = [];
   searchedVenues: Venue[] = [];
@@ -25,11 +28,11 @@ export class LetsWorkServiceService {
   detailUrl = this.url + '/getDetails/';
 
   constructor(private http: HttpClient, private mapService: MapService) {
-    this.venues = new BehaviorSubject<Venue[]>(null);
+
   }
 
   getVenues(venueRequest: VenueRequest): Observable<any> {
-    console.log(venueRequest.capacity + '/' + venueRequest.city + 'service');
+    console.log(`venue capacity: ${venueRequest.capacity}\n venue city: ${venueRequest.city}`);
 
     // Intercept the venueRequest city location with the map service
     this.mapService.setLocation(venueRequest.city.toLowerCase());
@@ -86,13 +89,35 @@ export class LetsWorkServiceService {
     return this.http.get<Venue>(this.detailUrl + venueId);
   }
 
+  getAllVenues(): Observable<Venue[]> {
+    return this.http.get<Venue[]>(this.configUrl);
+  }
+
+  addVenues(venues): void {
+    const tempVenues = this.venues.getValue();
+    tempVenues.push(venues);
+    this.venues.next(tempVenues);
+  }
+
   onSignUp(user): Observable<User> {
     return this.http.post<User>(this.url + '/signup', user);
   }
 
   OnLogin(username: string, password: string): Observable<User> {
-    console.log('Server');
+    console.log(`Logging in: ${username}\npassword: ${password}`);
     return this.http.get<User>(this.url + '/login/' + username + '&' + password);
+  }
+
+  setUser(user: User) {
+    this.currentUser.next(user);
+  }
+
+  getLogStatus(): Observable<boolean> {
+    return this.logSubject.asObservable();
+  }
+
+  setLogStatus(status: boolean): void {
+    this.logSubject.next(status);
   }
 
 }

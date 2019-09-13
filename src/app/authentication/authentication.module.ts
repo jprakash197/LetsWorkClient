@@ -6,13 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
 import { FormsModule } from '@angular/forms';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent],
+  declarations: [LoginComponent, SignupComponent, AdminComponent],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
-    FormsModule,
+    FormsModule
   ]
 })
 export class AuthenticationModule { }
