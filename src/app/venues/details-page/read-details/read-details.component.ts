@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LetsWorkServiceService } from '../../../shared/lets-work-service.service';
-import { NgxSpinnerService } from '../../../../../node_modules/ngx-spinner';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import Swal from 'sweetalert2';
+import { MapService } from '../../../shared/map.service';
+
+import { Venue } from '../../../shared/venue';
+
 @Component({
   selector: 'app-read-details',
   templateUrl: './read-details.component.html',
@@ -11,22 +15,28 @@ import Swal from 'sweetalert2';
 })
 export class ReadDetailsComponent implements OnInit {
   id: any;
-  venue: any;
-  venueImg: any[] = [];
+  venue: Venue;
   flag = false;
- 
 
-  constructor(private route: ActivatedRoute, private venueService: LetsWorkServiceService, private spinner: NgxSpinnerService, private router: Router) {
-    this.id = +this.route.snapshot.params['venueId'];
-    console.log(this.id);
+
+  constructor(
+    private route: ActivatedRoute,
+    private venueService: LetsWorkServiceService,
+    private spinner: NgxSpinnerService,
+    private router: Router,
+    private mapService: MapService) {
+
   }
 
   ngOnInit() {
     this.spinner.show();
+    this.id = +this.route.snapshot.params['venueId'];
+    console.log("venueId:" +this.id);
     this.venueService.getDetails(this.id).subscribe(venue => {
       this.venue = venue;
-      this.flag=true;
-      console.log(this.venue)
+      this.flag = true;
+      console.log(this.venue);
+      this.mapService.setLocation(this.venue.city.toLowerCase());
       this.spinner.hide();
     });
   }
@@ -39,7 +49,7 @@ export class ReadDetailsComponent implements OnInit {
     ).then((result) => {
 
       this.router.navigate(['']);
-    })
+    });
 
 
   }

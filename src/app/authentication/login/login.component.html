@@ -1,0 +1,26 @@
+<div class="container" style="padding: 5%">
+  <div class="card">
+    <div class="card-header">LogIn</div>
+    <div class="card-body">
+      <div id="message"></div>
+      <div class="row">
+        <div class="col-3">
+          <label>Username:</label>
+        </div>
+        <div class="col-6">
+          <input mdbInput type="text" id="username" [(ngModel)]="username" class="form-control" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <label>Password:</label>
+        </div>
+        <div class="col-6">
+          <input mdbInput type="password" id="Password" [(ngModel)]="password" class="form-control" />
+        </div>
+      </div>
+      <button class="button" (click)="onSelect()">Login</button>
+      <a class="nav-link active" style="text-align: center" [routerLink]="['/signup']" routerLinkActive="active">Sign Up</a>
+    </div>
+  </div>
+</div>

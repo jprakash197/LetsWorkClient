@@ -1,5 +1,5 @@
 <ngx-spinner bdColor="#333" size="medium" color="#fff" type="ball-circus">
-    <p style="font-size: 20px; color:black;">Loading..</p>
+  <p style="font-size: 20px; color:black;">Loading..</p>
 </ngx-spinner>
 <div class="detailPage" *ngIf=flag style="padding-top: 20px">
     <div *ngIf="venue.image?.length">
@@ -15,50 +15,51 @@
     </div>
     <div *ngIf="!venue.image?.length">
 
-        <p>{{venue.venueName}} image not found </p>
+    <p>{{venue.name}} image not found </p>
 
-    </div>
+  </div>
 
-    <div class="details ">
-        <div class="row no-gutters">
+  <div class="details ">
+    <div class="row no-gutters">
 
-            <div class="card-body">
-                <h3 class="card-title"> {{venue.venueName}}</h3>
-                <h5>{{venue.address}}</h5>
+      <div class="card-body">
+        <h3 class="card-title"> {{venue.name}}</h3>
+        <h5>{{venue.address}}</h5>
 
-                <p class="card-text">{{venue.description}}</p>
+        <p class="card-text">{{venue.description}}</p>
 
-                <p class="card-text">Rating: {{venue.rating}}</p>
-                <br>
-                <p>
-                    <font size="5">Features</font>
-                </p>
-                <div *ngIf="venue.feature?.length">
-                    <div *ngFor="let feature of venue.feature">
-                        {{feature}}
-                    </div>
-                </div>
-
-                <div *ngIf="!venue.feature?.length">
-                    features unknown
-                    </div>
-
-                <br>
-                <p>
-                    <font size="4">Total</font>
-                    <br>
-                    <font size="6">INR {{venue.price}}.00</font>
-                </p>
-                <div class="booknow">
-
-                    <label class="col-md-4 control-label" for="button"></label>
-                    <div class="col-md-8">
-                        <button id="singlebutton" name="singlebutton" class="btn btn-primary" (click)="onSubmit()">Book now!</button>
-                    </div>
-
-                </div>
-            </div>
+        <p class="card-text">Rating: {{venue.rating}}</p>
+        <br>
+        <p>
+          <font size="5">Features</font>
+        </p>
+        <div *ngIf="venue.features?.length">
+          <div *ngFor="let feature of venue.features">
+            {{feature}}
+          </div>
         </div>
 
+        <div *ngIf="!venue.features?.length">
+          features unknown
+        </div>
+
+        <br>
+        <p>
+          <font size="4">Total</font>
+          <br>
+          <font size="6">INR {{venue.price}}.00</font>
+        </p>
+        <div class="booknow">
+
+          <label class="col-md-4 control-label" for="button"></label>
+          <div class="col-md-8">
+            <button id="singlebutton" name="singlebutton" class="btn btn-primary" (click)="onSubmit()">Book
+              now!</button>
+          </div>
+
+        </div>
+      </div>
     </div>
+
+  </div>
 </div>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '../../../../node_modules/@angular/common';
-import { Router, ChildActivationStart } from '../../../../node_modules/@angular/router';
-import { NgxSpinnerService } from '../../../../node_modules/ngx-spinner';
-import { VenueRequest } from '../../shared/VenueRequest';
+import { DatePipe } from '@angular/common';
+import { Router, ChildActivationStart } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { VenueRequest } from '../../shared/venue';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
@@ -14,11 +14,11 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 export class HomePageSearchBoxComponent implements OnInit {
 
   currentDate: Date = new Date();
-  maxDate:Date=new Date();
+  maxDate: Date = new Date();
   formattedCurrentDate: string;
-  formattedMaxDate:string;
+  formattedMaxDate: string;
 
-  submitted:boolean=false;
+  submitted: boolean = false;
 
   cities: String[] = [];
 
@@ -26,21 +26,26 @@ export class HomePageSearchBoxComponent implements OnInit {
 
   venueRequest: VenueRequest = {
     capacity: 0,
-    city: "",
-    venueType: "",
+    city: '',
+    venueType: '',
     date: this.currentDate
   };
 
   registerForm = new FormGroup({
-    formCapacity:new FormControl('', [Validators.required,Validators.min(1), Validators.pattern("^[0-9]*$"),Validators.max(5000)]),
+    formCapacity: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern("^[0-9]*$"), Validators.max(5000)]),
     formCity: new FormControl('', [Validators.required]),
     formVenueType: new FormControl('', Validators.required),
     formDate: new FormControl('', [Validators.required]),
-   });
+  });
 
-  constructor(private venueService: LetsWorkServiceService, public datepipe: DatePipe, private spinner: NgxSpinnerService, private router: Router,private formBuilder: FormBuilder) {
-    this.maxDate.setDate(this.maxDate.getDate()+365)
-    
+  constructor(
+    private venueService: LetsWorkServiceService,
+    public datepipe: DatePipe,
+    private spinner: NgxSpinnerService,
+    private router: Router,
+    private formBuilder: FormBuilder) {
+    this.maxDate.setDate(this.maxDate.getDate() + 365);
+
   }
 
 
@@ -64,8 +69,8 @@ export class HomePageSearchBoxComponent implements OnInit {
   submit() {
     this.submitted = true;
     if (this.registerForm.invalid) {
-        return;
-        
+      return;
+
     }
 
     this.venueRequest.capacity = this.registerForm.value.formCapacity;
@@ -74,17 +79,17 @@ export class HomePageSearchBoxComponent implements OnInit {
     this.venueRequest.date = this.registerForm.value.formDate;
     let navigationExtras: any = {
       queryParams: {
-        "venueRequest": JSON.stringify(this.venueRequest)
+        ' venueRequest ': JSON.stringify(this.venueRequest)
       },
       relativeTo: this.router
 
     };
-    this.routeToPage(navigationExtras)
+    this.routeToPage(navigationExtras);
 
   }
 
   routeToPage(navigationExtras: any) {
-    this.router.navigate(['/search'], navigationExtras)
+    this.router.navigate(['/search'], navigationExtras);
   }
 
 }

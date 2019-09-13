@@ -9,14 +9,14 @@ import { HomePageModule } from '../home-page/home-page.module';
 
 const routes: Routes = [
   {
-    path:'',component:ResultsPageComponent 
+    path: '', component: ResultsPageComponent
   },
   {
-    path:'detail/:venueId',component:ReadDetailsComponent
+    path: 'detail/:venueId', component: ReadDetailsComponent
   },
-//  {
-//     path:'home', loadChildren:'../home-page/home-page.module#HomePageModule'
-//   } 
+  //  {
+  //     path:'home', loadChildren:'../home-page/home-page.module#HomePageModule'
+  //   } 
 
 ];
 

@@ -1,5 +1,5 @@
 <ngx-spinner bdColor="#333" size="medium" color="#fff" type="ball-circus">
-    <p style="font-size: 20px; color:black;">Loading..</p>
+    <p style="font-size: 20px; color:white;">Loading..</p>
 </ngx-spinner>
 <!-- <div *ngIf="filtervenues"> -->
 <mat-drawer-container class="example-container">
@@ -21,9 +21,9 @@
     <mat-drawer-content opened class="side">
         <h3>&nbsp;Venues</h3>
         <br>
-        <button (click)="changeit()" class="btn btn-secondary">sort on price</button>&nbsp;&nbsp;&nbsp;
+        <button (click)="changeit()" class="btn btn-secondary">Sort by price</button>&nbsp;&nbsp;&nbsp;
 
-        <button (click)="changedit()" class="btn btn-secondary">sort on rating </button>&nbsp;&nbsp;&nbsp;
+        <button (click)="changedit()" class="btn btn-secondary">Sort by rating </button>&nbsp;&nbsp;&nbsp;
         <br>
         <br>
         <div *ngIf="filtervenues">
@@ -36,15 +36,15 @@
                         <div class="card-body">
                             <h5 class="card-title">VenueName: {{venue.venueName}}</h5>
                             <p class="card-text">City: {{venue.city}}</p>
-                            <p class="card-text">Price: {{venue.price}}</p>
-                            <p class="card-text">Rating: {{venue.rating}}</p>
+                            <p class="card-text">Price: {{venue.price}} INR</p>
+                            <p class="card-text">Rating:
+                                <star-rating value="{{venue.rating}}" checkedcolor="gold" uncheckedcolor="gray" readOnly="true" size="24px"></star-rating>
+                            </p>
+                            <!-- </div> -->
+
+
+                            <button class="btn btn-secondary" routerLink="detail/{{venue.venueId}}">see details</button>
                         </div>
-                    </div>
-                    
-                    <div style="margin-right: 10px">
-                        <br>
-                      
-                        <button class="btn btn-secondary" routerLink="detail/{{venue.venueId}}">see details</button>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
-import { VenueRequest } from '../../shared/VenueRequest';
+import { ActivatedRoute } from '@angular/router';
+import { VenueRequest } from '../../shared/venue';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
-import { NgxSpinnerService } from '../../../../node_modules/ngx-spinner';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 
 @Component({
@@ -23,31 +24,41 @@ export class ResultsPageComponent implements OnInit {
 
   venueRequest: VenueRequest = {
     capacity: 0,
-    city: "",
-    venueType: "",
+    city: '',
+    venueType: '',
     date: null
   };
 
   stmt: String;
 
-  constructor(private route: ActivatedRoute, private venueService: LetsWorkServiceService, private spinner: NgxSpinnerService) {
+  constructor(
+    private route: ActivatedRoute,
+    private venueService: LetsWorkServiceService,
+    private spinner: NgxSpinnerService) {
+
     this.route.queryParams.subscribe(params => {
 
-      this.venueRequest = JSON.parse(params["venueRequest"]);
+      this.venueRequest = JSON.parse(params[' venueRequest ']);
       this.spinner.show();
-      this.venueService.getVenues(this.venueRequest).subscribe(data => {
-        console.log(data)
-        this.venues = data;
-        if(this.venues.length==0)
-        this.flag=false;
-        console.log(this.venues)
-        this.venueService.getSearchedVenues(this.venues);
-        this.filtervenues = this.venues;
-        this.spinner.hide();
-      });
+      this.venueService.getVenues(this.venueRequest).subscribe(
+
+        (data) => {
+          console.log(data);
+          this.venues = data;
+          console.log(this.venues);
+          this.venueService.getSearchedVenues(this.venues);
+          this.filtervenues = this.venues;
+          this.spinner.hide();
+        },
+        (error) => {
+          this.flag = false;
+          this.filtervenues = this.venues;
+          this.spinner.hide();
+        },
+      );
     });
 
-    
+
   }
 
 
@@ -59,69 +70,71 @@ export class ResultsPageComponent implements OnInit {
 
   onChkChange() {
     this.isChecked = !this.isChecked;
-    if (this.isChecked == true && this.check == true) {
+    if (this.isChecked === true && this.check === true) {
       this.filtervenues = this.venueService.allFilter();
 
-    } else if (this.isChecked == true && this.check == false) {
+    } else if (this.isChecked === true && this.check === false) {
       this.filtervenues = this.venueService.filterPrice();
 
-    } else if (this.isChecked == false && this.check == true) {
+    } else if (this.isChecked === false && this.check === true) {
       this.filtervenues = this.venueService.filterRating();
-    }
-    else {
+    } else {
       this.filtervenues = this.venues;
     }
-    if(this.filtervenues.length==0)
-      this.flag=false;
-    
+    if (this.filtervenues.length === 0) {
+      this.flag = false;
+    } else {
+      this.flag = true;
+    }
+
   }
 
   onChkChangerating(value) {
     this.check = !value;
-    if (this.isChecked == true && this.check == true) {
+    if (this.isChecked === true && this.check === true) {
       this.filtervenues = this.venueService.allFilter();
 
-    } else if (this.isChecked == true && this.check == false) {
+    } else if (this.isChecked === true && this.check === false) {
       this.filtervenues = this.venueService.filterPrice();
 
-    } else if (this.isChecked == false && this.check == true) {
+    } else if (this.isChecked === false && this.check === true) {
       this.filtervenues = this.venueService.filterRating();
 
-    }
-    else {
+    } else {
       this.filtervenues = this.venues;
     }
-    if(this.filtervenues.length==0)
-      this.flag=false;
+    if (this.filtervenues.length === 0) {
+      this.flag = false;
+    } else {
+      this.flag = true;
+    }
   }
 
   changeit() {
 
     this.status1 = !this.status1;
-    if (this.status1 == false) {
+    if (this.status1 === false) {
       this.venues.sort((a, b) => {
-        return a.price - b.price
-      })
-    }
-    else {
+        return a.price - b.price;
+      });
+    } else {
       this.venues.sort((a, b) => {
-        return b.price - a.price
-      })
+        return b.price - a.price;
+      });
     }
     console.log(this.status1);
   }
 
   changedit() {
     this.status2 = !this.status2;
-    if (this.status2 == true) {
+    if (this.status2 === true) {
       this.venues.sort((a, b) => {
-        return a.rating - b.rating
-      })
-    }
-    else {
+        return a.rating - b.rating;
+      });
+    } else {
       this.venues.sort((a, b) => {
-        return b.rating - a.rating
-      })
+        return b.rating - a.rating;
+      });
     }
     console.log(this.status2);
   }

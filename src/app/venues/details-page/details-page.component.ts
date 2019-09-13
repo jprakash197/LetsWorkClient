@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details-page.component.css']
 })
 export class DetailsPageComponent implements OnInit {
- 
-  
-  constructor() {
-   
-   }
 
-   ngOnInit() {
-    
-   }
+
+  constructor() {
+
+  }
+
+  ngOnInit() {
+
+  }
 
 }
