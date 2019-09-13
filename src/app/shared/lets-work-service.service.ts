@@ -15,6 +15,7 @@ export class LetsWorkServiceService {
 
   venues: BehaviorSubject<Venue[]> = new BehaviorSubject<Venue[]>(null);
   currentUser: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+  logSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   filteredVenues: Venue[] = [];
   searchedVenues: Venue[] = [];
@@ -88,8 +89,8 @@ export class LetsWorkServiceService {
     return this.http.get<Venue>(this.detailUrl + venueId);
   }
 
-  getAllVenues(): Observable<any> {
-    return this.http.get<any>(this.configUrl);
+  getAllVenues(): Observable<Venue[]> {
+    return this.http.get<Venue[]>(this.configUrl);
   }
 
   addVenues(venues): void {
@@ -103,7 +104,7 @@ export class LetsWorkServiceService {
   }
 
   OnLogin(username: string, password: string): Observable<User> {
-    console.log(`Logging in: ${username}, password: ${password}`);
+    console.log(`Logging in: ${username}\npassword: ${password}`);
     return this.http.get<User>(this.url + '/login/' + username + '&' + password);
   }
 
@@ -111,6 +112,12 @@ export class LetsWorkServiceService {
     this.currentUser.next(user);
   }
 
+  getLogStatus(): Observable<boolean> {
+    return this.logSubject.asObservable();
+  }
 
+  setLogStatus(status: boolean): void {
+    this.logSubject.next(status);
+  }
 
 }

@@ -8,7 +8,7 @@ import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  venues: any = [];
+  venues: Venue[] = [];
 
   constructor(private letsWorkService: LetsWorkServiceService) { }
 

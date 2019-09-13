@@ -11,6 +11,7 @@ export class GuardService implements CanActivate {
   canActivate(activeRouterSnap: ActivatedRouteSnapshot, routeState: RouterStateSnapshot): boolean {
     if (localStorage.getItem('token') != null) {
       if (localStorage.getItem('role') === 'USER') {
+        this.service.setLogStatus(true);
         return true;
       }
     } else {

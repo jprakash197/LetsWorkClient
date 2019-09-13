@@ -12,8 +12,18 @@ export class HeaderComponent implements OnInit {
   constructor(private letsWorkService: LetsWorkServiceService) { }
 
   ngOnInit() {
-    this.isLoggedIn = false;
+    this.letsWorkService.getLogStatus().subscribe(loggedIn => this.isLoggedIn = loggedIn);
 
+  }
+
+  onLogin(item) {
+
+  }
+
+  onLogout(item) {
+    this.isLoggedIn = false;
+    localStorage.setItem('token', null);
+    localStorage.setItem('role', 'dungeon master');
   }
 
 }
