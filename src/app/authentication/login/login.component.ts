@@ -3,7 +3,6 @@ import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../shared/user';
 import { HttpErrorResponse } from '@angular/common/http';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

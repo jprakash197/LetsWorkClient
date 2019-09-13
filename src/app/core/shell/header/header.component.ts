@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LetsWorkServiceService } from '../../../shared/lets-work-service.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  isLoggedIn: boolean;
 
-  constructor() { }
+  constructor(private letsWorkService: LetsWorkServiceService) { }
 
   ngOnInit() {
+    this.isLoggedIn = false;
+
   }
 
 }
