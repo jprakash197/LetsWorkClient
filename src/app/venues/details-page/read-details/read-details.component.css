@@ -21,13 +21,23 @@
   width: 40%;
   margin-top: 20px;
 }
-  .left{
-    float:left;
-     
-    
-  }
-  .right{
-    float:right;
-   
-  }
   
+  
+  
+/* Responsive columns */
+@media screen and (max-width: 600px)
+{
+  
+  .slider{
+    width:100%;
+    padding: 10px;
+  }
+  .details {
+    width: 100%;
+ 
+  }
+  .noImage{
+    width: 100%;
+    margin-top: 20px;
+  }
+}
