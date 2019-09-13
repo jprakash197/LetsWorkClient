@@ -16,14 +16,14 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  onLogin(item) {
+  onLogin(event: any) {
 
   }
 
-  onLogout(item) {
+  onLogout(event: any) {
     this.isLoggedIn = false;
     localStorage.setItem('token', null);
-    localStorage.setItem('role', 'dungeon master');
+    localStorage.setItem('role', null);
   }
 
 }

@@ -2,10 +2,10 @@
   <p style="font-size: 20px; color:black;">Loading..</p>
 </ngx-spinner>
 <div *ngIf=flag>
-  <div *ngIf="venue.image?.length">
+  <div *ngIf="venue.images?.length">
     <mat-card class="slider">
       <ngb-carousel>
-        <ng-template ngbSlide *ngFor="let img of venue.image">
+        <ng-template ngbSlide *ngFor="let img of venue.images">
           <div class="picsum-img-wrapper">
             <img mat-card-image src="{{img}}" alt="{{venue.venueName}}" style="max-height:300px; margin:0 auto;">
           </div>
@@ -36,13 +36,13 @@
         <p>
           <font size="5">Features</font>
         </p>
-        <div *ngIf="venue.feature?.length">
-          <div *ngFor="let feature of venue.feature">
+        <div *ngIf="venue.features?.length">
+          <div *ngFor="let feature of venue.features">
             {{feature}}
           </div>
         </div>
 
-        <div *ngIf="!venue.feature?.length">
+        <div *ngIf="!venue.features?.length">
           features unknown
         </div>
 
