@@ -36,13 +36,13 @@
         <p>
           <font size="5">Features</font>
         </p>
-        <div *ngIf="venue.features?.length">
+        <div *ngIf="venue.feature?.length">
           <div *ngFor="let feature of venue.feature">
             {{feature}}
           </div>
         </div>
 
-        <div *ngIf="!venue.features?.length">
+        <div *ngIf="!venue.feature?.length">
           features unknown
         </div>
 
