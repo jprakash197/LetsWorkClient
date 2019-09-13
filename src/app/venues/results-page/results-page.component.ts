@@ -37,7 +37,7 @@ export class ResultsPageComponent implements OnInit {
     private spinner: NgxSpinnerService) {
 
     this.route.queryParams.subscribe(params => {
-      this.venueRequest = JSON.parse(params['venueRequest']);
+      this.venueRequest = JSON.parse(params[' venueRequest ']);
       this.spinner.show();
       this.venueService.getVenues(this.venueRequest).subscribe(
 
