@@ -35,9 +35,10 @@ export class ReadDetailsComponent implements OnInit {
     this.venueService.getDetails(this.id).subscribe(venue => {
       this.venue = venue;
       this.flag = true;
-      console.log(this.venue);
       this.mapService.setLocation(this.venue.city.toLowerCase());
       this.spinner.hide();
+      console.log('venue (read-details component):');
+      console.log(this.venue);
     });
   }
 

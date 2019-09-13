@@ -13,8 +13,8 @@ import { MapService } from './map.service';
 })
 export class LetsWorkServiceService {
 
-  venues: BehaviorSubject<Venue[]>;
-  currentUser: BehaviorSubject<User>;
+  venues: BehaviorSubject<Venue[]> = new BehaviorSubject<Venue[]>(null);
+  currentUser: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
   filteredVenues: Venue[] = [];
   searchedVenues: Venue[] = [];
@@ -27,8 +27,7 @@ export class LetsWorkServiceService {
   detailUrl = this.url + '/getDetails/';
 
   constructor(private http: HttpClient, private mapService: MapService) {
-    this.venues = new BehaviorSubject<Venue[]>(null);
-    this.currentUser = new BehaviorSubject<User>(null);
+
   }
 
   getVenues(venueRequest: VenueRequest): Observable<any> {
@@ -86,15 +85,17 @@ export class LetsWorkServiceService {
   }
 
   getDetails(venueId): Observable<Venue> {
-    console.log(`venueId type: ${typeof venueId}\nvenueId: ${venueId}`);
     return this.http.get<Venue>(this.detailUrl + venueId);
   }
 
-  getAllVenues(): Observable<Venue[]> {
-    let tempVenues: Venue[] = [];
-    this.http.get<Venue[]>(this.configUrl).subscribe(venues => tempVenues = venues);
+  getAllVenues(): Observable<any> {
+    return this.http.get<any>(this.configUrl);
+  }
+
+  addVenues(venues): void {
+    const tempVenues = this.venues.getValue();
+    tempVenues.push(venues);
     this.venues.next(tempVenues);
-    return this.venues.asObservable();
   }
 
   onSignUp(user): Observable<User> {

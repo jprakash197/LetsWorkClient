@@ -7,15 +7,13 @@ import { SignupComponent } from './signup/signup.component';
 
 import { FormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent, AdminComponent],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
-    FormsModule,
-    HttpClientModule
+    FormsModule
   ]
 })
 export class AuthenticationModule { }

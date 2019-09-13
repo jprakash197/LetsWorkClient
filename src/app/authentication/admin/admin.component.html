@@ -2,7 +2,9 @@
   <div class="row">
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let venue of venues; index as i">
-        {{ venue.name }}
+        {{ venue.venueId }}
+        <br>
+        {{ venue.venueName }}
       </li>
     </ul>
   </div>

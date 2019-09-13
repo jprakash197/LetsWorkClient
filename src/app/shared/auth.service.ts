@@ -18,7 +18,7 @@ export class AuthService implements CanActivate {
     if (localStorage.getItem('token') != null) {
       const localToken = localStorage.getItem('token');
       if (this.currentUser && localStorage.getItem('token') === this.currentUser.token && localStorage.getItem('role') === 'ADMIN') {
-        console.log(`user token: ${this.currentUser.token}, localStorage token: ${localToken}`);
+        console.log(`user token: ${this.currentUser.token}\nlocalStorage token: ${localToken}`);
         return true;
       }
     } else {
