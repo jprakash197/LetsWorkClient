@@ -9,8 +9,8 @@ export class VenueRequest {
 
 export class Venue {
 
-    id: number;
-    name: string;
+    venueId: number;
+    venueName: string;
     city: string;
     address: string;
     size: number;
@@ -19,14 +19,14 @@ export class Venue {
     description: string;
     type: string;
     rating: number;
-    images: Image[];
-    features: Feature[];
+    image: Image[];
+    feature: Feature[];
     bookings: Booking[];
 }
 
 export class Image {
-    id: number;
-    img: string;
+    imageId: number;
+    image: string;
 }
 
 export class Feature {

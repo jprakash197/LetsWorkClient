@@ -15,7 +15,7 @@
     </div>
     <div *ngIf="!venue.image?.length">
 
-    <p>{{venue.name}} image not found </p>
+    <p>{{venue.venueName}} image not found </p>
 
   </div>
 
@@ -23,7 +23,7 @@
     <div class="row no-gutters">
 
       <div class="card-body">
-        <h3 class="card-title"> {{venue.name}}</h3>
+        <h3 class="card-title"> {{venue.venueName}}</h3>
         <h5>{{venue.address}}</h5>
 
         <p class="card-text">{{venue.description}}</p>
@@ -33,13 +33,13 @@
         <p>
           <font size="5">Features</font>
         </p>
-        <div *ngIf="venue.features?.length">
-          <div *ngFor="let feature of venue.features">
+        <div *ngIf="venue.feature?.length">
+          <div *ngFor="let feature of venue.feature">
             {{feature}}
           </div>
         </div>
 
-        <div *ngIf="!venue.features?.length">
+        <div *ngIf="!venue.feature?.length">
           features unknown
         </div>
 
