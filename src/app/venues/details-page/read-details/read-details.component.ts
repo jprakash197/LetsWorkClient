@@ -31,13 +31,14 @@ export class ReadDetailsComponent implements OnInit {
   ngOnInit() {
     this.spinner.show();
     this.id = +this.route.snapshot.params['venueId'];
-    console.log("venueId:" +this.id);
+    console.log(`venueId: ${this.id}`);
     this.venueService.getDetails(this.id).subscribe(venue => {
       this.venue = venue;
       this.flag = true;
-      console.log(this.venue);
       this.mapService.setLocation(this.venue.city.toLowerCase());
       this.spinner.hide();
+      console.log('venue (read-details component):');
+      console.log(this.venue);
     });
   }
 

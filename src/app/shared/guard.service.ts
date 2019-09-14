@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LetsWorkServiceService } from '../shared/lets-work-service.service';
+import { LetsWorkServiceService } from './lets-work-service.service';
 import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 @Injectable({
@@ -11,6 +11,7 @@ export class GuardService implements CanActivate {
   canActivate(activeRouterSnap: ActivatedRouteSnapshot, routeState: RouterStateSnapshot): boolean {
     if (localStorage.getItem('token') != null) {
       if (localStorage.getItem('role') === 'USER') {
+        this.service.setLogStatus(true);
         return true;
       }
     } else {

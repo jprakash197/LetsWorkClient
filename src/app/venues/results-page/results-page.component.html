@@ -1,61 +1,64 @@
 <ngx-spinner bdColor="#333" size="medium" color="#fff" type="ball-circus">
-    <p style="font-size: 20px; color:white;">Loading..</p>
+  <p style="font-size: 20px; color:white;">Loading..</p>
 </ngx-spinner>
 <!-- <div *ngIf="filtervenues"> -->
 <mat-drawer-container class="example-container">
 
-    <mat-drawer mode="side" opened class="sidebar">
+  <mat-drawer mode="side" opened class="sidebar">
 
-        <br>
-        <br>
-        <h2>Price</h2>
-        <mat-checkbox (change)="onChkChange()">price > 5000</mat-checkbox>
-        <hr>
-        <h3>Rating</h3>
-        <mat-checkbox value="check" (change)="onChkChangerating(check)">rating > 5</mat-checkbox>
-        <br>
-        <br>
+    <br>
+    <br>
+    <h2>Price</h2>
+    <mat-checkbox (change)="onChkChange()">price > 5000</mat-checkbox>
+    <hr>
+    <h3>Rating</h3>
+    <mat-checkbox value="check" (change)="onChkChangerating(check)">rating > 5</mat-checkbox>
+    <br>
+    <br>
 
-    </mat-drawer>&nbsp;&nbsp;
+  </mat-drawer>&nbsp;&nbsp;
 
-    <mat-drawer-content opened class="side">
-        <h3>&nbsp;Venues</h3>
-        <br>
-        <button (click)="changeit()" class="btn btn-secondary">Sort by price</button>&nbsp;&nbsp;&nbsp;
+  <mat-drawer-content opened class="side">
+    <h3>&nbsp;Venues</h3>
+    <br>
+    <button (click)="changeit()" class="btn btn-secondary">Sort by price</button>&nbsp;&nbsp;&nbsp;
 
-        <button (click)="changedit()" class="btn btn-secondary">Sort by rating </button>&nbsp;&nbsp;&nbsp;
-        <br>
-        <br>
-        <div *ngIf="filtervenues">
-            <div class="card mb-3" class="shadow p-3 mb-5 bg-white rounded" *ngFor="let venue of filtervenues" style="width:65em">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="../../../assets/placeholder.jpg" class="card-img" alt="...">
-                    </div>
-                    <div class="col-md-7">
-                        <div class="card-body">
-                            <h5 class="card-title">VenueName: {{venue.venueName}}</h5>
-                            <p class="card-text">City: {{venue.city}}</p>
-                            <p class="card-text">Price: {{venue.price}} INR</p>
-                            <p class="card-text">Rating:
-                                <star-rating value="{{venue.rating}}" checkedcolor="gold" uncheckedcolor="gray" readOnly="true" size="24px"></star-rating>
-                            </p>
-                            <!-- </div> -->
-
-
-                            <button class="btn btn-secondary" routerLink="detail/{{venue.venueId}}">see details</button>
-                        </div>
-                    </div>
-                </div>
+    <button (click)="changedit()" class="btn btn-secondary">Sort by rating </button>&nbsp;&nbsp;&nbsp;
+    <br>
+    <br>
+    <div *ngIf="filtervenues">
+      <div class="card mb-3" class="shadow p-3 mb-5 bg-white rounded" *ngFor="let venue of filtervenues"
+        style="width:65em">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="../../../assets/placeholder.jpg" class="card-img" alt="...">
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              <h5 class="card-title">VenueName: {{venue.venueName}}</h5>
+              <p class="card-text">City: {{venue.city}}</p>
+              <p class="card-text">Price: {{venue.price}} INR</p>
+              <p class="card-text">Rating:
+                <star-rating value="{{venue.rating}}" checkedcolor="gold" uncheckedcolor="gray" readOnly="true"
+                  size="24px"></star-rating>
+              </p>
             </div>
-        </div>
-        <div *ngIf="!filtervenues">
-            <h5>No Venues available</h5>
-        </div>
+            <div>
+              <button style="float: right;" class="btn btn-secondary" routerLink="detail/{{venue.venueId}}">See
+                details</button>
+            </div>
+          </div>
 
-        <div *ngIf="!flag">
-            <h5>No Venues available</h5>
         </div>
+      </div>
+    </div>
+    <div *ngIf="!filtervenues">
+      <h5>No Venues available</h5>
+    </div>
 
-    </mat-drawer-content>
+    <div *ngIf="!flag">
+      <h5>No Venues available</h5>
+    </div>
+
+  </mat-drawer-content>
 </mat-drawer-container>

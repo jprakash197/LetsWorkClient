@@ -3,7 +3,6 @@ import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../shared/user';
 import { HttpErrorResponse } from '@angular/common/http';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -32,10 +31,13 @@ export class LoginComponent implements OnInit {
           const role: string = '' + u.role.toString();
           localStorage.setItem('token', token);
           localStorage.setItem('role', role);
+
+          this.service.setUser(u);
+
           if (role === 'USER') {
             this.routeconfig.navigate(['/getUser/', this.username]);
           } else {
-            this.routeconfig.navigate(['/admin/', this.username]);
+            this.routeconfig.navigate(['/login/admin/', this.username]);
           }
         }
       },

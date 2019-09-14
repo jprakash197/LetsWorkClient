@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './authentication/login/login.component';
-import { GuardService } from './authentication/guard.service';
-
+import { GuardService } from './shared/guard.service';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./home-page/home-page.module').then(mod => mod.HomePageModule) },
@@ -12,7 +10,9 @@ const routes: Routes = [
     canActivate: [GuardService]
   },
   {
-    path: 'login', component: LoginComponent
+    path: 'login', loadChildren: () => import('./authentication/authentication.module').then(mod => mod.AuthenticationModule)
+  }, {
+    path: '**', redirectTo: ''
   }
 ];
 
