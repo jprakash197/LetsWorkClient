@@ -19,7 +19,6 @@ export class AdminComponent implements OnInit {
     for (let i = 1; i <= TOTAL_VENUES; i += 1) {
       this.letsWorkService.getDetails(i).subscribe(venue => {
         this.venues.push(venue);
-        console.log('venue:\n');
         console.log(venue);
       });
     }

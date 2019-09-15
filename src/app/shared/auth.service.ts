@@ -21,8 +21,13 @@ export class AuthService implements CanActivate {
         console.log(`user token: ${this.currentUser.token}\nlocalStorage token: ${localToken}`);
         this.service.setLogStatus(true);
         return true;
+      } else {
+        this.service.setUser(null);
+        this.service.setLogStatus(false);
       }
     } else {
+      this.service.setUser(null);
+      this.service.setLogStatus(false);
       return false;
     }
   }
