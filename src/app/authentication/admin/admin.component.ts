@@ -28,7 +28,17 @@ export class AdminComponent implements OnInit {
 
   onClick(venue: Venue) {
     this.venueSelected = !this.venueSelected;
+    this.venueToEdit = venue;
+  }
 
+  save() {
+    this.venueSelected = !this.venueSelected;
+
+    this.letsWorkService.updateVenue(this.venueToEdit);
+  }
+
+  cancel() {
+    this.venueSelected = !this.venueSelected;
   }
 
 }
