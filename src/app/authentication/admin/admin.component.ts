@@ -9,6 +9,8 @@ import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 })
 export class AdminComponent implements OnInit {
   venues: Venue[] = [];
+  venueSelected: boolean = false;
+  venueToEdit: Venue = null;
 
   constructor(private letsWorkService: LetsWorkServiceService) { }
 
@@ -22,6 +24,11 @@ export class AdminComponent implements OnInit {
         console.log(venue);
       });
     }
+  }
+
+  onClick(venue: Venue) {
+    this.venueSelected = !this.venueSelected;
+
   }
 
 }

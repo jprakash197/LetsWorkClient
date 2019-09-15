@@ -90,7 +90,6 @@ export class LetsWorkServiceService {
   }
 
   getAllVenues(): Observable<Venue[]> {
-    console.log('in getAllVenues');
     return this.http.get<Venue[]>(this.configUrl);
   }
 

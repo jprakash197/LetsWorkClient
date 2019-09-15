@@ -1,10 +1,42 @@
 <div class="container">
   <div class="row">
     <ul class="list-group">
-      <li class="list-group-item" *ngFor="let venue of venues; index as i">
-        {{ venue.venueId }}
-        <br>
-        {{ venue.venueName }}
+      <li class="list-group-item" *ngFor="let venue of venues; index as i" (click)="onClick(venue)">
+        {{ venue.venueId }} <br>
+        {{ venue.venueName }} <br>
+        {{ venue.city }} <br>
+        {{ venue.size }} <br>
+        {{ venue.capacity }} <br>
+        {{ venue.description }} <br>
+        {{ venue.rating }} <br>
+        {{ venue.price }} <br>
+        {{ venue.venueType }} <br>
+        {{ venue.featureType }} <br>
+        <div *ngIf="venue.image?.length">
+          <mat-card class="slider">
+            <ngb-carousel>
+              <ng-template ngbSlide *ngFor="let img of venue.image">
+                <div class="picsum-img-wrapper">
+                  <img mat-card-image src="{{img}}" alt="{{venue.venueName}}" style="max-height:300px; margin:0 auto;">
+                </div>
+              </ng-template>
+            </ngb-carousel>
+          </mat-card>
+        </div>
+        <div *ngIf="!venue.image?.length">
+          <p>{{venue.venueName}} image not found </p>
+        </div>
+
+        <div *ngIf="venue.feature?.length">
+          <div *ngFor="let feature of venue.feature">
+            {{feature}}
+          </div>
+        </div>
+
+        <div *ngIf="!venue.feature?.length">
+          features unknown
+        </div>
+
       </li>
     </ul>
   </div>
