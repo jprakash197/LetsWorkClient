@@ -15,6 +15,7 @@ export class GuardService implements CanActivate {
         return true;
       } else {
         this.service.setLogStatus(false);
+        return false;
       }
     } else {
       this.service.setLogStatus(false);
