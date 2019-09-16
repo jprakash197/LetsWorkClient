@@ -32,6 +32,7 @@ export class ReadDetailsComponent implements OnInit {
     this.spinner.show();
     this.id = +this.route.snapshot.params['venueId'];
     console.log(`venueId: ${this.id}`);
+
     this.venueService.getDetails(this.id).subscribe(venue => {
       this.venue = venue;
       this.flag = true;
