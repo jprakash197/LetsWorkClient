@@ -44,6 +44,40 @@ export class LetsWorkServiceService {
     return this.http.get<string[]>(this.citiesUrl);
   }
 
+  getDetails(venueId): Observable<Venue> {
+    return this.http.get<Venue>(this.detailUrl + venueId);
+  }
+
+  getAllVenues(): Observable<Venue[]> {
+    return this.http.get<Venue[]>(this.configUrl);
+  }
+
+  /**
+   * Add a venue only if if it not in the venues
+   * @param venue
+   */
+  addVenue(venue: Venue): void {
+    const foundMatch = this.venues.getValue().find(v => venue.venueId === v.venueId);
+    if (!foundMatch) {
+      this.venues.getValue().push(venue);
+    }
+
+  }
+
+  addVenues(venues): void {
+    const tempVenues = this.venues.getValue();
+    tempVenues.push(venues);
+    this.venues.next(tempVenues);
+  }
+
+  updateVenue(venue: Venue) {
+    return this.http.put(this.configUrl, venue);
+  }
+
+  deleteVenue(venue: Venue) {
+    return this.http.delete<Venue>(this.configUrl + venue.venueId);
+  }
+
   getSearchedVenues(venues: Venue[]) {
     this.searchedVenues = venues;
   }
@@ -85,20 +119,6 @@ export class LetsWorkServiceService {
     return this.filteredVenues;
   }
 
-  getDetails(venueId): Observable<Venue> {
-    return this.http.get<Venue>(this.detailUrl + venueId);
-  }
-
-  getAllVenues(): Observable<Venue[]> {
-    return this.http.get<Venue[]>(this.configUrl);
-  }
-
-  addVenues(venues): void {
-    const tempVenues = this.venues.getValue();
-    tempVenues.push(venues);
-    this.venues.next(tempVenues);
-  }
-
   onSignUp(user): Observable<User> {
     return this.http.post<User>(this.url + '/signup', user);
   }
@@ -122,10 +142,6 @@ export class LetsWorkServiceService {
 
   setLogStatus(status: boolean): void {
     this.logSubject.next(status);
-  }
-
-  updateVenue(venue: Venue) {
-    this.http.put(this.configUrl, venue);
   }
 
 }

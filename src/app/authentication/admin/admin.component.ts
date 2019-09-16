@@ -42,4 +42,15 @@ export class AdminComponent implements OnInit {
     this.venueToEdit = null;
   }
 
+  delete() {
+    this.letsWorkService.deleteVenue(this.venueToEdit).subscribe((response) => {
+      console.log(response);
+    }, (error) => {
+      console.error(error);
+    });
+
+    this.venueToEdit = null;
+    this.venueSelected = !this.venueSelected
+  }
+
 }
