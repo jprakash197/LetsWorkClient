@@ -17,13 +17,13 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.letsWorkService.getAllVenues().subscribe(venues => this.venues = venues);
 
-    const TOTAL_VENUES = 22;
-    for (let i = 1; i <= TOTAL_VENUES; i += 1) {
-      this.letsWorkService.getDetails(i).subscribe(venue => {
-        this.venues.push(venue);
-        console.log(venue);
-      });
-    }
+    // const TOTAL_VENUES = 22;
+    // for (let i = 1; i <= TOTAL_VENUES; i += 1) {
+    //   this.letsWorkService.getDetails(i).subscribe(venue => {
+    //     this.venues.push(venue);
+    //     console.log(venue);
+    //   });
+    // }
   }
 
   onClick(venue: Venue) {
