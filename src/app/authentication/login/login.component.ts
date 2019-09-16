@@ -29,18 +29,24 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('user', this.username);
           const token: string = '' + u.token.toString();
           const role: string = '' + u.role.toString();
+          u.token = token;
+          u.role = role;
           this.service.setUser(user);
           localStorage.setItem('token', token);
           localStorage.setItem('role', role);
+          this.service.setLogStatus(true);
           this.routeconfig.navigate(['/']);
         }
       },
       (error) => {
-         if (error instanceof HttpErrorResponse) {
-           alert(error.error.message);
-         }
-       }
+        if (error instanceof HttpErrorResponse) {
+          alert(error.error.message);
+        }
+      }
     );
   }
 
+  onSignUp() {
+    this.service.setLogStatus(false);
+  }
 }
