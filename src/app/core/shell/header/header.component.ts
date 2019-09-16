@@ -20,24 +20,23 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogin(event: any) {
-    this.letsWorkService.setLogStatus(true);
   }
 
   onLogout(event: any) {
     this.letsWorkService.setLogStatus(false);
-    if (this.user) {
-      this.letsWorkService.setUser(null);
-    }
+    this.letsWorkService.setUser(null);
     localStorage.setItem('token', null);
     localStorage.setItem('role', null);
+    localStorage.setItem('user', null);
   }
 
   onProfile(event: any) {
-    if (this.user) {
+    const userName = localStorage.getItem('user');
+    if (this.user && userName !== null) {
       if (this.user.role.toUpperCase() === 'ADMIN') {
-        this.routeConfig.navigate(['/login/admin/' + this.user.username]);
+        this.routeConfig.navigate(['/login/admin/' + userName]);
       } else {
-        this.routeConfig.navigate(['/getUser/' + this.user.username]);
+        this.routeConfig.navigate(['/getUser/' + userName]);
       }
     }
   }
