@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export class UpdateProfileComponent implements OnInit {
 
   currentUser: User;
+  username: string = '';
 
   constructor(private userService: UserServiceService) {
 
@@ -29,6 +30,7 @@ export class UpdateProfileComponent implements OnInit {
       showLoaderOnConfirm: true,
       preConfirm: (login) => {
         console.log(login);
+        this.username = localStorage.getItem('user');
         // return fetch(`//api.github.com/users/${login}`)
         //   .then(response => {
         //     if (!response.ok) {
@@ -58,7 +60,8 @@ export class UpdateProfileComponent implements OnInit {
   ngOnInit() {
     this.userService.findUser().subscribe(data => {
       this.currentUser = data;
-    })
+      this.username = localStorage.getItem('user');
+    });
   }
 
 }
