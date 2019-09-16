@@ -2,16 +2,16 @@
   <div class="row">
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let venue of venues; index as i" (click)="onClick(venue)">
-        {{ venue.venueId }} <br>
-        {{ venue.venueName }} <br>
-        {{ venue.city }} <br>
-        {{ venue.size }} <br>
-        {{ venue.capacity }} <br>
-        {{ venue.description }} <br>
-        {{ venue.rating }} <br>
-        {{ venue.price }} <br>
-        {{ venue.venueType }} <br>
-        {{ venue.featureType }} <br>
+        {{ 'Id: ' + venue.venueId }} <br>
+        {{ 'Name: ' + venue.venueName }} <br>
+        {{ 'City: ' + venue.city }} <br>
+        {{ 'Size: ' + venue.size }} <br>
+        {{ 'Capacity: ' + venue.capacity }} <br>
+        {{ 'Description: ' + venue.description }} <br>
+        {{ 'Rating: ' + venue.rating }} <br>
+        {{ 'Price: ' + venue.price }} <br>
+        {{ 'Type: ' + venue.venueType }} <br>
+        {{ 'Feature: ' + venue.featureType }} <br>
         <div *ngIf="venue.image?.length">
           <mat-card class="slider">
             <ngb-carousel>
@@ -45,11 +45,7 @@
 
 <div class="container" style="padding: 5%" *ngIf="venueSelected">
   <div class="card">
-    <div class="row">
-      <div class="card-header">VenueEdit</div>
-      <span style="padding: 4%"></span>
-      <button class="btn btn-danger" id="save" (click)="delete()">Delete</button>
-    </div>
+    <div class="card-header">VenueEdit</div>
     <div class="card-body">
       <div class="row">
         <div class="col-4">
@@ -115,6 +111,7 @@
         </div>
       </div>
       <div class="row">
+        <button class="btn btn-dark btn-lg" id="save" (click)="delete()">Delete</button>
         <button class="btn btn-danger" id="cancel" (click)="cancel()">Cancel</button>
         <button class="btn btn-success" id="save" (click)="save()">Save</button>
       </div>

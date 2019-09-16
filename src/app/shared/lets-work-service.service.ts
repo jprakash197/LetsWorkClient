@@ -75,7 +75,7 @@ export class LetsWorkServiceService {
   }
 
   deleteVenue(venue: Venue) {
-    return this.http.delete<Venue>(this.configUrl + venue.venueId);
+    return this.http.delete<Venue>(this.configUrl + '/' + venue.venueId);
   }
 
   getSearchedVenues(venues: Venue[]) {
