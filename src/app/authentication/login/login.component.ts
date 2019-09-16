@@ -33,11 +33,11 @@ export class LoginComponent implements OnInit {
           this.routeconfig.navigate(['/']);
         }
       },
-      // (error) => {
-      //   if (error instanceof HttpErrorResponse) {
-      //     alert(error.error.message);
-      //   }
-      // }
+      (error) => {
+         if (error instanceof HttpErrorResponse) {
+           alert(error.error.message);
+         }
+       }
     );
   }
 
