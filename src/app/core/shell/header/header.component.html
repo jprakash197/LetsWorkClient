@@ -24,6 +24,8 @@
     </li>
     <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" routerLink="/" (click)="onLogout($event)">Logout</a>
     </li>
+    <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" (click)="onProfile($event)">Profile</a>
+    </li>
   </ul>
   <!-- </div> -->
 </nav>

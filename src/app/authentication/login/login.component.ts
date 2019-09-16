@@ -25,9 +25,10 @@ export class LoginComponent implements OnInit {
     this.service.OnLogin(this.username, this.password).subscribe(
       user => {
         if (user) {
-          const u: User = user;
+          const u: User = new User(this.username, this.password, '', user.role, user.token, '', '');
           const token: string = '' + u.token.toString();
           const role: string = '' + u.role.toString();
+          this.service.setUser(user);
           localStorage.setItem('token', token);
           localStorage.setItem('role', role);
           this.routeconfig.navigate(['/']);
