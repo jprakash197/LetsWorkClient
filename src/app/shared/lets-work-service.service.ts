@@ -112,6 +112,10 @@ export class LetsWorkServiceService {
     this.currentUser.next(user);
   }
 
+  getUser(): Observable<User> {
+    return this.currentUser.asObservable();
+  }
+
   getLogStatus(): Observable<boolean> {
     return this.logSubject.asObservable();
   }

@@ -26,9 +26,9 @@ export class SignupComponent implements OnInit {
 
   onSelect() {
     if (this.password === this.confirmpassword) {
-      this.user = new User(this.username, this.password, this.email, this.referral, this.realname);
-      console.log(this.user);
+      this.user = new User(this.username, this.password, this.email, 'USER', '', this.referral, this.realname);
       this.service.onSignUp(this.user).subscribe(data => {
+        this.user.token = data.getToken();
         localStorage.setItem('token', data.token);
         localStorage.setItem('role', data.role);
         this.routeconfig.navigate(['/']);
