@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatCardModule } from '@angular/material/card';
 
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { LoginComponent } from './login/login.component';
@@ -13,7 +15,9 @@ import { AdminComponent } from './admin/admin.component';
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
-    FormsModule
+    FormsModule,
+    NgbModule,
+    MatCardModule
   ]
 })
 export class AuthenticationModule { }

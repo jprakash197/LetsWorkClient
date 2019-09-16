@@ -17,10 +17,11 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogin(event: any) {
-
+    this.letsWorkService.setLogStatus(true);
   }
 
   onLogout(event: any) {
+    this.letsWorkService.setLogStatus(false);
     localStorage.setItem('token', null);
     localStorage.setItem('role', null);
   }

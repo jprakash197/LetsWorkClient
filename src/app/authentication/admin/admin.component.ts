@@ -9,6 +9,8 @@ import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 })
 export class AdminComponent implements OnInit {
   venues: Venue[] = [];
+  venueSelected: boolean = false;
+  venueToEdit: Venue = null;
 
   constructor(private letsWorkService: LetsWorkServiceService) { }
 
@@ -19,10 +21,25 @@ export class AdminComponent implements OnInit {
     for (let i = 1; i <= TOTAL_VENUES; i += 1) {
       this.letsWorkService.getDetails(i).subscribe(venue => {
         this.venues.push(venue);
-        console.log('venue:\n');
         console.log(venue);
       });
     }
+  }
+
+  onClick(venue: Venue) {
+    this.venueSelected = !this.venueSelected;
+    this.venueToEdit = venue;
+  }
+
+  save() {
+    this.venueSelected = !this.venueSelected;
+    this.letsWorkService.updateVenue(this.venueToEdit);
+    this.venueToEdit = null;
+  }
+
+  cancel() {
+    this.venueSelected = !this.venueSelected;
+    this.venueToEdit = null;
   }
 
 }

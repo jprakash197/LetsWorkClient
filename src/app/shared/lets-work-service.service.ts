@@ -120,4 +120,8 @@ export class LetsWorkServiceService {
     this.logSubject.next(status);
   }
 
+  updateVenue(venue: Venue) {
+    this.http.put(this.configUrl, venue);
+  }
+
 }
