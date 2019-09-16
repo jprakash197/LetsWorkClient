@@ -33,12 +33,13 @@ export class AdminComponent implements OnInit {
 
   save() {
     this.venueSelected = !this.venueSelected;
-
     this.letsWorkService.updateVenue(this.venueToEdit);
+    this.venueToEdit = null;
   }
 
   cancel() {
     this.venueSelected = !this.venueSelected;
+    this.venueToEdit = null;
   }
 
 }
