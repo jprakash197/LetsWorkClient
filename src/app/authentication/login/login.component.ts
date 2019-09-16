@@ -26,8 +26,6 @@ export class LoginComponent implements OnInit {
       user => {
         if (user) {
           const u: User = new User(this.username, this.password, '', user.role, user.token, '', '');
-          console.log("user details:");
-          console.log(user);
           const token: string = '' + u.token.toString();
           const role: string = '' + u.role.toString();
           this.service.setUser(user);
