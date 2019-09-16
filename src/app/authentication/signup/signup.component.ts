@@ -32,11 +32,7 @@ export class SignupComponent implements OnInit {
       },
         (error) => {
           if (error instanceof HttpErrorResponse) {
-            if (error.status === 404) {
-              alert('Invalid Referral Code. Referral Code could not be found.');
-            } else {
-              alert('Invalid Input. Reminder no input can be empty (except Referral Code). Please ensure you are using correct password and email format.');
-            }
+            alert(error.error.message);
           }
         });
     } else {
