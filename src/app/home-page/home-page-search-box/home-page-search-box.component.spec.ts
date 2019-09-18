@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomePageSearchBoxComponent } from './home-page-search-box.component';
 import { HomePageModule } from '../home-page.module';
 import { HomePageRoutingModule } from '../home-page-routing.module';
+import { AppRoutingModule } from '../../app-routing.module';
+import { AppModule } from '../../app.module';
 
 describe('HomePageSearchBoxComponent', () => {
   let component: HomePageSearchBoxComponent;
@@ -11,7 +13,7 @@ describe('HomePageSearchBoxComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [HomePageSearchBoxComponent],
-      imports: [HomePageModule, HomePageRoutingModule]
+      imports: [HomePageModule, HomePageRoutingModule, AppModule, AppRoutingModule]
     })
       .compileComponents();
   }));

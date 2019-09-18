@@ -5,10 +5,11 @@ import { } from 'googlemaps';
 import { MapService } from './map.service';
 import { CoreModule } from '../core/core.module';
 import { CoreRoutingModule } from '../core/core-routing.module';
+import { AppModule } from '../app.module';
 
 describe('MapService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [CoreModule, CoreRoutingModule]
+    imports: [AppModule]
   }));
 
   it('should be created', () => {

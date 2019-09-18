@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReadDetailsComponent } from './read-details.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material';
+import { MapComponent } from '../map/map.component';
+import { NgbCarousel, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 describe('ReadDetailsComponent', () => {
   let component: ReadDetailsComponent;
@@ -8,9 +13,10 @@ describe('ReadDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReadDetailsComponent ]
+      declarations: [ReadDetailsComponent, MapComponent],
+      imports: [NgxSpinnerModule, FormsModule, MatCardModule, NgbCarouselModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

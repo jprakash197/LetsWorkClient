@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { } from 'googlemaps';
+
 import { MapComponent } from './map.component';
 
 describe('MapComponent', () => {
@@ -8,9 +10,9 @@ describe('MapComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MapComponent ]
+      declarations: [MapComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
