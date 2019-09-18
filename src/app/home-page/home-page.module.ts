@@ -8,6 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule, MatSelectModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { FooterComponent } from '../core/shell/footer/footer.component';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatSelectModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    CoreModule
   ]
 })
 export class HomePageModule { }

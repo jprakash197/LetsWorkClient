@@ -11,6 +11,7 @@ import { ShellComponent } from './shell/shell.component';
   imports: [
     CommonModule,
     CoreRoutingModule
-  ]
+  ],
+  exports: [FooterComponent]
 })
 export class CoreModule { }
