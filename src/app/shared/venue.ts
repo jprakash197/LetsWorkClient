@@ -21,7 +21,6 @@ export class Venue {
     rating: number;
     image: Image[];
     feature: Feature[];
-    bookings: Booking[];
     booking: Booking[];
 }
 

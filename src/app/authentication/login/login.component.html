@@ -20,8 +20,11 @@
         </div>
       </div>
       <button class="button" (click)="onSelect()">Login</button>
-      <a class="nav-link active" style="text-align: center" [routerLink]="['/login/signup']"
-        routerLinkActive="active">Sign Up</a>
+      <br/>
+      <div class="button g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+      <a class="nav-link active" style="text-align: center" [routerLink]="['/login/signup']" routerLinkActive="active"
+        (click)="onSignUp()">Sign Up</a>
     </div>
   </div>
 </div>
+<script src="https://apis.google.com/js/platform.js" async defer></script>

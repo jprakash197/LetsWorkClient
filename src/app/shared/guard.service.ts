@@ -13,8 +13,12 @@ export class GuardService implements CanActivate {
       if (localStorage.getItem('role') === 'USER') {
         this.service.setLogStatus(true);
         return true;
+      } else {
+        this.service.setLogStatus(false);
+        return false;
       }
     } else {
+      this.service.setLogStatus(false);
       return false;
     }
   }

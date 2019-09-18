@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../../shared/user';
-import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
+import { User } from '../../shared/user';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -17,7 +19,7 @@ export class SignupComponent implements OnInit {
   user: User;
   data: User;
 
-  constructor(private service: LetsWorkServiceService) { }
+  constructor(private service: LetsWorkServiceService, private route: ActivatedRoute, private routeconfig: Router) { }
 
   ngOnInit() {
   }
@@ -25,18 +27,18 @@ export class SignupComponent implements OnInit {
   onSelect() {
     if (this.password === this.confirmpassword) {
       this.user = new User(this.username, this.password, this.email, this.referral, this.realname);
-      console.log(this.user);
       this.service.onSignUp(this.user).subscribe(data => {
+        localStorage.setItem('user', this.username);
         localStorage.setItem('token', data.token);
         localStorage.setItem('role', data.role);
+        this.user.token = data.token;
+        this.user.role = data.role;
+        this.service.setLogStatus(true);
+        this.routeconfig.navigate(['/']);
       },
         (error) => {
           if (error instanceof HttpErrorResponse) {
-            if (error.status === 404) {
-              alert('Invalid Referral Code. Referral Code could not be found.');
-            } else {
-              alert('Invalid Input. Reminder no input can be empty (except Referral Code). Please ensure you are using correct password and email format.');
-            }
+            alert(error.error.message);
           }
         });
     } else {

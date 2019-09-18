@@ -10,7 +10,7 @@
                     card's
                     content.</p> -->
           <ul class="list-group list-group-flush" *ngIf="currentUser">
-            <li class="list-group-item">{{ currentUser.username }}</li>
+            <li class="list-group-item">{{ username }}</li>
             <li class="list-group-item">{{ currentUser.email }}
               <button type="button" class="btn btn-primary" (click)="changeEmail()">
                 Change Email

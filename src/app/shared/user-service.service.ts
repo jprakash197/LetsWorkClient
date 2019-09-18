@@ -17,7 +17,7 @@ export class UserServiceService {
   }
 
   public findUser(): Observable<User> {
-    return this.http.get<User>(this.userUrl+'getUser/Jyoti');
+    return this.http.get<User>(this.userUrl+'getUser/' + localStorage.getItem('user'));
   }
 
   // public save(user: User) {

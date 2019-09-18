@@ -24,33 +24,29 @@ export class LoginComponent implements OnInit {
   onSelect() {
     this.service.OnLogin(this.username, this.password).subscribe(
       user => {
-
         if (user) {
           const u: User = user;
+          localStorage.setItem('user', this.username);
           const token: string = '' + u.token.toString();
           const role: string = '' + u.role.toString();
+          u.token = token;
+          u.role = role;
+          this.service.setUser(user);
           localStorage.setItem('token', token);
           localStorage.setItem('role', role);
-
-          this.service.setUser(u);
-
-          if (role === 'USER') {
-            this.routeconfig.navigate(['/getUser/', this.username]);
-          } else {
-            this.routeconfig.navigate(['/login/admin/', this.username]);
-          }
+          this.service.setLogStatus(true);
+          this.routeconfig.navigate(['/']);
         }
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {
-          if (error.status === 404) {
-            alert('Username could not be found');
-          } else {
-            alert('Incorrect Password');
-          }
+          alert(error.error.message);
         }
       }
     );
   }
 
+  onSignUp() {
+    this.service.setLogStatus(false);
+  }
 }

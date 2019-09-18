@@ -1,19 +1,23 @@
 
+/**
+ * README: Don't save username/password here!
+ *  Check in localStorage for username
+ */
 export class User {
-    referralCode: string;
-    username: string;
-    realName: string;
-    email: string;
-    password: string;
-    refferedCode: string;
-    role: string;
-    token: string;
+  referralCode: string;
+  username: string;
+  password: string;
+  realName: string;
+  email: string;
+  refferedCode: string;
+  role: string;
+  token: string;
 
-  constructor(name, pass, email, ref, realname) {
-    this.username = name;
-    this.password = pass;
+  constructor(username, password, email, refCode, realname) {
+    this.username = username;
+    this.password = password;
     this.email = email;
-    this.refferedCode = ref;
+    this.referralCode = refCode;
     this.realName = realname;
   }
 

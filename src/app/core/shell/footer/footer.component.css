@@ -1,0 +1,17 @@
+#footer-item {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: italic;
+  font-size: 23px;
+  text-emphasis-color: #FF7F50;
+  color: orangered;
+}
+
+#footer-container {
+  text-emphasis-color: #FF7F50;
+  color: orangered;
+}
+
+.footer-nav {
+  text-emphasis-color: #FF7F50;
+  color: orangered;
+}
