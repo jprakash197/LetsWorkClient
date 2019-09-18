@@ -1,10 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomePageSearchBoxComponent } from './home-page-search-box.component';
-import { NgxSpinnerModule } from 'ngx-spinner';
-import { MatInputModule, MatSelectModule } from '@angular/material';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
+import { HomePageModule } from '../home-page.module';
+import { HomePageRoutingModule } from '../home-page-routing.module';
 
 describe('HomePageSearchBoxComponent', () => {
   let component: HomePageSearchBoxComponent;
@@ -13,7 +11,7 @@ describe('HomePageSearchBoxComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [HomePageSearchBoxComponent],
-      imports: [NgxSpinnerModule, MatInputModule, MatSelectModule, MatCardModule, MatButtonModule]
+      imports: [HomePageModule, HomePageRoutingModule]
     })
       .compileComponents();
   }));

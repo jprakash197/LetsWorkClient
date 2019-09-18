@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UpdateProfileComponent } from './update-profile.component';
+import { UserProfileRoutingModule } from '../user-profile-routing.module';
 
 describe('UpdateProfileComponent', () => {
   let component: UpdateProfileComponent;
@@ -8,9 +9,10 @@ describe('UpdateProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateProfileComponent ]
+      declarations: [UpdateProfileComponent],
+      imports: [UserProfileRoutingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
