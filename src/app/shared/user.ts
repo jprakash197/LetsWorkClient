@@ -14,8 +14,8 @@ export class User {
   token: string;
 
   constructor(username, password, email, refCode, realname) {
-    this. username = username;
-    this. password = password;
+    this.username = username;
+    this.password = password;
     this.email = email;
     this.referralCode = refCode;
     this.realName = realname;
