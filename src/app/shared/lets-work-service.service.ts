@@ -54,7 +54,7 @@ export class LetsWorkServiceService {
 
   /**
    * Add a venue only if if it not in the venues
-   * @param venue
+   * @param venue is
    */
   addVenue(venue: Venue): void {
     const foundMatch = this.venues.getValue().find(v => venue.venueId === v.venueId);
