@@ -9,6 +9,7 @@ import { MatInputModule, MatSelectModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
+
 @NgModule({
   declarations: [HomePageSearchBoxComponent],
   imports: [
