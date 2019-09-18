@@ -2,13 +2,14 @@ import { TestBed } from '@angular/core/testing';
 
 import { GuardService } from './guard.service';
 
-import { CoreRoutingModule } from '../core/core-routing.module';
-import { CoreModule } from '../core/core.module';
 import { UpdateProfileComponent } from '../user-profile/update-profile/update-profile.component';
+import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('GuardService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [CoreRoutingModule, CoreModule],
+    imports: [FormsModule, RouterTestingModule, HttpClientModule],
     declarations: [UpdateProfileComponent]
   }));
 

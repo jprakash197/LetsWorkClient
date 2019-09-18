@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material';
 import { MapComponent } from '../map/map.component';
 import { NgbCarousel, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ReadDetailsComponent', () => {
   let component: ReadDetailsComponent;
@@ -14,7 +16,7 @@ describe('ReadDetailsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ReadDetailsComponent, MapComponent],
-      imports: [NgxSpinnerModule, FormsModule, MatCardModule, NgbCarouselModule]
+      imports: [NgxSpinnerModule, FormsModule, MatCardModule, NgbCarouselModule, RouterTestingModule, HttpClientModule]
     })
       .compileComponents();
   }));

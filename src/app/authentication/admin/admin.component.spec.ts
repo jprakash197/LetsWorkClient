@@ -4,6 +4,8 @@ import { AdminComponent } from './admin.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatCardModule } from '@angular/material';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -12,7 +14,7 @@ describe('AdminComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AdminComponent],
-      imports: [FormsModule, HttpClientModule, RouterTestingModule]
+      imports: [FormsModule, HttpClientModule, RouterTestingModule, NgbCarouselModule, MatCardModule]
     })
       .compileComponents();
   }));
