@@ -21,11 +21,8 @@ export class Venue {
     rating: number;
     image: Image[];
     feature: Feature[];
-<<<<<<< HEAD
     bookings: Booking[];
-=======
     booking: Booking[];
->>>>>>> 38a082fbd76ce2a231550bff9d5dcaf520c7f422
 }
 
 export class Image {
