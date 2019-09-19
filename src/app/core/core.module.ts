@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { CoreRoutingModule } from './core-routing.module';
 import { FooterComponent } from './shell/footer/footer.component';
 import { ShellComponent } from './shell/shell.component';
+import { UpdateProfileComponent } from '../user-profile/update-profile/update-profile.component';
+import { AdminComponent } from '../authentication/admin/admin.component';
 
 
 @NgModule({

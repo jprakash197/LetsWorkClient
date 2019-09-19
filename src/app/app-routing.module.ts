@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { GuardService } from './shared/guard.service';
+// import { BookNowComponent } from './venues/details-page/book-now/book-now.component';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./home-page/home-page.module').then(mod => mod.HomePageModule) },
@@ -13,7 +14,10 @@ const routes: Routes = [
     path: 'login', loadChildren: () => import('./authentication/authentication.module').then(mod => mod.AuthenticationModule)
   }, {
     path: '**', redirectTo: ''
-  }
+  },
+  // {
+  //   path: 'book', component: BookNowComponent
+  // }
 ];
 
 @NgModule({

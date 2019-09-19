@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { VenuesRoutingModule } from './venues-routing.module';
 import { ResultsPageComponent } from './results-page/results-page.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
-import { BookNowComponent } from './details-page/book-now/book-now.component';
+// import { BookNowComponent } from './details-page/book-now/book-now.component';
 import { ReadDetailsComponent } from './details-page/read-details/read-details.component';
 import { FilterVenuesComponent } from './results-page/filter-venues/filter-venues.component';
 import { SortVenuesComponent } from './results-page/sort-venues/sort-venues.component';
@@ -20,7 +20,7 @@ import { RatingModule } from 'ng-starrating';
 
 
 @NgModule({
-  declarations: [ResultsPageComponent, DetailsPageComponent, BookNowComponent, ReadDetailsComponent, FilterVenuesComponent, SortVenuesComponent, GetMoreDetailsComponent, MapComponent],
+  declarations: [ResultsPageComponent, DetailsPageComponent, ReadDetailsComponent, FilterVenuesComponent, SortVenuesComponent, GetMoreDetailsComponent, MapComponent],
   imports: [
     CommonModule,
     MatSidenavModule,

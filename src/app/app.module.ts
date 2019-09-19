@@ -9,9 +9,12 @@ import { DatePipe } from '@angular/common';
 import { HeaderComponent } from './core/shell/header/header.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {MatCardModule} from '@angular/material/card';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { SavedcardComponent } from './booking/savedcard/savedcard.component';
+import { CardComponent } from './booking/card/card.component';
+import { FormBuilder } from '../../node_modules/@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { AuthenticationModule } from './authentication/authentication.module';
     MatCardModule,
     AuthenticationModule
   ],
-  providers: [DatePipe],
+  entryComponents: [
+    SavedcardComponent, CardComponent
+  ],
+  providers: [DatePipe, NgbActiveModal, FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
