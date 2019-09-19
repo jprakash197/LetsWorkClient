@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
+import { HttpClient, HttpClientModule } from '../../../../../node_modules/@angular/common/http';
+import { RouterTestingModule } from '../../../../../node_modules/@angular/router/testing';
+
+import { FormsModule } from '@angular/forms';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -8,9 +12,10 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [HeaderComponent],
+      imports: [FormsModule, RouterTestingModule, HttpClientModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

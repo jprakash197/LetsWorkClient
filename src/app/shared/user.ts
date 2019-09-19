@@ -5,15 +5,19 @@
  */
 export class User {
   referralCode: string;
+  username: string;
+  password: string;
   realName: string;
   email: string;
-  refferedCode: string;
+  referredCode: string;
   role: string;
   token: string;
 
-  constructor(email, refCode, realname) {
+  constructor(username, password, email, refCode, realname) {
+    this.username = username;
+    this.password = password;
     this.email = email;
-    this.referralCode = refCode;
+    this.referredCode = refCode;
     this.realName = realname;
   }
 

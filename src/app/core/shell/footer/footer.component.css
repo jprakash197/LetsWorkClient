@@ -34,6 +34,7 @@
     padding-left: 30px;
     column-gap: 40%;
     padding-bottom: 30px;
+    margin-top: 60px;
     
   }
 
@@ -101,7 +102,7 @@
   } */
 
 
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 4960px) {
 
     
     .column{
@@ -160,3 +161,20 @@
     }
 
 } */
+#footer-item {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: italic;
+  font-size: 23px;
+  text-emphasis-color: #FF7F50;
+  color: orangered;
+}
+
+#footer-container {
+  text-emphasis-color: #FF7F50;
+  color: orangered;
+}
+
+.footer-nav {
+  text-emphasis-color: #FF7F50;
+  color: orangered;
+}

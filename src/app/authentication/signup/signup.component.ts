@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 import { User } from '../../shared/user';
 
@@ -19,30 +19,34 @@ export class SignupComponent implements OnInit {
   user: User;
   data: User;
 
-  constructor(private service: LetsWorkServiceService, private route: ActivatedRoute, private routeconfig: Router) { }
+  constructor(private service: LetsWorkServiceService, private routeconfig: Router) { }
 
   ngOnInit() {
   }
 
   onSelect() {
-    if (this.password === this.confirmpassword) {
-      this.user = new User(this.email, this.referral, this.realname);
-      this.service.onSignUp(this.user).subscribe(data => {
-        localStorage.setItem('user', this.username);
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('role', data.role);
-        this.user.token = data.token;
-        this.user.role = data.role;
-        this.service.setLogStatus(true);
-        this.routeconfig.navigate(['/']);
-      },
-        (error) => {
-          if (error instanceof HttpErrorResponse) {
-            alert(error.error.message);
-          }
-        });
+    if (this.username != null || this.realname != null || this.password != null || this.confirmpassword != null || this.email != null) {
+      if (this.password === this.confirmpassword) {
+        this.user = new User(this.username, this.password, this.email, this.referral, this.realname);
+        this.service.onSignUp(this.user).subscribe(data => {
+          localStorage.setItem('user', this.username);
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('role', data.role);
+          this.user.token = data.token;
+          this.user.role = data.role;
+          this.service.setLogStatus(true);
+          this.routeconfig.navigate(['/']);
+        },
+          (error) => {
+            if (error instanceof HttpErrorResponse) {
+              alert(error.error.message);
+            }
+          });
+      } else {
+        alert('Password and Password Confirmation does not match.');
+      }
     } else {
-      alert('Password and Password Confirmation does not match.');
+      alert('Starred inputs cannot be empty.');
     }
   }
 

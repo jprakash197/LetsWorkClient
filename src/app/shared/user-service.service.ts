@@ -13,18 +13,21 @@ export class UserServiceService {
   private userUrl: string;
 
   constructor(private http: HttpClient) {
-    this.userUrl = environment.url+'/';
+    this.userUrl = environment.url + '/';
   }
 
   public findUser(): Observable<User> {
-    return this.http.get<User>(this.userUrl+'getUser/Jyoti');
+    if (localStorage.getItem('user') != null) {
+      return this.http.get<User>(this.userUrl + 'getUser/' + localStorage.getItem('user'));
+    }
+    return null;
   }
 
   // public save(user: User) {
   //   return this.http.post<User>(this.userUrl, user);
   // }
 
-  public editUser(email:string) {
-    return this.http.put<string>(this.userUrl+'getUser/Jyoti', email);
+  public editUser( email: string ) {
+    return this.http.put<string>(this.userUrl + 'getUser/Jyoti', email);
   }
 }

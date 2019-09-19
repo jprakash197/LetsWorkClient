@@ -4,35 +4,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-<!-- <nav class="navbar navbar-dark bg-dark">
-    <span class="navbar-brand" style="margin: 0px">
-        <div class="row" style="margin-left:0.05%">
-            <div *ngIf="flag">
-                <td class="infor" *ngFor="let d of data1"> -->
-<!-- <div class="column"> -->
-<!-- <div class="card">
-                            <img src="{{d.primaryImage}}" width="200px" height="240px"> -->
-<!-- <br> {{d.id}}
-
-                            <br> {{d.name}}
-
-                            <br> {{d.email_id}}
-
-                            <br> {{d.phone_number}} -->
-
-
-<!-- </div>
-                        <br> -->
-<!-- </div> -->
-<!-- <br>
-            </div>
-            <br>
-        </div>
-    </span>
-</nav> -->
-
-<div class="row" >
+<div class="row">
     <div class="column" style="width:300px" *ngFor="let d of data1">
         <div class="card">
             <img src="{{d.primaryImage}}" width="200px" height="240px">
@@ -41,3 +13,9 @@
 </div>
 
 <router-outlet></router-outlet>
+<footer class="footer-nav">
+    <div class="container text-center" id="footer-container">
+
+
+    </div>
+</footer>
