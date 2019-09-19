@@ -8,13 +8,18 @@
 
     <br>
     <br>
+    <form [formGroup]="category">
     <h2>Price</h2>
-    <mat-checkbox (change)="onChkChange()">price > 5000</mat-checkbox>
+    <mat-checkbox formControlName="second" (change)="onChkChange()"> price&nbsp;&nbsp; 0-3000</mat-checkbox><br>
+    <mat-checkbox formControlName="four" (change)="onChkChange()"> price&nbsp; 3000-5000</mat-checkbox><br>
+    <mat-checkbox formControlName="first" (change)="onChkChange()">price&nbsp; above 5000</mat-checkbox><br>
     <hr>
     <h3>Rating</h3>
-    <mat-checkbox value="check" (change)="onChkChangerating(check)">rating > 5</mat-checkbox>
+    <mat-checkbox formControlName="five" (change)="onChkChange()">rating&nbsp; 0-3</mat-checkbox><br>
+    <mat-checkbox formControlName="third" (change)="onChkChange()">rating&nbsp; 4-5</mat-checkbox>
     <br>
     <br>
+    </form>
 
   </mat-drawer>&nbsp;&nbsp;
 

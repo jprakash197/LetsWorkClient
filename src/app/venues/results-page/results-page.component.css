@@ -11,7 +11,7 @@
     border-width: 5px;
     padding-top: 20px;
     padding-left: 20px;
-    padding-right: 50px;
+    padding-right: 30px;
     margin-top:100px;
     background-color: wheat;
 }
@@ -27,3 +27,26 @@
   padding-right: 30px;
 }
  
+@media only screen and (max-width:375px) {
+    .sidebar {
+        position:static;
+        height:auto;
+        width:auto;
+        font-size: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .sidebar h2 {
+        font-size: 20px;
+    }
+
+    .sidebar h3 {
+        font-size: 20px;
+    }
+
+    .side{
+        margin-left: 0;
+        display: inline;
+    }
+}
