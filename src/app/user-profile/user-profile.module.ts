@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { UserProfileRoutingModule } from './user-profile-routing.module';
 import { ViewCurrentBookingsComponent } from './view-current-bookings/view-current-bookings.component';
@@ -12,6 +13,7 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
   imports: [
     CommonModule,
     UserProfileRoutingModule,
+    FormsModule
   ]
 })
 export class UserProfileModule { }

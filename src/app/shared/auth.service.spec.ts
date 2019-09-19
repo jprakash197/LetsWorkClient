@@ -9,10 +9,11 @@ import { MatCardModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 describe('AuthService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [NgbCarouselModule, MatCardModule, HttpClientModule, FormsModule, RouterTestingModule],
+    imports: [NgbCarouselModule, MatCardModule, HttpClientModule, FormsModule, RouterTestingModule, NgxSpinnerModule],
     declarations: [UpdateProfileComponent, AdminComponent]
   }));
 

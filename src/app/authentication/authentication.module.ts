@@ -9,6 +9,7 @@ import { SignupComponent } from './signup/signup.component';
 
 import { FormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent, AdminComponent],
@@ -17,7 +18,8 @@ import { AdminComponent } from './admin/admin.component';
     AuthenticationRoutingModule,
     FormsModule,
     NgbModule,
-    MatCardModule
+    MatCardModule,
+    NgxSpinnerModule
   ]
 })
 export class AuthenticationModule { }

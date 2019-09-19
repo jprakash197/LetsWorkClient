@@ -1,5 +1,5 @@
-
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark nav" style="position:fixed;width:100%;top:0;height:auto;z-index: 998;">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark nav"
+  style="position:fixed;width:100%;top:0;height:auto;z-index: 998;">
 
   <div class="navbar-header">
     <a class="navbar-brand">
@@ -8,8 +8,8 @@
     <span class="navbar-brand">Let's Work</span>
   </div>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-    aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -18,11 +18,13 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Home</a>
       </li>
-      <li class="nav-item" *ngIf="!isLoggedIn"><a class="nav-link" routerLink="login" (click)="onLogin($event)">Login</a>
+      <li class="nav-item" *ngIf="!isLoggedIn"><a class="nav-link" routerLink="login"
+          (click)="onLogin($event)">Login</a>
       </li>
       <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" routerLink="/" (click)="onLogout($event)">Logout</a>
       </li>
-      <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" (click)="onProfile($event)">Profile</a>
+      <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" routerLink="getUser/?"
+          (click)="onProfile($event)">Profile</a>
       </li>
     </ul>
   </div>
