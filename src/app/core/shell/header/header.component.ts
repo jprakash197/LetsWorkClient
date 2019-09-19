@@ -11,6 +11,7 @@ import { TrackServiceService } from '../../../core/shell/track-service.service';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean;
+  displayFooter: boolean;
   user: User = null;
 
   constructor(private letsWorkService: LetsWorkServiceService, private routeConfig: Router,private service :TrackServiceService) { }
@@ -45,7 +46,7 @@ data1;
 
 
   submit1(){
-
+    this.displayFooter = true;
     this.routeConfig.navigate(['/display']);
   }
  

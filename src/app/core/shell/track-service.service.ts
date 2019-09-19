@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { environment } from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import { Track } from './Track';
 import { Observable } from 'rxjs';
@@ -10,6 +10,9 @@ export class TrackServiceService {
 
   data:any;
   track:Track=new Track();
+  url: string = environment.url;
+
+  aboutUsUrl = this.url + '/api/getAll';
 
 
   constructor(private http:HttpClient) { }
@@ -21,7 +24,8 @@ export class TrackServiceService {
     
     displayTrack():Observable<Track[]>
     {
-      return this.http.get<Track[]>(this.read);
+      return this.http.get<Track[]>(this.aboutUsUrl);
+      
     }
 
    

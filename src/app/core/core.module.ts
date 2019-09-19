@@ -8,6 +8,7 @@ import { ShellComponent } from './shell/shell.component';
 import { AdminComponent } from '../authentication/admin/admin.component';
 import { AuthenticationModule } from '../authentication/authentication.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { environment } from '../../environments/environment.dev';
 
 @NgModule({
   declarations: [ FooterComponent, ShellComponent,],
