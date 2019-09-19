@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from '../core/shell/footer/footer.component';
 import { CoreModule } from '../core/core.module';
 
+
 @NgModule({
   declarations: [HomePageSearchBoxComponent],
   imports: [

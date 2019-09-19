@@ -11,14 +11,14 @@ import Swal from 'sweetalert2';
 export class UpdateProfileComponent implements OnInit {
 
   currentUser: User;
-  username: string = '';
+  username: string;
 
   constructor(private userService: UserServiceService) {
 
   }
 
   changeEmail() {
-    console.log("here");
+    console.log('here');
     Swal.fire({
       title: 'Enter New Email',
       input: 'text',
@@ -50,11 +50,11 @@ export class UpdateProfileComponent implements OnInit {
       if (result.value) {
         Swal.fire({
           title: `Success`,
-          //imageUrl: result.value.avatar_url
-        })
+          // imageUrl: result.value.avatar_url
+        });
         window.location.reload();
       }
-    })
+    });
   }
 
   ngOnInit() {
