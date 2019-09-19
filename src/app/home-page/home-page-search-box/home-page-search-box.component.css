@@ -10,8 +10,7 @@ body, html {
   .bg-img {
     
     background-image: url("../../../assets/homepage.jpg");
-    /* height:auto; */
-    min-height: 706px;
+    height:89.3vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
