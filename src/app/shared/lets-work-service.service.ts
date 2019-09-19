@@ -160,6 +160,7 @@ export class LetsWorkServiceService {
   
 
   onSignUp(user): Observable<User> {
+    console.log(user);
     return this.http.post<User>(this.url + '/signup', user);
   }
 
