@@ -4,11 +4,15 @@ import { UpdateProfileComponent } from '../user-profile/update-profile/update-pr
 import { GuardService } from '../shared/guard.service';
 import { AdminComponent } from '../authentication/admin/admin.component';
 import { AuthService } from '../shared/auth.service';
+import { FooterComponent } from './shell/footer/footer.component';
 
 
 const routes: Routes = [
   { path: 'getUser/:id', component: UpdateProfileComponent, canActivate: [GuardService] },
-  { path: 'login/admin/:id', component: AdminComponent, canActivate: [AuthService] }
+  { path: 'login/admin/:id', component: AdminComponent, canActivate: [AuthService] },
+  // { path: 'display', component: FooterComponent},
+  { path: '', component: FooterComponent},
+  
 ];
 
 @NgModule({

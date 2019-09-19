@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LetsWorkServiceService } from '../../../shared/lets-work-service.service';
 import { Router } from '@angular/router';
 import { User } from '../../../shared/user';
+import { TrackServiceService } from '../../../core/shell/track-service.service';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,12 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean;
   user: User = null;
 
-  constructor(private letsWorkService: LetsWorkServiceService, private routeConfig: Router) { }
-
+  constructor(private letsWorkService: LetsWorkServiceService, private routeConfig: Router,private service :TrackServiceService) { }
+data1;
   ngOnInit() {
     this.letsWorkService.getLogStatus().subscribe(loggedIn => this.isLoggedIn = loggedIn);
     this.letsWorkService.getUser().subscribe(user => this.user = user);
+    this.service.displayTrack().subscribe(data=>this.data1=data)
   }
 
   onLogin(event: any) {
@@ -41,4 +43,24 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+
+  submit1(){
+
+    this.routeConfig.navigate(['/display']);
+  }
+ 
+  // count=0;
+  // flag=false;
+  // submit1()
+  // {  this.count++;
+  //   if(this.count%2==0)
+  //   {
+  //     this.flag=false;
+  //     this.routeConfig.navigate(['display'])
+  //   }
+  //   else{
+  //     this.flag=true;
+  //     this.routeConfig.navigate(['display'])
+  //   }
+  // }
 }
