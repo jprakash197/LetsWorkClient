@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetailsPageComponent } from './details-page.component';
+import { AppModule } from '../../app.module';
+import { AppRoutingModule } from '../../app-routing.module';
 
 describe('DetailsPageComponent', () => {
   let component: DetailsPageComponent;
@@ -8,9 +10,10 @@ describe('DetailsPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DetailsPageComponent ]
+      declarations: [DetailsPageComponent],
+      imports: [AppModule, AppRoutingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
