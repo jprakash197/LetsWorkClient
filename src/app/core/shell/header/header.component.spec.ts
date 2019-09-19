@@ -4,17 +4,18 @@ import { HeaderComponent } from './header.component';
 import { HttpClient, HttpClientModule } from '../../../../../node_modules/@angular/common/http';
 import { RouterTestingModule } from '../../../../../node_modules/@angular/router/testing';
 
+import { FormsModule } from '@angular/forms';
+
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ],
-      imports:[HttpClientModule,RouterTestingModule],
-      providers:[HttpClient]
+      declarations: [HeaderComponent],
+      imports: [FormsModule, RouterTestingModule, HttpClientModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -70,3 +70,26 @@
 
 
  
+@media only screen and (max-width:375px) {
+    .sidebar {
+        position:static;
+        height:auto;
+        width:auto;
+        font-size: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .sidebar h2 {
+        font-size: 20px;
+    }
+
+    .sidebar h3 {
+        font-size: 20px;
+    }
+
+    .side{
+        margin-left: 0;
+        display: inline;
+    }
+}

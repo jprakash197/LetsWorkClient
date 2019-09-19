@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { VenueRequest } from '../../shared/venue';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { FormGroup, FormControl} from '@angular/forms';
 
 
 
@@ -21,6 +22,11 @@ export class ResultsPageComponent implements OnInit {
   status2: boolean = true;
   flag: boolean = true;
   num: number = 10;
+
+  // new change 
+  category = new FormGroup({
+    first:new FormControl(),second:new FormControl(),third:new FormControl(),four:new FormControl(),five:new FormControl()
+  })
 
   venueRequest: VenueRequest = {
     date: null,
@@ -58,8 +64,6 @@ export class ResultsPageComponent implements OnInit {
 
   }
 
-
-
   ngOnInit() {
 
   }
@@ -67,17 +71,67 @@ export class ResultsPageComponent implements OnInit {
 
   onChkChange() {
     this.isChecked = !this.isChecked;
-    if (this.isChecked === true && this.check === true) {
+    if(this.category.value.first === true && this.category.value.second===true && this.category.value.third===true && this.category.value.four===true && this.category.value.five===true){
       this.filtervenues = this.venueService.allFilter();
+    }
 
-    } else if (this.isChecked === true && this.check === false) {
-      this.filtervenues = this.venueService.filterPrice();
+     else if (this.category.value.first === true ) {
+       if(this.category.value.five===true) {
+        this.filtervenues = this.venueService.filterPrice().filter(x=> x.rating <4);
+       }
+       else if(this.category.value.third===true) {
+        this.filtervenues = this.venueService.filterPrice().filter(x=> (x.rating >3 || x.rating ==5));
+       }
+       else {
+           this.filtervenues = this.venueService.filterPrice();
+       } 
+    }
 
-    } else if (this.isChecked === false && this.check === true) {
-      this.filtervenues = this.venueService.filterRating();
-    } else {
+     else if (this.category.value.third===true) {
+      if(this.category.value.second===true ){
+        this.filtervenues = this.venueService.filterPrice2().filter(x=> (x.rating>3 && x.rating<6));
+      } else if (this.category.value.four===true){
+        this.filtervenues = this.venueService.filterPrice3().filter(x=> (x.rating>3 && x.rating<6));
+      } else if (this.category.value.first===true) {
+        this.filtervenues = this.venueService.filterPrice().filter(x=> (x.rating>3 || x.rating==5));
+      }
+      else {
+      this.filtervenues = this.venueService.filterRating();  
+      }
+    }
+    
+    else if ( this.category.value.second===true ) {
+      if(this.category.value.five===true) {
+        this.filtervenues = this.venueService.filterPrice2().filter(x=> x.rating <4);
+       }
+       else if(this.category.value.third===true) {
+        this.filtervenues = this.venueService.filterPrice2().filter(x=>(x.rating >3));
+       }
+      else {
+        this.filtervenues = this.venueService.filterPrice2();
+      }
+    }
+    
+    else if (this.category.value.four===true ) {
+      if(this.category.value.five===true ) {
+        this.filtervenues = this.venueService.filterPrice3().filter(x=> x.rating <4);
+       }
+       else if(this.category.value.third===true) {
+        this.filtervenues = this.venueService.filterPrice3().filter(x=> (x.rating >3));
+       }
+      else {
+        this.filtervenues = this.venueService.filterPrice3();
+      }
+    }
+
+    else if (this.category.value.five===true) {
+       this.filtervenues = this.venueService.filterRating2();
+    }
+
+    else {
       this.filtervenues = this.venues;
     }
+
     if (this.filtervenues.length === 0) {
       this.flag = false;
     } else {
@@ -86,27 +140,7 @@ export class ResultsPageComponent implements OnInit {
 
   }
 
-  onChkChangerating(value) {
-    this.check = !value;
-    if (this.isChecked === true && this.check === true) {
-      this.filtervenues = this.venueService.allFilter();
-
-    } else if (this.isChecked === true && this.check === false) {
-      this.filtervenues = this.venueService.filterPrice();
-
-    } else if (this.isChecked === false && this.check === true) {
-      this.filtervenues = this.venueService.filterRating();
-
-    } else {
-      this.filtervenues = this.venues;
-    }
-    if (this.filtervenues.length === 0) {
-      this.flag = false;
-    } else {
-      this.flag = true;
-    }
-  }
-
+  // sorting
   changeit() {
 
     this.status1 = !this.status1;
@@ -119,7 +153,7 @@ export class ResultsPageComponent implements OnInit {
         return b.price - a.price;
       });
     }
-    console.log(this.status1);
+  
   }
 
   changedit() {
@@ -133,7 +167,6 @@ export class ResultsPageComponent implements OnInit {
         return b.rating - a.rating;
       });
     }
-    console.log(this.status2);
   }
 
 }
