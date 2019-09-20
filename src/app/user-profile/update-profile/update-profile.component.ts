@@ -18,11 +18,7 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   changeEmail() {
-<<<<<<< HEAD
     // console.log("here");
-=======
-    console.log('here');
->>>>>>> faec37065a918b8d4ee8c6ca5d93d25352cedf22
     Swal.fire({
       title: 'Enter New Email',
       input: 'email',
