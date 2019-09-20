@@ -1,8 +1,21 @@
+<ngx-spinner bdColor="rgba(256,256,256,0.8)" size="medium" color="#000" type="square-jelly-box">
+    <p style="font-size: 20px; color: black">Just a sec... Almost there...</p>
+</ngx-spinner>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="row">
+    <div class="column" style="width:300px" *ngFor="let d of data1">
+        <div class="card">
+            <img src="{{d.primaryImage}}" width="200px" height="240px">
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
 <footer class="footer-nav">
-  <div class="container text-center" id="footer-container">
-    <label id="footer-item"><a class="nav-link" routerLink="/">about</a> </label>
-    <label id="footer-item"><a class="nav-link" routerLink="/">careers</a></label>
-    <label id="footer-item"><a class="nav-link" routerLink="/">blog</a></label>
-    <label id="footer-item"><a class="nav-link" routerLink="/">let's connect</a></label>
-  </div>
+    <div class="container text-center" id="footer-container">
+
+
+    </div>
 </footer>

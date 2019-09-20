@@ -6,6 +6,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule ,ReactiveFormsModule}   from '@angular/forms';
 
 import { VenuesRoutingModule } from './venues-routing.module';
 import { ResultsPageComponent } from './results-page/results-page.component';
@@ -28,6 +29,8 @@ import { RatingModule } from 'ng-starrating';
     MatCheckboxModule,
     VenuesRoutingModule,
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
     RatingModule
