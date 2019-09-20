@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TrackServiceService } from '../../../core/shell/track-service.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import {FlexLayoutModule} from '@angular/flex-layout';
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
