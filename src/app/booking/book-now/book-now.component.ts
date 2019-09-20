@@ -24,7 +24,6 @@ export class BookNowComponent implements OnInit {
 
   onSubmit()
   {
-    // this.ngOnInit();
     this.service.paymentMode=this.payment.paymentMode;
     console.log(this.username);
     if(this.username==null)
@@ -39,11 +38,7 @@ export class BookNowComponent implements OnInit {
     else
     {
     this.service.getCardDetails(this.username).subscribe(data=>{
-      // this.data=data;
       this.service.user=data;
-      // console.log(this.data);
-      // console.log(Object.keys(this.data).length);
-      // this.service.user=this.data;
       if(this.payment.paymentMode=="Cash")
       {
         Swal.fire(
@@ -56,19 +51,11 @@ export class BookNowComponent implements OnInit {
       }
       else
       {
-        // this.service.status=true;
-        
-        // window.location.replace('cards')
           this.savedCards.refresh();
-          // this.route.navigate(['cards']);
           this.savedCards.openFormModal();
-          // window.location.href='cards';
       }
     },
     error=>{
-      // this.errorData=error.error;
-      // window.alert(this.errorData)
-      // this.check(this.errorData.length);
       if(this.payment.paymentMode=="Cash")
       {
         Swal.fire(
@@ -81,15 +68,10 @@ export class BookNowComponent implements OnInit {
       }
       else
       { 
-          // this.route.navigate(['card']);
           this.card.openFormModal();
       }
     }
   );
-    // this.data.forEach(element => {
-    //   console.log(element.cardName);
-    // });
-    
   }
 }
 

@@ -84,7 +84,7 @@ export class CardComponent implements OnInit {
             text: this.errorData.message
           })
        }
-        if (this.errorData.message == "Invalid Record Input") {
+        if (this.errorData.message == "Invalid card number") {
           this.payment.card.cardNumber = "";
         }
         else if (this.errorData.message == "Your card is expired!") {
