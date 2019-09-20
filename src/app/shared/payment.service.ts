@@ -3,6 +3,7 @@ import { Payment } from './Payment';
 import { Card } from './Card';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from '../../../node_modules/rxjs';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class PaymentService {
   card:Card= new Card();
   constructor(private http:HttpClient) { }
 
-  private add="http://localhost:8080/payment";
-  private read="http://localhost:8080/payment"
+  private add=environment.url+"/payment";
+  private read=environment.url+"/payment"
 
   addPayment(payment):Observable<Payment>
   {
