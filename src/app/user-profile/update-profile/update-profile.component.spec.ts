@@ -27,4 +27,12 @@ describe('UpdateProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('The change email function should be working', () => {
+    expect(component.changeEmail).toBeTruthy();
+  });
+  
+  it('should be called once', () => {
+    expect(component.changeEmail).toHaveBeenCalled;
+  });
 });

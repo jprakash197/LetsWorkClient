@@ -18,10 +18,10 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   changeEmail() {
-    console.log("here");
+    // console.log("here");
     Swal.fire({
       title: 'Enter New Email',
-      input: 'text',
+      input: 'email',
       inputAttributes: {
         autocapitalize: 'off'
       },
@@ -31,18 +31,6 @@ export class UpdateProfileComponent implements OnInit {
       preConfirm: (login) => {
         console.log(login);
         this.username = localStorage.getItem('user');
-        // return fetch(`//api.github.com/users/${login}`)
-        //   .then(response => {
-        //     if (!response.ok) {
-        //       throw new Error(response.statusText)
-        //     }
-        //     return response.json()
-        //   })
-        //   .catch(error => {
-        //     Swal.showValidationMessage(
-        //       `Request failed: ${error}`
-        //     )
-        //   })
         this.userService.editUser(login).subscribe();
       },
       allowOutsideClick: () => !Swal.isLoading()
