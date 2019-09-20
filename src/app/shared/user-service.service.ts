@@ -27,12 +27,7 @@ export class UserServiceService {
   //   return this.http.post<User>(this.userUrl, user);
   // }
 
-<<<<<<< HEAD
   public editUser(email:string) {
     return this.http.put<string>(this.userUrl+'getUser/' + localStorage.getItem('user'), email);
-=======
-  public editUser( email: string ) {
-    return this.http.put<string>(this.userUrl + 'getUser/Jyoti', email);
->>>>>>> faec37065a918b8d4ee8c6ca5d93d25352cedf22
   }
 }
