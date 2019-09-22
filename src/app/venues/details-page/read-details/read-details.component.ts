@@ -17,6 +17,8 @@ export class ReadDetailsComponent implements OnInit {
   id: any;
   venue: Venue;
   flag = false;
+  errorflag=false;
+  errorData:any;
 
 
   constructor(
@@ -40,7 +42,13 @@ export class ReadDetailsComponent implements OnInit {
       this.spinner.hide();
       console.log('venue (read-details component):');
       console.log(this.venue);
-    });
+    },
+  (error)=>{
+    console.log(error.error);
+    this.errorflag = true;
+    this.errorData=error.error.message;
+    alert(this.errorData)
+  });
   }
 
   onSubmit() {
