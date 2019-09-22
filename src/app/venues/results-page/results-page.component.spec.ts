@@ -18,7 +18,7 @@ describe('ResultsPageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ResultsPageComponent],
-      imports: [NgxSpinnerModule, RatingModule, MatCheckboxModule, MatSidenavModule, NgxSpinnerModule, RouterTestingModule, HttpClientModule, BrowserAnimationsModule],
+      imports: [NgxSpinnerModule,FormsModule, RatingModule, MatCheckboxModule, MatSidenavModule, NgxSpinnerModule, RouterTestingModule, HttpClientModule, BrowserAnimationsModule],
       providers: [NgxSpinnerService, HttpClient]
     })
       .compileComponents();

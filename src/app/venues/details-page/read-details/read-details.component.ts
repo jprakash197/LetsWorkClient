@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LetsWorkServiceService } from '../../../shared/lets-work-service.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
-import Swal from 'sweetalert2';
 import { MapService } from '../../../shared/map.service';
 
 import { Venue } from '../../../shared/venue';
@@ -44,16 +43,19 @@ export class ReadDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    Swal.fire(
-      'Booking is successful!',
-      'Thanks for choosing us',
-      'success'
-    ).then((result) => {
+    // Swal.fire(
+    //   'Booking is successful!',
+    //   'Thanks for choosing us',
+    //   'success'
+    // ).then((result) => {
 
-      this.router.navigate(['']);
+    //   this.router.navigate(['']);
+    // });
+    this.router.navigate(['/','book']).then(nav => {
+      console.log(nav); // true if navigation is successful
+    }, err => {
+      console.log(err) // when there's an error
     });
-
-
   }
 
 }
