@@ -14,6 +14,12 @@ const routes: Routes = [
   {                                                                                      
     path: 'detail/:venueId', component: ReadDetailsComponent
   },
+  {
+    path: 'detail/:venueId/book', loadChildren: () => import('../booking/booking.module').then(mod=>mod.BookingModule)
+  }
+  // {
+  //   path: 'detail/:venueId/book', component:BookNowComponent
+  // }
   //  {
   //     path:'home', loadChildren:'../home-page/home-page.module#HomePageModule'
   //   } 

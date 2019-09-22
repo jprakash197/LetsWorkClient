@@ -91,5 +91,6 @@ export class HomePageSearchBoxComponent implements OnInit {
   routeToPage(navigationExtras: any) {
     this.router.navigate(['/search'], navigationExtras);
   }
+  
 
 }

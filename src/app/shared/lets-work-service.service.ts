@@ -95,12 +95,51 @@ export class LetsWorkServiceService {
     return this.filteredVenues;
   }
 
+  public filterPrice2(): Venue[] {
+    while (this.filteredVenues.length > 0) {
+      this.filteredVenues.pop();
+    }
+    this.searchedVenues.forEach(k => {
+      if (k.price < 3000) {
+        this.filteredVenues.push(k);
+      }
+
+    });
+    return this.filteredVenues;
+  }
+
+  public filterPrice3(): Venue[] {
+    while (this.filteredVenues.length > 0) {
+      this.filteredVenues.pop();
+    }
+    this.searchedVenues.forEach(k => {
+      if (k.price > 3000 && k.price <= 5000) {
+        this.filteredVenues.push(k);
+      }
+
+    });
+    return this.filteredVenues;
+  }
+
+
   public filterRating(): Venue[] {
     while (this.filteredVenues.length > 0) {
       this.filteredVenues.pop();
     }
     this.searchedVenues.forEach(element => {
-      if (element.rating > 5) {
+      if (element.rating >= 4) {
+        this.filteredVenues.push(element);
+      }
+    });
+    return this.filteredVenues;
+  }
+
+  public filterRating2(): Venue[] {
+    while (this.filteredVenues.length > 0) {
+      this.filteredVenues.pop();
+    }
+    this.searchedVenues.forEach(element => {
+      if (element.rating > 0 && element.rating < 4) {
         this.filteredVenues.push(element);
       }
     });
@@ -112,7 +151,7 @@ export class LetsWorkServiceService {
       this.filteredVenues.pop();
     }
     this.searchedVenues.forEach(element => {
-      if (element.price > 5000 && element.rating > 5) {
+      if (element.price > 5000 && element.rating > 5 ) {
         this.filteredVenues.push(element);
       }
     });
@@ -120,6 +159,7 @@ export class LetsWorkServiceService {
   }
 
   onSignUp(user): Observable<User> {
+    console.log(user);
     return this.http.post<User>(this.url + '/signup', user);
   }
 

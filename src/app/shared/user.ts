@@ -9,7 +9,7 @@ export class User {
   password: string;
   realName: string;
   email: string;
-  refferedCode: string;
+  referredCode: string;
   role: string;
   token: string;
 
@@ -17,7 +17,7 @@ export class User {
     this.username = username;
     this.password = password;
     this.email = email;
-    this.referralCode = refCode;
+    this.referredCode = refCode;
     this.realName = realname;
   }
 

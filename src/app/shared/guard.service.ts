@@ -9,7 +9,7 @@ export class GuardService implements CanActivate {
   constructor(private service: LetsWorkServiceService, private route: Router) { }
 
   canActivate(activeRouterSnap: ActivatedRouteSnapshot, routeState: RouterStateSnapshot): boolean {
-    if (localStorage.getItem('token') != null) {
+    if (localStorage.getItem('token') != null && localStorage.getItem('user') === activeRouterSnap.paramMap.get('id')) {
       if (localStorage.getItem('role') === 'USER') {
         this.service.setLogStatus(true);
         return true;
