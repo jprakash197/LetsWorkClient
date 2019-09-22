@@ -4,7 +4,6 @@ import { SignupComponent } from './signup.component';
 import { FormsModule } from '../../../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../../../node_modules/@angular/common/http';
 import { RouterTestingModule } from '../../../../node_modules/@angular/router/testing';
-import { fromStringWithSourceMap } from '../../../../node_modules/@types/source-list-map';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;

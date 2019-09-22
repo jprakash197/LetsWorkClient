@@ -15,7 +15,7 @@ describe('AppComponent', () => {
         AppComponent,
         HeaderComponent,
       ],
-      providers:[       HttpClient]
+      providers: [ HttpClient]
     }).compileComponents();
   }));
 

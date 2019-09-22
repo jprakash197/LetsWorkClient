@@ -157,7 +157,6 @@ export class LetsWorkServiceService {
     });
     return this.filteredVenues;
   }
-  
 
   onSignUp(user): Observable<User> {
     console.log(user);
