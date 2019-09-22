@@ -46,7 +46,6 @@ export class ResultsPageComponent implements OnInit {
       this.venueRequest = JSON.parse(params[' venueRequest ']);
       this.spinner.show();
       this.venueService.getVenues(this.venueRequest).subscribe(
-
         (data) => {
           this.venues = data;
           console.log(this.venues);

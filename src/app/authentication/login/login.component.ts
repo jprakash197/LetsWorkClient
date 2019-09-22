@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from '../../shared/user';
 import { HttpErrorResponse } from '@angular/common/http';
 @Component({
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   referred: string;
   constructor(
     private service: LetsWorkServiceService,
-    private route: ActivatedRoute, private routeconfig: Router) { }
+    private routeconfig: Router) { }
 
   ngOnInit() {
   }

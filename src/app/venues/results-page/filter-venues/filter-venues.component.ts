@@ -10,8 +10,7 @@ import { ResultsPageComponent } from '../results-page.component';
 })
 export class FilterVenuesComponent implements OnInit {
 
-  constructor(private venueService: LetsWorkServiceService,private router: Router, private resultComponent:ResultsPageComponent) {  }
-venues:any;
+  constructor() {  }
   ngOnInit() {
 
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Venue } from '../../shared/venue';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 @Component({
   selector: 'app-admin',
@@ -12,10 +14,14 @@ export class AdminComponent implements OnInit {
   venueSelected: boolean = false;
   venueToEdit: Venue = null;
 
-  constructor(private letsWorkService: LetsWorkServiceService) { }
+  constructor(private letsWorkService: LetsWorkServiceService, private ngxSpinner: NgxSpinnerService) { }
 
   ngOnInit() {
-    this.letsWorkService.getAllVenues().subscribe(venues => this.venues = venues);
+    this.ngxSpinner.show();
+    this.letsWorkService.getAllVenues().subscribe(venues => {
+      this.venues = venues;
+      this.ngxSpinner.hide();
+    });
   }
 
   onClick(venue: Venue) {

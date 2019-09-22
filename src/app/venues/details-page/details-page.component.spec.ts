@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DetailsPageComponent } from './details-page.component';
 import { AppModule } from '../../app.module';
 import { AppRoutingModule } from '../../app-routing.module';
+import { SavedcardComponent } from 'src/app/booking/savedcard/savedcard.component';
 
 describe('DetailsPageComponent', () => {
   let component: DetailsPageComponent;
@@ -10,7 +11,7 @@ describe('DetailsPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DetailsPageComponent],
+      declarations: [DetailsPageComponent,SavedcardComponent],
       imports: [AppModule, AppRoutingModule]
     })
       .compileComponents();

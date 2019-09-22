@@ -15,4 +15,16 @@ describe('UserServiceService', () => {
     const service: UserServiceService = TestBed.get(UserServiceService);
     expect(service).toBeTruthy();
   });
+
+  it('The find user function should be working', () => {
+    const service: UserServiceService = TestBed.get(UserServiceService);
+    expect(service.findUser).toBeTruthy();
+  });
+
+  it('The edit user function should be working', () => {
+    const service: UserServiceService = TestBed.get(UserServiceService);
+    expect(service.editUser).toBeTruthy();
+  });
+
+  
 });
