@@ -5,7 +5,11 @@ import { BookNowComponent } from './book-now/book-now.component';
 
 const routes: Routes = [
   {
-    path: '', component: BookNowComponent
+    path: '', component: BookNowComponent,
+    
+  },
+  {
+    path: 'book', component: BookNowComponent
   }
 ];
 

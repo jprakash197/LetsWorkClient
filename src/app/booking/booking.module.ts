@@ -24,6 +24,9 @@ import { SavedcardComponent } from './savedcard/savedcard.component';
     NgbModule,
     HttpClientModule,
   ],
+  entryComponents: [
+    SavedcardComponent, CardComponent
+  ],
   providers: [SavedcardComponent, CardComponent, NgbActiveModal]
 
 })

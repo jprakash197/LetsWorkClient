@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/shell/header/header.component';
 import { HttpClientModule, HttpClient } from '../../node_modules/@angular/common/http';
+import { SavedcardComponent } from './booking/savedcard/savedcard.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -15,7 +16,8 @@ describe('AppComponent', () => {
         AppComponent,
         HeaderComponent,
       ],
-      providers: [ HttpClient]
+      providers: [ HttpClient],
+      
     }).compileComponents();
   }));
 

@@ -34,9 +34,9 @@ import { UserProfileModule } from './user-profile/user-profile.module';
     AuthenticationModule,
     UserProfileModule
   ],
-  entryComponents: [
-    SavedcardComponent, CardComponent
-  ],
+  // entryComponents: [
+  //   SavedcardComponent, CardComponent
+  // ],
   providers: [DatePipe, NgbActiveModal, FormBuilder],
   bootstrap: [AppComponent]
 })

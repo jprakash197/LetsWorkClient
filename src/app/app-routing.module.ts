@@ -17,6 +17,9 @@ const routes: Routes = [
     path: 'login', loadChildren: () => import('./authentication/authentication.module').then(mod => mod.AuthenticationModule)
   }, 
   {
+    path: 'book', loadChildren: () => import('./booking/booking.module').then(mod=>mod.BookingModule)
+  },
+  {
     path: '**', redirectTo: ''
   }
   // { path: 'display', loadChildren: () => import('../app/core/core.module').then(mod => mod.CoreModule)}

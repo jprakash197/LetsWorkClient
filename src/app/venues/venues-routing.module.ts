@@ -16,14 +16,11 @@ const routes: Routes = [
   },
   {
     path: 'detail/:venueId/book', loadChildren: () => import('../booking/booking.module').then(mod=>mod.BookingModule)
+  },
+  {
+    path: 'detail/:venueId/login', loadChildren:() => import('../authentication/authentication.module').then(mod=>mod.AuthenticationModule)
   }
-  // {
-  //   path: 'detail/:venueId/book', component:BookNowComponent
-  // }
-  //  {
-  //     path:'home', loadChildren:'../home-page/home-page.module#HomePageModule'
-  //   } 
-
+  
 ];
 
 @NgModule({

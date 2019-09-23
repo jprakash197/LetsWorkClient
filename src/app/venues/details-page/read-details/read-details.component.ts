@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
 import { LetsWorkServiceService } from '../../../shared/lets-work-service.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
+import Swal from 'sweetalert2';
 import { MapService } from '../../../shared/map.service';
 
 import { Venue } from '../../../shared/venue';
@@ -16,9 +17,7 @@ export class ReadDetailsComponent implements OnInit {
   id: any;
   venue: Venue;
   flag = false;
-  errorflag=false;
-  errorData:any;
-
+  check:any;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,16 +40,28 @@ export class ReadDetailsComponent implements OnInit {
       this.spinner.hide();
       console.log('venue (read-details component):');
       console.log(this.venue);
-    },
-  (error)=>{
-    console.log(error.error);
-    this.errorflag = true;
-    this.errorData=error.error.message;
-    alert(this.errorData)
-  });
+    });
   }
 
   onSubmit() {
+    // this.router.navigate(['/login']);
+
+    this.venueService.getLogStatus().subscribe(data=>{
+      this.check=data;
+    });
+    window.alert(this.check);
+    if(this.check==true)
+    {
+      console.log(true);
+      this.router.navigate(['book']);
+    }
+    else
+    {
+      console.log(this.route.snapshot['_routerState'].url);
+      this.router.navigate(['login'], { queryParams: {returnUrl: this.route.snapshot['_routerState'].url}});
+    }
+
+
     // Swal.fire(
     //   'Booking is successful!',
     //   'Thanks for choosing us',
@@ -59,11 +70,11 @@ export class ReadDetailsComponent implements OnInit {
 
     //   this.router.navigate(['']);
     // });
-    this.router.navigate(['/','book']).then(nav => {
-      console.log(nav); // true if navigation is successful
-    }, err => {
-      console.log(err) // when there's an error
-    });
+    // this.router.navigate(['/','book']).then(nav => {
+    //   console.log(nav); // true if navigation is successful
+    // }, err => {
+    //   console.log(err) // when there's an error
+    // });
   }
 
 }

@@ -13,7 +13,7 @@ describe('SavedcardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SavedcardComponent ],
+      declarations: [SavedcardComponent],
       imports:[FormsModule, RouterModule, ReactiveFormsModule, RouterTestingModule],
       providers:[NgbActiveModal, FormBuilder, NgbModal, HttpClient, HttpHandler]
     })

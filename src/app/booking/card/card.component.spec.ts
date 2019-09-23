@@ -7,6 +7,7 @@ import { HttpClient, HttpHandler } from '../../../../node_modules/@angular/commo
 import { Router } from '../../../../node_modules/@angular/router';
 import { PaymentService } from '../../shared/payment.service';
 import { RouterTestingModule } from '../../../../node_modules/@angular/router/testing';
+import { SavedcardComponent } from '../savedcard/savedcard.component';
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -14,7 +15,7 @@ describe('CardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardComponent ],
+      declarations: [CardComponent],
       imports:[FormsModule, ReactiveFormsModule, RouterTestingModule],
       providers:[NgbActiveModal, HttpClient, HttpHandler, PaymentService, FormBuilder]
     })
