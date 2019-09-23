@@ -50,9 +50,9 @@ export class CardComponent implements OnInit {
 
   onSubmit() {
     this.payment.paymentMode = this.service.paymentMode;
-    console.log(this.payment.card.cardName);
-    console.log(this.payment.card.cardNumber);
-    console.log(this.payment.card.expiryDate);
+    // console.log(this.payment.card.cardName);
+    // console.log(this.payment.card.cardNumber);
+    // console.log(this.payment.card.expiryDate);
     this.service.addPayment(this.payment).subscribe(data => {
       this.data = data,
       Swal.fire(
