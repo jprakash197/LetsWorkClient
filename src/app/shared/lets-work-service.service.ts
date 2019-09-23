@@ -36,8 +36,8 @@ export class LetsWorkServiceService {
 
     // Intercept the venueRequest city location with the map service
     this.mapService.setLocation(venueRequest.city.toLowerCase());
-
-    return this.http.post<Venue>(this.configUrl, venueRequest);
+    this.configUrl=this.url+'/venues'+"/"+venueRequest.capacity+"/"+venueRequest.city+"/"+venueRequest.venueType+"/"+venueRequest.date;
+    return this.http.get<Venue>(this.configUrl);
   }
 
   getCities(): Observable<string[]> {
