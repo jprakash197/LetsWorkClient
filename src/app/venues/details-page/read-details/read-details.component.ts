@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { MapService } from '../../../shared/map.service';
 
 import { Venue } from '../../../shared/venue';
+import { BookNowComponent } from '../../../booking/book-now/book-now.component';
 
 @Component({
   selector: 'app-read-details',
@@ -22,7 +23,8 @@ export class ReadDetailsComponent implements OnInit {
     private venueService: LetsWorkServiceService,
     private spinner: NgxSpinnerService,
     private router: Router,
-    private mapService: MapService) {
+    private mapService: MapService,
+    private booknow: BookNowComponent) {
 
   }
 
@@ -50,6 +52,8 @@ export class ReadDetailsComponent implements OnInit {
     if(this.check==true)
     {
       console.log(true);
+      console.log(this.id);
+      this.booknow.getbookingid(this.id);
       this.router.navigate(['book']);
     }
     else

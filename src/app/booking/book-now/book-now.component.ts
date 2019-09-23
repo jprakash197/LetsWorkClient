@@ -15,11 +15,19 @@ export class BookNowComponent implements OnInit {
 
   username:String;
   data:any;
+  id:any;
   errorData:any;
   payment:Payment=new Payment();
   constructor(private service:PaymentService, private route:Router,private savedCards:SavedcardComponent, private card:CardComponent) { }
 
   ngOnInit() {
+    this.getbookingid;
+  }
+
+  getbookingid(id:any)
+  {
+    this.id=id;
+    console.log("Booking ID is-"+this.id);
   }
 
   onSubmit()

@@ -18,6 +18,9 @@ import { SortVenuesComponent } from './results-page/sort-venues/sort-venues.comp
 import { GetMoreDetailsComponent } from './results-page/get-more-details/get-more-details.component';
 import { MapComponent } from './details-page/map/map.component';
 import { RatingModule } from 'ng-starrating';
+import { BookNowComponent } from '../booking/book-now/book-now.component';
+import { SavedcardComponent } from '../booking/savedcard/savedcard.component';
+import { CardComponent } from '../booking/card/card.component';
 
 
 @NgModule({
@@ -36,7 +39,7 @@ import { RatingModule } from 'ng-starrating';
     RatingModule
   ],
   providers: [
-    ResultsPageComponent
+    ResultsPageComponent, BookNowComponent, SavedcardComponent, CardComponent
   ]
 })
 export class VenuesModule { }
