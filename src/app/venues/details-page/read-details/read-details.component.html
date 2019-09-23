@@ -36,7 +36,9 @@
 
         <p class="card-text">{{venue.description}}</p>
 
-        <p class="card-text">Rating: {{venue.rating}}</p>
+        <p class="card-text">
+          <star-rating value="{{venue.rating}}" checkedcolor="gold" uncheckedcolor="gray" readOnly="true" size="2.5vh"></star-rating>
+        </p>
         <br>
         <p>
           <font size="5">Features</font>

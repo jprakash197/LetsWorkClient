@@ -44,5 +44,11 @@ describe('LetsWorkServiceService', () => {
     const venues = this.service.getCities();
     let city = venues.find("Compton");
     expect(city).toBeNull();
+  });
+  it('The details of a venue to be found',()=>{
+    const service:LetsWorkServiceService=TestBed.get(LetsWorkServiceService);
+    const venue=this.service.getDetails(1);
+    let city=venue.find("Bangalore");
+    expect(city).actual;
   })
 });
