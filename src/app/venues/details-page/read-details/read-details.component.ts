@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
 import { LetsWorkServiceService } from '../../../shared/lets-work-service.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-
-import Swal from 'sweetalert2';
 import { MapService } from '../../../shared/map.service';
 
 import { Venue } from '../../../shared/venue';
@@ -49,7 +47,6 @@ export class ReadDetailsComponent implements OnInit {
     this.venueService.getLogStatus().subscribe(data=>{
       this.check=data;
     });
-    window.alert(this.check);
     if(this.check==true)
     {
       console.log(true);
@@ -60,21 +57,6 @@ export class ReadDetailsComponent implements OnInit {
       console.log(this.route.snapshot['_routerState'].url);
       this.router.navigate(['login'], { queryParams: {returnUrl: this.route.snapshot['_routerState'].url}});
     }
-
-
-    // Swal.fire(
-    //   'Booking is successful!',
-    //   'Thanks for choosing us',
-    //   'success'
-    // ).then((result) => {
-
-    //   this.router.navigate(['']);
-    // });
-    // this.router.navigate(['/','book']).then(nav => {
-    //   console.log(nav); // true if navigation is successful
-    // }, err => {
-    //   console.log(err) // when there's an error
-    // });
   }
 
 }
