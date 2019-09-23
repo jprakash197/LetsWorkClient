@@ -22,28 +22,32 @@ export class LoginComponent implements OnInit {
   }
 
   onSelect() {
-    this.service.OnLogin(this.username, this.password).subscribe(
-      user => {
-        if (user) {
-          const u: User = user;
-          localStorage.setItem('user', this.username);
-          const token: string = '' + u.token.toString();
-          const role: string = '' + u.role.toString();
-          u.token = token;
-          u.role = role;
-          this.service.setUser(user);
-          localStorage.setItem('token', token);
-          localStorage.setItem('role', role);
-          this.service.setLogStatus(true);
-          this.routeconfig.navigate(['/']);
+    if (this.username != null && this.password != null) {
+      this.service.OnLogin(this.username, this.password).subscribe(
+        user => {
+          if (user) {
+            const u: User = user;
+            localStorage.setItem('user', this.username);
+            const token: string = '' + u.token.toString();
+            const role: string = '' + u.role.toString();
+            u.token = token;
+            u.role = role;
+            this.service.setUser(user);
+            localStorage.setItem('token', token);
+            localStorage.setItem('role', role);
+            this.service.setLogStatus(true);
+            this.routeconfig.navigate(['/']);
+          }
+        },
+        (error) => {
+          if (error instanceof HttpErrorResponse) {
+            alert(error.error.message);
+          }
         }
-      },
-      (error) => {
-        if (error instanceof HttpErrorResponse) {
-          alert(error.error.message);
-        }
-      }
-    );
+      );
+    } else {
+      alert('Inputs cannot be empty.');
+    }
   }
 
   onSignUp() {
