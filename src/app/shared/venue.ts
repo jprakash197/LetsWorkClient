@@ -22,6 +22,12 @@ export class Venue {
     image: Image[];
     feature: Feature[];
     booking: Booking[];
+
+    randomVenueType(): string {
+        const VENUE_TYPES = ['Conference', 'Training', 'Workshop', 'Meeting'];
+        const RANDOM_INDEX = Math.random() * 3;
+        return VENUE_TYPES[0];
+    }
 }
 
 export class Image {

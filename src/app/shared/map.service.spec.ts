@@ -6,10 +6,12 @@ import { MapService } from './map.service';
 import { CoreModule } from '../core/core.module';
 import { CoreRoutingModule } from '../core/core-routing.module';
 import { AppModule } from '../app.module';
+import {APP_BASE_HREF} from '@angular/common';
 
 describe('MapService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [AppModule]
+    imports: [AppModule],
+    providers: [{provide: APP_BASE_HREF, useValue : '/' }]
   }));
 
   it('should be created', () => {

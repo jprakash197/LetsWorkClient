@@ -5,13 +5,13 @@ import { FilterVenuesComponent } from './results-page/filter-venues/filter-venue
 import { ReadDetailsComponent } from './details-page/read-details/read-details.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
 import { HomePageModule } from '../home-page/home-page.module';
-
+// import { APP_BASE_HREF } from '@angular/common';
 
 const routes: Routes = [
   {
     path: '', component: ResultsPageComponent
   },
-  {
+  {                                                                                      
     path: 'detail/:venueId', component: ReadDetailsComponent
   },
   {
@@ -28,6 +28,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  // providers: [{provide: APP_BASE_HREF, useValue: '/my/app'}]
 })
 export class VenuesRoutingModule { }
