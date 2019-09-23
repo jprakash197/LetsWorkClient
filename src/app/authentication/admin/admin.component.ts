@@ -26,18 +26,39 @@ export class AdminComponent implements OnInit {
 
   onClick(venue: Venue) {
     this.venueSelected = !this.venueSelected;
-    this.venueToEdit = venue;
+    if (venue === null) {
+      this.venueToEdit = new Venue();
+      this.venueToEdit.venueId = -1;
+    } else {
+      this.venueToEdit = venue;
+    }
   }
 
   save() {
     this.venueSelected = !this.venueSelected;
-    this.letsWorkService.updateVenue(this.venueToEdit).subscribe((response) => {
-      console.log('Updated venue:');
-      console.log(this.venueToEdit);
-      console.log(response);
-    }, (error) => {
-      console.error(error);
-    })
+
+    // Add a new Venue
+    if (this.venueToEdit.venueId === -1) {
+      this.venueToEdit.venueId = this.venues.length + 1;
+      this.venueToEdit.venueType = this.venueToEdit.randomVenueType();
+      this.letsWorkService.createVenue(this.venueToEdit).subscribe((response) => {
+        console.log('Created venue:');
+        console.log(this.venueToEdit);
+        console.log(response);
+        this.venues.push(this.venueToEdit);
+      }, (error) => {
+        console.error(error);
+      });
+    } else {
+      this.letsWorkService.updateVenue(this.venueToEdit).subscribe((response) => {
+        console.log('Updated venue:');
+        console.log(this.venueToEdit);
+        console.log(response);
+      }, (error) => {
+        console.error(error);
+      });
+    }
+
     this.venueToEdit = null;
   }
 

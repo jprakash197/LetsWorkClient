@@ -1,6 +1,11 @@
 <ngx-spinner bdColor="#333" size="medium" color="#fff" type="ball-circus">
   <p style="font-size: 20px; color:black;">Loading..</p>
 </ngx-spinner>
+<!-- <div *ngIf=errorflag>
+  <p style="margin: 200px">
+    Sorry!! there is no venue found .
+  </p>
+</div> -->
 <div *ngIf=flag>
   <div *ngIf="venue.image?.length">
     <mat-card class="slider">
@@ -31,7 +36,9 @@
 
         <p class="card-text">{{venue.description}}</p>
 
-        <p class="card-text">Rating: {{venue.rating}}</p>
+        <p class="card-text">
+          <star-rating value="{{venue.rating}}" checkedcolor="gold" uncheckedcolor="gray" readOnly="true" size="2.5vh"></star-rating>
+        </p>
         <br>
         <p>
           <font size="5">Features</font>

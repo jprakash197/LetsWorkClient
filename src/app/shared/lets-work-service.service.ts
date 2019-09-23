@@ -56,18 +56,22 @@ export class LetsWorkServiceService {
    * Add a venue only if if it not in the venues
    * @param venue is
    */
-  addVenue(venue: Venue): void {
+  addVenue(venue: Venue): Observable<Venue[]> {
     const foundMatch = this.venues.getValue().find(v => venue.venueId === v.venueId);
     if (!foundMatch) {
       this.venues.getValue().push(venue);
     }
-
+    return this.venues.asObservable();
   }
 
   addVenues(venues): void {
     const tempVenues = this.venues.getValue();
     tempVenues.push(venues);
     this.venues.next(tempVenues);
+  }
+
+  createVenue(venue: Venue) {
+    return this.http.post(this.configUrl + 'z', venue);
   }
 
   updateVenue(venue: Venue) {
@@ -151,7 +155,7 @@ export class LetsWorkServiceService {
       this.filteredVenues.pop();
     }
     this.searchedVenues.forEach(element => {
-      if (element.price > 5000 && element.rating > 5 ) {
+      if (element.price > 5000 && element.rating > 5) {
         this.filteredVenues.push(element);
       }
     });

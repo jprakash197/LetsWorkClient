@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-// import { } from 'googlemaps';
+import {APP_BASE_HREF} from '@angular/common';
+import { } from 'googlemaps';
 
 // import { MapComponent } from './map.component';
 
@@ -10,7 +10,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [MapComponent]
+//       declarations: [MapComponent],
+//       providers: [{provide: APP_BASE_HREF, useValue : '/' }]
 //     })
 //       .compileComponents();
 //   }));

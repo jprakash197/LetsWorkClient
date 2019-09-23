@@ -2,10 +2,11 @@ import { TestBed } from '@angular/core/testing';
 
 import { LetsWorkServiceService } from './lets-work-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 describe('LetsWorkServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [HttpClientModule]
+    imports: [HttpClientModule, FormsModule]
   }));
 
   it('should be created', () => {
@@ -37,4 +38,17 @@ describe('LetsWorkServiceService', () => {
     const service: LetsWorkServiceService = TestBed.get(LetsWorkServiceService);
     expect(service.getLogStatus).toBeTruthy();
   });
+
+  it('Venue cities should be findable', () => {
+    const service: LetsWorkServiceService = TestBed.get(LetsWorkServiceService);
+    const venues = this.service.getCities();
+    let city = venues.find("Compton");
+    expect(city).toBeNull();
+  });
+  it('The details of a venue to be found',()=>{
+    const service:LetsWorkServiceService=TestBed.get(LetsWorkServiceService);
+    const venue=this.service.getDetails(1);
+    let city=venue.find("Bangalore");
+    expect(city).actual;
+  })
 });
