@@ -13,12 +13,12 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Card number</label>
-                    <input type="text" placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control input-md" formControlName="cardnumber" [(ngModel)]="payment.card.cardNumber"
+                    <input type="text" placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control input-md" formControlName="cardnumber" [(ngModel)]="payment.card.cardNumber" required
                     />
                 </div>
                 <div class="form-group">
                     <label for="password">Expiry date</label>
-                    <input type="text" placeholder="mm/yy" class="form-control" formControlName="expirydate" [(ngModel)]="payment.card.expiryDate"
+                    <input type="text" placeholder="mm/yy" class="form-control" formControlName="expirydate" [(ngModel)]="payment.card.expiryDate"required
                     />
                 </div>
             </div>
