@@ -5,6 +5,7 @@ import { Card } from '../../shared/Card';
 import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms';
 import { PaymentService } from '../../shared/payment.service';
 import { Router } from '../../../../node_modules/@angular/router';
+import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 
 @Component({
   selector: 'app-savedcard',
@@ -18,12 +19,13 @@ export class SavedcardComponent implements OnInit {
   errorData: any;
   @Input() id: number;
   myForm: FormGroup;
-  constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder, private service: PaymentService, private route: Router, private modalService: NgbModal) {
+  constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder, private service: PaymentService, private route: Router, private modalService: NgbModal, private card:LetsWorkServiceService) {
     this.createForm();
     this.userdetails=this.service.user;
   }
 
   ngOnInit() {
+    console.log("Venue ID:-"+this.card.venueId);
   }
 
   private createForm() {

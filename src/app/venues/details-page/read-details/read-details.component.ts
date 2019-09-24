@@ -53,7 +53,8 @@ export class ReadDetailsComponent implements OnInit {
     {
       console.log(true);
       console.log(this.id);
-      this.booknow.getbookingid(this.id);
+      // this.booknow.getbookingid(this.id);
+      this.venueService.venueId=this.id;
       this.router.navigate(['book']);
     }
     else
