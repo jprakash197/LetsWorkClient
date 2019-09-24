@@ -20,7 +20,8 @@ export class GuardService implements CanActivate {
     console.log(`route url: ${activeRouterSnap.url}`);
 
     if (token !== null) {
-      if (role === this.currentUser.role
+      if (role !== null && this.currentUser.role !== null
+        && role === this.currentUser.role
         && userNameFromRoute === this.currentUser.username
         && token === this.currentUser.token) {
         this.service.setLogStatus(true);

@@ -30,14 +30,15 @@ export class LoginComponent implements OnInit {
       user => {
         if (user) {
           const u: User = user;
-          localStorage.setItem('user', this.username);
           const token: string = '' + u.token.toString();
           const role: string = '' + u.role.toString();
           u.token = token;
           u.role = role;
-          this.service.setUser(user);
+          u.username = this.username;
+          this.service.setUser(u);
           localStorage.setItem('token', token);
           localStorage.setItem('role', role);
+          localStorage.setItem('user', this.username);
           this.service.setLogStatus(true);
           // this.routeconfig.navigate(['/']);
           this.routeconfig.navigateByUrl(this.returnUrl);

@@ -14,12 +14,12 @@ export class HeaderComponent implements OnInit {
   displayFooter: boolean;
   user: User = null;
 
-  constructor(private letsWorkService: LetsWorkServiceService, private routeConfig: Router,private service :TrackServiceService) { }
-data1;
+  constructor(private letsWorkService: LetsWorkServiceService, private routeConfig: Router, private service: TrackServiceService) { }
+  data1;
   ngOnInit() {
     this.letsWorkService.getLogStatus().subscribe(loggedIn => this.isLoggedIn = loggedIn);
     this.letsWorkService.getUser().subscribe(user => this.user = user);
-    this.service.displayTrack().subscribe(data=>this.data1=data)
+    this.service.displayTrack().subscribe(data => this.data1 = data)
   }
 
   onLogin(event: any) {
@@ -34,22 +34,23 @@ data1;
   }
 
   onProfile(event: any) {
-    const userName = localStorage.getItem('user');
-    if (this.user && userName !== null) {
+    console.log("Logging into user profile:");
+    console.log(this.user);
+    if (this.user) {
       if (this.user.role.toUpperCase() === 'ADMIN') {
-        this.routeConfig.navigate(['/login/admin/' + userName]);
+        this.routeConfig.navigate(['/login/admin/' + this.user.username]);
       } else {
-        this.routeConfig.navigate(['/getUser/' + userName]);
+        this.routeConfig.navigate(['/getUser/' + this.user.username]);
       }
     }
   }
 
 
-  submit1(){
+  submit1() {
     this.displayFooter = true;
     this.routeConfig.navigate(['/display']);
   }
- 
+
   // count=0;
   // flag=false;
   // submit1()
