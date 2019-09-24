@@ -39,20 +39,27 @@ export class AdminComponent implements OnInit {
 
     // Add a new Venue
     if (this.venueToEdit.venueId === -1) {
-      this.venueToEdit.venueId = this.venues.length + 1;
       this.letsWorkService.createVenue(this.venueToEdit).subscribe((response) => {
         console.log('Created venue:');
-        console.log(this.venueToEdit);
         console.log(response);
+        let newVenueId = Object.assign(new Venue(), response).venueId;
+        this.venueToEdit.venueId = newVenueId;
         this.venues.push(this.venueToEdit);
+        this.venues.sort((v1, v2) => {
+          return v1.venueId - v2.venueId;
+        });
       }, (error) => {
         console.error(error);
       });
     } else {
       this.letsWorkService.updateVenue(this.venueToEdit).subscribe((response) => {
         console.log('Updated venue:');
-        console.log(this.venueToEdit);
         console.log(response);
+        // Update the venue with response
+        let newVenue = Object.assign(new Venue(), response);
+        let foundVenue = this.venues.find(venue => venue.venueId === newVenue.venueId);
+        foundVenue = newVenue;
+        this.venues[foundVenue.venueId - 1] = foundVenue;
       }, (error) => {
         console.error(error);
       });
@@ -69,10 +76,9 @@ export class AdminComponent implements OnInit {
   delete() {
     this.letsWorkService.deleteVenue(this.venueToEdit).subscribe((response) => {
       console.log('Deleted venue:');
-      console.log(this.venueToEdit);
+      console.log(response);
       // filter out all the venues bar for which are not deleting foo
       this.venues = this.venues.filter(v => v.venueId !== this.venueToEdit.venueId);
-      console.log(response);
     }, (error) => {
       console.error(error);
     });

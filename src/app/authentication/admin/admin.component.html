@@ -14,6 +14,7 @@
       <li class="list-group-item" *ngFor="let venue of venues; index as i" (click)="onClick(venue)">
         {{ 'Id: ' + venue.venueId }} <br>
         {{ 'Name: ' + venue.venueName }} <br>
+        {{ 'Address: ' + venue.address }} <br>
         {{ 'City: ' + venue.city }} <br>
         {{ 'Size: ' + venue.size }} <br>
         {{ 'Capacity: ' + venue.capacity }} <br>
@@ -37,13 +38,13 @@
           <p>{{venue.venueName}} image not found </p>
         </div>
 
-        <div *ngIf="venue.feature?.length">
+        <div *ngIf="venue && venue.feature?.length">
           <div *ngFor="let feature of venue.feature">
             {{feature}}
           </div>
         </div>
 
-        <div *ngIf="!venue.feature?.length">
+        <div *ngIf="venue && !venue.feature?.length">
           features unknown
         </div>
 
@@ -64,7 +65,16 @@
           </div>
           <div class="col-8">
             <input mdbInput type="text" id="venueName" name="venueName" [(ngModel)]="venueToEdit.venueName"
-              class="form-control" placeholder="enter a venue name" required />
+              class="form-control" placeholder="enter a name" required />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <label for="address">Address:</label>
+          </div>
+          <div class="col-8">
+            <input mdbInput type="text" id="address" name="address" [(ngModel)]="venueToEdit.address"
+              class="form-control" placeholder="enter an address" />
           </div>
         </div>
         <div class="row">
