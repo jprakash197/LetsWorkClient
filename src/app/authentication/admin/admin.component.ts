@@ -40,7 +40,6 @@ export class AdminComponent implements OnInit {
     // Add a new Venue
     if (this.venueToEdit.venueId === -1) {
       this.venueToEdit.venueId = this.venues.length + 1;
-      this.venueToEdit.venueType = this.venueToEdit.randomVenueType();
       this.letsWorkService.createVenue(this.venueToEdit).subscribe((response) => {
         console.log('Created venue:');
         console.log(this.venueToEdit);
@@ -71,6 +70,7 @@ export class AdminComponent implements OnInit {
     this.letsWorkService.deleteVenue(this.venueToEdit).subscribe((response) => {
       console.log('Deleted venue:');
       console.log(this.venueToEdit);
+      // filter out all the venues bar for which are not deleting foo
       this.venues = this.venues.filter(v => v.venueId !== this.venueToEdit.venueId);
       console.log(response);
     }, (error) => {

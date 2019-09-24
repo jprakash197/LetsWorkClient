@@ -22,7 +22,7 @@
         {{ 'Price: ' + venue.price }} <br>
         {{ 'Type: ' + venue.venueType }} <br>
         {{ 'Feature: ' + venue.featureType }} <br>
-        <div *ngIf="venue.image?.length">
+        <div *ngIf="venue && venue.image?.length">
           <mat-card class="slider">
             <ngb-carousel>
               <ng-template ngbSlide *ngFor="let img of venue.image">
@@ -33,7 +33,7 @@
             </ngb-carousel>
           </mat-card>
         </div>
-        <div *ngIf="!venue.image?.length">
+        <div *ngIf="venue && !venue.image?.length">
           <p>{{venue.venueName}} image not found </p>
         </div>
 
@@ -55,77 +55,88 @@
 
 <div class="container" style="padding: 5%" *ngIf="venueSelected">
   <div class="card">
-    <div class="card-header">VenueEdit</div>
+    <div class="card-header">Venue Details</div>
     <div class="card-body">
-      <div class="row">
-        <div class="col-4">
-          <label>Name:</label>
+      <form #venueForm="ngForm">
+        <div class="row">
+          <div class="col-4">
+            <label for="name">Name:</label>
+          </div>
+          <div class="col-8">
+            <input mdbInput type="text" id="venueName" name="venueName" [(ngModel)]="venueToEdit.venueName"
+              class="form-control" placeholder="enter a venue name" required />
+          </div>
         </div>
-        <div class="col-8">
-          <input mdbInput type="text" id="venueName" [(ngModel)]="venueToEdit.venueName" class="form-control"
-            placeholder="enter a venue name" />
+        <div class="row">
+          <div class="col-4">
+            <label for="venueCity">City:</label>
+          </div>
+          <div class="col-8">
+            <input mdbInput type="text" id="venueCity" name="venueCity" [(ngModel)]="venueToEdit.city"
+              class="form-control" placeholder="bhubaneswar, mumbai, bangalore" data-ng-required />
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <label>City:</label>
+        <div class="row">
+          <div class="col-4">
+            <label>Size:</label>
+          </div>
+          <div class="col-8">
+            <input mdbInput type="number" id="size" name="size" [(ngModel)]="venueToEdit.size" class="form-control"
+              placeholder="enter a size" required />
+          </div>
         </div>
-        <div class="col-8">
-          <input mdbInput type="text" id="venueCity" [(ngModel)]="venueToEdit.city" class="form-control"
-            placeholder="enter a city" />
+        <div class="row">
+          <div class="col-4">
+            <label for="capacity">Capacity:</label>
+          </div>
+          <div class="col-8">
+            <input mdbInput type="number" id="capacity" name="capacity" [(ngModel)]="venueToEdit.capacity"
+              class="form-control" placeholder="enter a capacity" required />
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <label>Size:</label>
+        <div class="row">
+          <div class="col-4">
+            <label for="desc">Description:</label>
+          </div>
+          <div class="col-8">
+            <input mdbInput type="text" id="desc" name="desc" [(ngModel)]="venueToEdit.description" class="form-control"
+              placeholder="enter a description" />
+          </div>
         </div>
-        <div class="col-8">
-          <input mdbInput type="text" id="size" [(ngModel)]="venueToEdit.size" class="form-control"
-            placeholder="enter a size" />
+        <div class="row">
+          <div class="col-4">
+            <label for="rating">Rating:</label>
+          </div>
+          <div class="col-8">
+            <input mdbInput type="number" id="rating" name="rating" [(ngModel)]="venueToEdit.rating"
+              class="form-control" placeholder="enter a rating" required />
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <label>Capacity:</label>
+        <div class="row">
+          <div class="col-4">
+            <label for="price">Price:</label>
+          </div>
+          <div class="col-8">
+            <input mdbInput type="number" id="price" name="price" [(ngModel)]="venueToEdit.price" class="form-control"
+              placeholder="enter a price" required />
+          </div>
         </div>
-        <div class="col-8">
-          <input mdbInput type="text" id="capacity" [(ngModel)]="venueToEdit.capacity" class="form-control"
-            placeholder="enter a capacity" />
+        <div class="row">
+          <div class="col-4">
+            <label for="type">Type:</label>
+          </div>
+          <div class="col-8">
+            <input mdbInput type="text" id="type" name="type" [(ngModel)]="venueToEdit.venueType" class="form-control"
+              placeholder="workshop, training, meeting, conference" required />
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <label>Description:</label>
+        <div class="row">
+          <button class="btn btn-dark" type="button" id="delete" (click)="delete()">Delete</button>
+          <button class="btn btn-warning" type="button" id="cancel" (click)="cancel()">Cancel</button>
+          <button class="btn btn-success" type="submit" [disabled]="venueForm.form.invalid" id="save"
+            (click)="save()">Save</button>
         </div>
-        <div class="col-8">
-          <input mdbInput type="text" id="desc" [(ngModel)]="venueToEdit.description" class="form-control"
-            placeholder="enter a description" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <label>Rating:</label>
-        </div>
-        <div class="col-8">
-          <input mdbInput type="text" id="rating" [(ngModel)]="venueToEdit.rating" class="form-control"
-            placeholder="enter a rating" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <label>Price:</label>
-        </div>
-        <div class="col-8">
-          <input mdbInput type="text" id="price" [(ngModel)]="venueToEdit.price" class="form-control"
-            placeholder="enter a price" />
-        </div>
-      </div>
-      <div class="row">
-        <button class="btn btn-dark btn-lg" id="save" (click)="delete()">Delete</button>
-        <button class="btn btn-danger" id="cancel" (click)="cancel()">Cancel</button>
-        <button class="btn btn-success" id="save" (click)="save()">Save</button>
-      </div>
-
+      </form>
     </div>
 
   </div>
