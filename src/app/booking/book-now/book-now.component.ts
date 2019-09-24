@@ -5,6 +5,7 @@ import { Router } from '../../../../node_modules/@angular/router';
 import { SavedcardComponent } from '../savedcard/savedcard.component';
 import { CardComponent } from '../card/card.component';
 import Swal from 'sweetalert2';
+import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 
 @Component({
   selector: 'app-book-now',
@@ -15,23 +16,18 @@ export class BookNowComponent implements OnInit {
 
   username:String;
   data:any;
-  id:any;
+  // id:any;
   errorData:any;
   payment:Payment=new Payment();
-  constructor(private service:PaymentService, private route:Router,private savedCards:SavedcardComponent, private card:CardComponent) { }
+  constructor(private service:PaymentService, private route:Router,private savedCards:SavedcardComponent, private card:CardComponent, private bookingService:LetsWorkServiceService) { }
 
   ngOnInit() {
-    this.getbookingid;
-  }
-
-  getbookingid(id:any)
-  {
-    this.id=id;
-    console.log("Booking ID is-"+this.id);
+    console.log("Venue ID:-"+this.bookingService.venueId);
   }
 
   onSubmit()
   {
+    // console.log("Venue ID:-"+this.bookingService.venueId);
     this.service.paymentMode=this.payment.paymentMode;
     console.log(this.username);
     if(this.username==null)

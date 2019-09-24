@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LetsWorkServiceService } from '../../../shared/lets-work-service.service';
 import { Router } from '@angular/router';
-import { User } from '../../../shared/user';
 import { TrackServiceService } from '../../../core/shell/track-service.service';
+import { LetsWorkServiceService } from '../../../shared/lets-work-service.service';
+import { User } from '../../../shared/user';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.letsWorkService.getLogStatus().subscribe(loggedIn => this.isLoggedIn = loggedIn);
     this.letsWorkService.getUser().subscribe(user => this.user = user);
-    this.service.displayTrack().subscribe(data => this.data1 = data)
+    this.service.displayTrack().subscribe(data => this.data1 = data);
   }
 
   onLogin(event: any) {

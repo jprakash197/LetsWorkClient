@@ -13,6 +13,8 @@ import { MapService } from './map.service';
 })
 export class LetsWorkServiceService {
 
+  venueId:number;
+
   venues: BehaviorSubject<Venue[]> = new BehaviorSubject<Venue[]>(null);
   currentUser: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   logSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
