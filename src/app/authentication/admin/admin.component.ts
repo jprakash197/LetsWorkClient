@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Venue } from '../../shared/venue';
 import { LetsWorkServiceService } from '../../shared/lets-work-service.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 
 @Component({
@@ -42,12 +43,16 @@ export class AdminComponent implements OnInit {
       this.letsWorkService.createVenue(this.venueToEdit).subscribe((response) => {
         console.log('Created venue:');
         console.log(response);
-        let newVenueId = Object.assign(new Venue(), response).venueId;
-        this.venueToEdit.venueId = newVenueId;
-        this.venues.push(this.venueToEdit);
-        this.venues.sort((v1, v2) => {
-          return v1.venueId - v2.venueId;
-        });
+        // @TODO :: Need to parse JSON response and extract venue id from back-end
+        // let venueStr = response.toString().split(',');
+        // console.log(venueStr);
+        // let venueId = venueStr.filter(s => s.match['[0-9]+']);
+        // console.log(venueId);
+        // this.venueToEdit.venueId = parseInt(venueId[0]);
+        // this.venues.push(this.venueToEdit);
+        // this.venues.sort((v1, v2) => {
+        //   return v1.venueId - v2.venueId;
+        // });
       }, (error) => {
         console.error(error);
       });
