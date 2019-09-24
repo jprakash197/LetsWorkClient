@@ -35,6 +35,7 @@ export class SignupComponent implements OnInit {
           this.user.token = data.token;
           this.user.role = data.role;
           this.service.setLogStatus(true);
+          this.service.setUser(this.user);
           this.routeconfig.navigate(['/']);
         },
           (error) => {
